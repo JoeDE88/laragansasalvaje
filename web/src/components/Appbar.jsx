@@ -53,6 +53,7 @@ function ResponsiveAppBar() {
             >MENU
             </Button>
             <Menu
+            disablePortal
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -73,7 +74,6 @@ function ResponsiveAppBar() {
                   key={page.name}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    width: '6em',
                     backgroundColor: 'secondary.main',
                     color: 'secondary.text',
                     "&:hover": {
@@ -110,11 +110,12 @@ function ResponsiveAppBar() {
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: 'secondary.main' }} />
             </IconButton>
             <Menu
+            disablePortal
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'right',
+                horizontal: 'center',
               }}
               keepMounted
               transformOrigin={{
@@ -129,7 +130,6 @@ function ResponsiveAppBar() {
                   key={setting}
                   onClick={handleCloseUserMenu}
                   sx={{
-                    width: '6em',
                     backgroundColor: 'secondary.main',
                     color: 'secondary.text',
                     "&:hover": {
