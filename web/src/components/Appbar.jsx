@@ -34,7 +34,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar disableGutters position="static" color='blancoPerla' elevation={0}>
+    <AppBar position="static" color='blancoPerla' elevation={0} sx={{mb:5}}>
       <Container maxWidth="xl">
         <Toolbar >
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -6,7 +6,7 @@ export default function () {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant='h2' color='secondary'>
+            <Typography variant='h3' color='secondary' sx={{textAlign:'center'}}>
                 Mundo Lara.
             </Typography>
             <Gallery></Gallery>
