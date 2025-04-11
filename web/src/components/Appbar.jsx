@@ -107,7 +107,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: 'secondary.main' }} />
+              <Avatar alt="Jemy Sharp" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: 'secondary.main' }} />
             </IconButton>
             <Menu
             disablePortal
