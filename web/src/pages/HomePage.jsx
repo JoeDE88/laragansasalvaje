@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
 import Gallery from "../components/Gallery";
+import Footer from "../components/Footer";
 
 export default function () {
     return (
@@ -10,6 +11,7 @@ export default function () {
                 Mundo Lara.
             </Typography>
             <Gallery></Gallery>
+            <Footer></Footer>
         </>
     )
 }
