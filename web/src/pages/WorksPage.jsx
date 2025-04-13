@@ -1,9 +1,15 @@
 import { Typography } from "@mui/material";
+import ResponsiveAppBar from "../components/Appbar";
+import Gallery from "../components/Gallery";
+import Footer from "../components/Footer";
 
 export default function WorksPage (){
     return(
         <>
-        <Typography variant="h1">Works</Typography>
+        <ResponsiveAppBar></ResponsiveAppBar>
+        <Typography variant="h4" color='secondary' sx={{textAlign:'center',mb:5}}>Obras</Typography>
+        <Gallery></Gallery>
+        <Footer></Footer>
         </>
     )
 }

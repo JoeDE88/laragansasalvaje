@@ -6,31 +6,20 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { routeAppBar } from '../routes/routeAppBar';
 import { NavLink } from "react-router";
 
-const settings = ['Account', 'Logout'];
-
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -106,41 +95,9 @@ function ResponsiveAppBar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Jemy Sharp" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: 'secondary.main' }} />
+            <IconButton component={NavLink} to="/" sx={{ p: 0 }}>
+              <Typography sx={{ color: 'secondary.main' }}>LOGO</Typography>
             </IconButton>
-            <Menu
-            disablePortal
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                  sx={{
-                    backgroundColor: 'secondary.main',
-                    color: 'secondary.text',
-                    "&:hover": {
-                      backgroundColor: "blancoPerla.main",
-                      color: 'blancoPerla.text'
-                    }
-                  }}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

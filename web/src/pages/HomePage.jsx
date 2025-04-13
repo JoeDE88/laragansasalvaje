@@ -1,16 +1,16 @@
 import { Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
-import Gallery from "../components/Gallery";
 import Footer from "../components/Footer";
+import EventBanner from "../components/EventBanner";
 
 export default function () {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant='h3' color='secondary' sx={{textAlign:'center',mb:5}}>
-                Mundo Lara.
+            <Typography variant='h4' color='secondary' sx={{textAlign:'center',mb:5}}>
+                LARA GANSA SALVAJE
             </Typography>
-            <Gallery></Gallery>
+            <EventBanner></EventBanner>
             <Footer></Footer>
         </>
     )

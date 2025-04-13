@@ -9,7 +9,7 @@ export default function AboutPage() {
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Container maxWidth="lg">
-                <Typography variant="h3">About Lara:</Typography>
+                <Typography variant="h4">About Lara gansa salvaje:</Typography>
                 <Box sx={{mt:5 }}>
                     <Box sx={{ alignItems: 'center' }}>
                         <Card sx={{ maxWidth: 500, margin: 'auto' }}>

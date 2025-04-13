@@ -12,17 +12,17 @@ export default function () {
             <Grid container spacing={0.5} sx={{mt:2.5, textAlign:'center'}}>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                     <Box>
-                        <Link href="https://www.youtube.com/"><InstagramIcon fontSize="large" color="secondary"></InstagramIcon></Link>
+                        <Link href="https://www.instagram.com/laragansasalvaje?igsh=MW8zNGNpdG1tdDd3cA=="><InstagramIcon fontSize="large" color="secondary"></InstagramIcon></Link>
                     </Box>
                 </Grid>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                     <Box>
-                    <Link href="https://www.youtube.com/"><EmailIcon fontSize="large" color="secondary"></EmailIcon></Link>
+                    <Link href="mailto:lara.sanlop@gmail.com"><EmailIcon fontSize="large" color="secondary"></EmailIcon></Link>
                     </Box>
                 </Grid>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                     <Box>
-                    <Link href="https://www.youtube.com/"><WhatsAppIcon fontSize="large" color="secondary"></WhatsAppIcon></Link>
+                    <Link href="https://wa.me/34666302055"><WhatsAppIcon fontSize="large" color="secondary"></WhatsAppIcon></Link>
                     </Box>
                 </Grid>
             </Grid>

@@ -1,13 +1,13 @@
 import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/BlogPage";
-import HomePage from "../pages/HomePage";
+import EventosPage from "../pages/EventosPage";
 import StorePage from "../pages/StorePage";
 import WorksPage from "../pages/WorksPage";
 
 export const routeAppBar = [
     {
-        name: "Works",
-        path: "/works",
+        name: "Obras",
+        path: "/obras",
         component: <WorksPage />
     },
     {
@@ -24,5 +24,10 @@ export const routeAppBar = [
         name: "Blog",
         path: "/blog",
         component: <BlogPage />
+    },
+    {
+        name: "Eventos",
+        path: "/eventos",
+        component: <EventosPage />
     }
 ]

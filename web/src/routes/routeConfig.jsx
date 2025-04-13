@@ -1,5 +1,6 @@
 import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/BlogPage";
+import EventosPage from "../pages/EventosPage";
 import HomePage from "../pages/HomePage";
 import StorePage from "../pages/StorePage";
 import WorksPage from "../pages/WorksPage";
@@ -8,11 +9,11 @@ export const routeConfig = [
     {
         name: "Homepage",
         path: "/",
-        component: <HomePage/>
+        component: <HomePage />
     },
     {
-        name: "Works",
-        path: "/works",
+        name: "Obras",
+        path: "/obras",
         component: <WorksPage />
     },
     {
@@ -29,5 +30,10 @@ export const routeConfig = [
         name: "Blog",
         path: "/blog",
         component: <BlogPage />
+    },
+    {
+        name: "Eventos",
+        path: "/eventos",
+        component: <EventosPage />
     }
 ]
