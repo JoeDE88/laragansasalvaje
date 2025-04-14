@@ -16,11 +16,6 @@ export const routeAppBar = [
         component: <StorePage />
     },
     {
-        name: "About",
-        path: "/about",
-        component: <AboutPage />
-    },
-    {
         name: "Blog",
         path: "/blog",
         component: <BlogPage />
@@ -29,5 +24,10 @@ export const routeAppBar = [
         name: "Eventos",
         path: "/eventos",
         component: <EventosPage />
+    },
+    {
+        name: "About",
+        path: "/about",
+        component: <AboutPage />
     }
 ]

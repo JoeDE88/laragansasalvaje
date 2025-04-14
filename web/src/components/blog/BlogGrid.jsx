@@ -44,28 +44,31 @@ export default function BlogGrid() {
 
     return (
         <>
-            <Box maxWidth={'lg'}  height={'650px'} sx={{ margin: 'auto'}}>
+            <Box maxWidth={'lg'} height={{ xs: '425px', lg: '700px' }} sx={{ margin: 'auto' }}>
                 <Grid container spacing={3} height={'100%'}>
                     <Grid size={{ xs: 12, md: 7 }} height={'100%'}>
                         <Box height={'100%'}>
                             <BlogFirstItem
                                 image={'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg'}
                                 titulo={blogElement1.titulo}
-                                texto={blogElement1.texto}>
+                                texto={blogElement1.texto}
+                                fecha={blogElement1.fecha}
+                            >
                             </BlogFirstItem>
                         </Box>
                     </Grid>
                     <Grid size={{ xs: 12, md: 5 }} height={'100%'}>
                         <Stack spacing={2} height={'100%'}>
-                            {slicedBlog.map((blog,index) => {
+                            {slicedBlog.map((blog, index) => {
                                 return (
                                     <>
-                                            <BlogSmallItem
-                                                image={'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg'}
-                                                bgColor={'secondary.main'}
-                                                titulo={blog.titulo}
-                                                texto={blog.texto}
-                                            ></BlogSmallItem>
+                                        <BlogSmallItem
+                                            image={'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg'}
+                                            bgColor={'secondary.main'}
+                                            titulo={blog.titulo}
+                                            texto={blog.texto}
+                                            fecha={blogElement1.fecha}
+                                        ></BlogSmallItem>
                                     </>
                                 )
                             })}
