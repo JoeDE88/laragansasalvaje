@@ -2,3 +2,9 @@
   margin: 0 auto;
   padding: 1rem;
 }
+
+.blogimg {
+  object-fit: cover;
+  width: 100%;
+  height: 65%;
+}

@@ -1,16 +1,16 @@
-import {  Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
-import BlogGrid from "../components/BlogGrid.jsx";
+import BlogGrid from "../components/blog/BlogGrid.jsx";
 import Footer from "../components/Footer.jsx";
 
-export default function BlogPage (){
+export default function BlogPage() {
 
-    return(
+    return (
         <>
-        <ResponsiveAppBar></ResponsiveAppBar>
-        <Typography variant='h4' sx={{textAlign:'center',mb:5}}>Blog</Typography>
-        <BlogGrid></BlogGrid>
-        <Footer></Footer>
+            <ResponsiveAppBar></ResponsiveAppBar>
+            <Typography variant='h4' sx={{ textAlign: 'center', mb: 5 }}>Blog</Typography>
+            <BlogGrid></BlogGrid>
+            <Footer></Footer>
         </>
     )
 }
