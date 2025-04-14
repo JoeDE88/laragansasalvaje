@@ -26,7 +26,7 @@ export default function Gallery() {
             {arr.map((element, index) => {
                 return (
                     <Grid key={index} size={{ xs: 12, md: 6, lg: 4 }}>
-                        <CardItem image={element.image} texto={element.titulo}></CardItem>
+                        <CardItem image={element.image} titulo={element.titulo} color={'blancoPerla.main'}></CardItem>
                     </Grid>
                 )
             })}
