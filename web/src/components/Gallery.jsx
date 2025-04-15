@@ -1,5 +1,6 @@
 import { CardContent, CardHeader, Grid, ListItem, Typography } from "@mui/material"
 import CardItem from "./CardItem"
+import zeus from "../assets/about/ejemplo_zeus.jpg"
 
 const arr = [
     {
@@ -15,7 +16,7 @@ const arr = [
         "titulo": 'Raper & Trapers'
     },
     {
-        "image": './assets/about/ejemplo_zeus.jpg',
+        "image": zeus,
         "titulo": 'Mitología'
     },
 ]
