@@ -15,7 +15,7 @@ const arr = [
         "titulo": 'Raper & Trapers'
     },
     {
-        "image": 'https://placehold.co/600x300/png',
+        "image": './assets/about/ejemplo_zeus.jpg',
         "titulo": 'Mitología'
     },
 ]
