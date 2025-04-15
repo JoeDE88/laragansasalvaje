@@ -23,7 +23,7 @@ export default function AboutPage() {
                         Cuando veo que del trozo de papel cualquiera surgen las líneas de mis personajes, mis espacios siento que me voy allí y estoy a gusto. A veces pintaría mis bichos por toda la ciudad pero no tengo el prestigio suficiente para evitar una multa.
                         Son simples y casi no tienen rostro porque soy vaga y porque es lo único en la vida que no es un trabajo y un requisito. Son y existen así, al natural como me salen. Es el único momento donde hago lo que me da la real gana.<br />
                         Este es mi universo. Es algo que expulso de mi como las bacterias. No pretenden decir ni ser nada, solo son. No pretenden tener éxito ni reputación, ni nivel, ni divulgación, solo son, como nosotros. Pienso que se nos ha olvidado ser simplemente, simplemente ser.
-                        Parafraseando a Forest Gump `y esto es lo único que tengo que decir sobre .....la guerra de Vietnam´.</Typography>
+                        Parafraseando a Forrest Gump `y esto es lo único que tengo que decir sobre .....la guerra de Vietnam´.</Typography>
                 </Box>
             </Container>
             <Footer></Footer>

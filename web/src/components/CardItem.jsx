@@ -1,17 +1,33 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, Typography, Box } from "@mui/material";
 
-export default function CardItem({ image, titulo, color,texto }) {
+export default function CardItem({ image, titulo, color, texto }) {
     return (
         <Card elevation={0}>
-            <CardContent sx={{ backgroundColor: color, p: 0 }}>
-                <Typography variant="h5" sx={{ textAlign: 'center' }}>{titulo}</Typography>
-            </CardContent>
             <CardActionArea >
-                <CardMedia
-                    component="img"
-                    image={image}
-                />
-                <Typography>{texto}</Typography>
+                <CardContent sx={{ backgroundColor: color, p: 0 }}>
+                    <Box >
+                        <Typography variant="h5" sx={{ textAlign: 'center' }}>{titulo}</Typography>
+                    </Box>
+                    <Box
+                    sx={{
+                        width: '100%',
+                        aspectRatio: '16 / 9',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
+                        <Box
+                            component='img'
+                            src={image}
+                            alt="imagen"
+                            sx={{
+                                maxWidth: '100%',
+                                maxHeight: '100%',
+                                objectFit: 'contain'}} />
+                    </Box>
+                    <Typography>{texto}</Typography>
+                </CardContent>
             </CardActionArea>
         </Card>
     )

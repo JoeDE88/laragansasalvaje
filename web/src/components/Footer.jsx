@@ -9,7 +9,7 @@ export default function () {
         <Box justifyContent='center' sx={{ textAlign:'center',mt:10}}>
             <Typography variant="h5">Contact me:</Typography>
         </Box>
-            <Grid container spacing={0.5} sx={{mt:2.5, textAlign:'center'}}>
+            <Grid container spacing={0.5} sx={{mt:2.5, textAlign:'center', m:4}}>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                     <Box>
                         <Link href="https://www.instagram.com/laragansasalvaje?igsh=MW8zNGNpdG1tdDd3cA=="><InstagramIcon fontSize="large" color="secondary"></InstagramIcon></Link>
@@ -22,7 +22,7 @@ export default function () {
                 </Grid>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                     <Box>
-                    <Link href="https://wa.me/34666302055"><WhatsAppIcon fontSize="large" color="secondary"></WhatsAppIcon></Link>
+                    <Link href="https://wa.me/34675426397"><WhatsAppIcon fontSize="large" color="secondary"></WhatsAppIcon></Link>
                     </Box>
                 </Grid>
             </Grid>
