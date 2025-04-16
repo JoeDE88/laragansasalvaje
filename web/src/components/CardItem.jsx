@@ -5,7 +5,7 @@ export default function CardItem({ image, titulo, color, texto }) {
         <Card elevation={0}>
             <CardActionArea >
                 <CardContent sx={{ backgroundColor: color, p: 0 }}>
-                    <Box >
+                    <Box sx={{marginBottom:'16px'}} >
                         <Typography variant="h5" sx={{ textAlign: 'center' }}>{titulo}</Typography>
                     </Box>
                     <Box

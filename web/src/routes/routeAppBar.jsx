@@ -6,8 +6,8 @@ import WorksPage from "../pages/WorksPage";
 
 export const routeAppBar = [
     {
-        name: "Obras",
-        path: "/obras",
+        name: "Works",
+        path: "/works",
         component: <WorksPage />
     },
     {
