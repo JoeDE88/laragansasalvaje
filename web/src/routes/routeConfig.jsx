@@ -12,8 +12,8 @@ export const routeConfig = [
         component: <HomePage />
     },
     {
-        name: "Obras",
-        path: "/obras",
+        name: "Works",
+        path: "/works",
         component: <WorksPage />
     },
     {

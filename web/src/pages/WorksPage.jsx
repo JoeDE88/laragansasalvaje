@@ -7,7 +7,7 @@ export default function WorksPage (){
     return(
         <>
         <ResponsiveAppBar></ResponsiveAppBar>
-        <Typography variant="h4" color='secondary' sx={{textAlign:'center',mb:5}}>Obras</Typography>
+        <Typography variant="h4" color='secondary' sx={{textAlign:'center',mb:4}}>Works</Typography>
         <Gallery></Gallery>
         <Footer></Footer>
         </>

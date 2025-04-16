@@ -1,9 +1,11 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import ResponsiveAppBar from "../components/Appbar";
 
 export default function StorePage (){
     return(
         <>
-        <Typography variant="h1">Store</Typography>
+        <ResponsiveAppBar></ResponsiveAppBar>
+        <Typography variant="h4" color='secondary' sx={{textAlign:'center',mb:4}}>Store</Typography>
         </>
     )
 }

@@ -7,7 +7,7 @@ export default function () {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant='h4' color='secondary' sx={{textAlign:'center',mb:5}}>
+            <Typography variant='h4' color='secondary' sx={{textAlign:'center',mb:4}}>
                 LARA GANSA SALVAJE
             </Typography>
             <EventBanner></EventBanner>
