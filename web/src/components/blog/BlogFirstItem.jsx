@@ -18,7 +18,7 @@ export default function BlogFirstItem({ titulo, texto, fecha }) {
                             sx={{
                                 height: {
                                     xs: '250px',
-                                    lg: '490px'
+                                    lg: '485px'
                                 }
                             }}
                             image="https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg"
