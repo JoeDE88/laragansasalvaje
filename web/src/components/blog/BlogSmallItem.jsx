@@ -17,13 +17,13 @@ export default function BlogSmallItem({ titulo, texto, fecha }) {
                         sx={{
                             height: {
                                 xs: '310px',
-                                lg: '70px'
+                                lg: '68px'
                             }
                         }}
                         image="https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg"
                     />
                     <Typography sx={{ p: 0.5,fontSize:{xs:'20px',lg:'12px'} }}>
-                        {texto.length > 120 ? texto.slice(0, 120) + '...' : texto}
+                        {texto.length > 140 ? texto.slice(0, 140) + '...' : texto}
                     </Typography>
                 </CardContent>
             </CardActionArea>
