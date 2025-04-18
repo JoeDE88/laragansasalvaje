@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
-import Gallery from "../components/Gallery";
+import Gallery from "../components/obras/Gallery";
 import Footer from "../components/Footer";
 
 export default function WorksPage (){

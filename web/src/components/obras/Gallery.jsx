@@ -1,7 +1,7 @@
-import { CardContent, CardHeader, Grid, ListItem, Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import CardItem from "./CardItem"
-import zeus from "../assets/about/ejemplo_zeus.jpg"
-import polución from "../assets/about/polucion.jpg"
+import zeus from "../../assets/about/ejemplo_zeus.jpg"
+import polución from "../../assets/about/polucion.jpg"
 
 const arr = [
     {
