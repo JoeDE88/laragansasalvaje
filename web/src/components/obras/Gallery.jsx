@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material"
-import CardItem from "./CardItem"
+import ObrasItem from "./ObrasItem"
 import zeus from "../../assets/about/ejemplo_zeus.jpg"
 import polución from "../../assets/about/polucion.jpg"
 
@@ -24,11 +24,11 @@ const arr = [
 
 export default function Gallery() {
     return (
-        <Grid container spacing={0.5} sx={{margin:3, padding:3}}>
+        <Grid container spacing={0.5} sx={{ margin: 5, padding: 5 }}>
             {arr.map((element, index) => {
                 return (
-                    <Grid key={index} size={{ xs: 12, md: 6, lg:6 }} sx={{mb:3}}>
-                        <CardItem image={element.image} titulo={element.titulo} color={'blancoPerla.main'}></CardItem>
+                    <Grid key={index} size={{ xs: 12, md: 6, lg: 6 }} sx={{ mb: 3 }}>
+                        <ObrasItem image={element.image} titulo={element.titulo} color={'blancoPerla.main'}></ObrasItem>
                     </Grid>
                 )
             })}

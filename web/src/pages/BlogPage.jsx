@@ -8,7 +8,7 @@ export default function BlogPage() {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant='h4' sx={{ textAlign: 'center', mb:4 }}>Blog</Typography>
+            <Typography variant='h4' sx={{ textAlign: 'center', mb: 4 }}>Blog</Typography>
             <BlogGrid></BlogGrid>
             <Footer></Footer>
         </>
