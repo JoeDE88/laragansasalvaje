@@ -1,5 +1,6 @@
 body {
-  min-width: 320px;
-  min-height: 90vh;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: #E3D9C7;
 }

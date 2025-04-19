@@ -6,7 +6,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 export default function () {
     return (
         <>
-        <Box justifyContent='center' sx={{ textAlign:'center',mt:10}}>
+        <Box justifyContent='center' sx={{ textAlign:'center',mt:5}}>
             <Typography variant="h5">Contact me:</Typography>
         </Box>
             <Grid container spacing={0.5} sx={{mt:2.5, textAlign:'center', m:4}}>
