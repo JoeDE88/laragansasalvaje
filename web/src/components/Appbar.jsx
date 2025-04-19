@@ -23,7 +23,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" color='blancoPerla' elevation={0} sx={{mb:4}}>
+    <AppBar position="static" color='blancoPerla' elevation={0} sx={{ mb: 4 }}>
       <Container maxWidth="xl">
         <Toolbar >
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
             >MENU
             </Button>
             <Menu
-            disablePortal
+              disablePortal
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -87,10 +87,10 @@ function ResponsiveAppBar() {
                 key={page.name}
                 component={NavLink}
                 to={page.path}
-                sx={{ textDecoration: 'none', color: 'inherit',my: 2, display: 'block'  }}
+                sx={{ color: 'inherit', my: 2, display: 'block',minWidth:0 }}
                 onClick={handleCloseNavMenu}
               >
-                {page.name}
+                  {page.name}
               </Button>
             ))}
           </Box>
