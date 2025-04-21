@@ -1,4 +1,4 @@
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
 import { useParams } from "react-router";
 import ShoppingCart from "../components/store/ShoppingCart";
@@ -22,8 +22,16 @@ export default function () {
             <ResponsiveAppBar></ResponsiveAppBar>
             <Typography variant="h4" color='secondary' sx={{ textAlign: 'center', mb: 3 }}>Shop</Typography>
             <Box maxWidth={'lg'} sx={{ margin: 'auto' }}>
-                <Box sx={{ display: 'flex', marginTop: 6, padding: 6 }}>
-                    <Box >
+                <Box sx={{
+                    display: {
+                        lg: 'flex'
+                    },
+                    justifyContent:'center',
+                    marginTop: 6,
+                    padding: 6,
+
+                }}>
+                    <Box sx={{display:'flex',justifyContent:'center'}}>
                         <Box
                             component='img'
                             src={`${baseURL}${producto.imagen}`}
@@ -31,7 +39,7 @@ export default function () {
                             height={'500px'}
                         />
                     </Box>
-                    <Box sx={{ marginLeft: 5 }}>
+                    <Box sx={{ marginLeft: {lg:8,md:0}, display:'flex',flexDirection:'column',alignContent:'center'}}>
                         <Box sx={{ marginTop: 1 }}>
                             <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
                         </Box>
@@ -65,6 +73,22 @@ export default function () {
                                     },
                                 }}
                             />
+                        </Box>
+                        <Box sx={{ marginTop: 5 }}>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                sx={(theme) => ({
+                                    backgroundColor: 'blancoPerla.main',
+                                    color: 'tertiary.main',
+                                    border: `solid 1px ${theme.palette.tertiary.main}`,
+                                    "&:hover": {
+                                        backgroundColor: 'tertiary.main',
+                                        color: 'blancoPerla.main'
+                                    }
+                                })}
+                                disableElevation
+                            >Add to cart</Button>
                         </Box>
                     </Box>
                 </Box>

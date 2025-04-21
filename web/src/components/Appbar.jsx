@@ -63,8 +63,8 @@ function ResponsiveAppBar() {
                   key={page.name}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    backgroundColor: 'secondary.main',
-                    color: 'secondary.text',
+                    backgroundColor: 'tertiary.main',
+                    color: 'blancoPerla.main',
                     "&:hover": {
                       backgroundColor: "blancoPerla.main",
                       color: 'blancoPerla.text'
@@ -87,10 +87,10 @@ function ResponsiveAppBar() {
                 key={page.name}
                 component={NavLink}
                 to={page.path}
-                sx={{ color: 'inherit', my: 2, display: 'block',minWidth:0 }}
+                sx={{ color: 'inherit', my: 2, display: 'block', minWidth: 0 }}
                 onClick={handleCloseNavMenu}
               >
-                  {page.name}
+                {page.name}
               </Button>
             ))}
           </Box>
