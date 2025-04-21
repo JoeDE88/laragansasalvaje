@@ -2,34 +2,47 @@ import { Box, Grid, TextField, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
 import { useParams } from "react-router";
 import ShoppingCart from "../components/store/ShoppingCart";
+import { useEffect, useState } from "react";
+import { baseURL } from "../services/api/api";
 
 export default function () {
-    let { name } = useParams()
-    let mayusc = name.toUpperCase()
+    const [producto, setProducto] = useState([])
+    let { slug } = useParams()
+
+    useEffect(() => {
+        fetch(`${baseURL}shop/productos/${slug}`)
+            .then((data) => data.json())
+            .then((response) => {
+                setProducto(response)
+            })
+    }, [])
+
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Typography variant="h4" color='secondary' sx={{ textAlign: 'center', mb: 3 }}>Shop</Typography>
             <Box maxWidth={'lg'} sx={{ margin: 'auto' }}>
-                <Box container sx={{ display: 'flex', marginTop: 6, padding: 6 }}>
+                <Box sx={{ display: 'flex', marginTop: 6, padding: 6 }}>
                     <Box >
                         <Box
                             component='img'
-                            src='https://placehold.co/500x400/png'
+                            src={`${baseURL}${producto.imagen}`}
+                            width={'400px'}
+                            height={'500px'}
                         />
                     </Box>
                     <Box sx={{ marginLeft: 5 }}>
                         <Box sx={{ marginTop: 1 }}>
-                            <Typography variant="h4" color="tertiary">{mayusc}</Typography>
+                            <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
                         </Box>
                         <Box sx={{ marginTop: 3 }}>
-                            <Typography sx={{ fontSize: '18px' }}>€ 60.00</Typography>
+                            <Typography sx={{ fontSize: '18px' }}>{producto.precio}</Typography>
                         </Box>
                         <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h5'>Descripción</Typography>
+                            <Typography variant='h5'>{producto.descripción}</Typography>
                         </Box>
                         <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h5'>Otra información útil</Typography>
+                            <Typography variant='h6'>Cantidad</Typography>
                         </Box>
                         <Box component="form"
                             sx={{ '& .MuiTextField-root': { width: '15ch' } }}
