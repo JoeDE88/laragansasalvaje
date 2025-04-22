@@ -1,4 +1,4 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
 import { useParams } from "react-router";
 import ShoppingCart from "../components/store/ShoppingCart";
@@ -20,38 +20,20 @@ export default function () {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant="h4" color='secondary' sx={{ textAlign: 'center', mb: 3 }}>Shop</Typography>
-            <Box maxWidth={'lg'} sx={{ margin: 'auto' }}>
-                <Box sx={{
-                    display: {
-                        lg: 'flex'
-                    },
-                    justifyContent:'center',
-                    marginTop: 6,
-                    padding: 6,
-
-                }}>
-                    <Box sx={{display:'flex',justifyContent:'center'}}>
-                        <Box
-                            component='img'
-                            src={`${baseURL}${producto.imagen}`}
-                            width={'400px'}
-                            height={'500px'}
-                        />
-                    </Box>
-                    <Box sx={{ marginLeft: {lg:8,md:0}, display:'flex',flexDirection:'column',alignContent:'center'}}>
-                        <Box sx={{ marginTop: 1 }}>
-                            <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography sx={{ fontSize: '18px' }}>{producto.precio}</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h5'>{producto.descripción}</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h6'>Cantidad</Typography>
-                        </Box>
+            <Typography variant="h4" color='secondary' sx={{ textAlign: 'center' }}>Shop</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 13 }}>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
+                    <Box
+                        component='img'
+                        src={`${baseURL}${producto.imagen}`}
+                        width={'400px'}
+                        height={'500px'}
+                    />
+                    <Box>
+                        <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
+                        <Typography sx={{ fontSize: '18px', marginTop:3 }}>{producto.precio}</Typography>
+                        <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
+                        <Typography variant='h6' marginTop={3}>Cantidad</Typography>
                         <Box component="form"
                             sx={{ '& .MuiTextField-root': { width: '15ch' } }}
                             noValidate
@@ -91,8 +73,9 @@ export default function () {
                             >Add to cart</Button>
                         </Box>
                     </Box>
-                </Box>
+                </Stack>
             </Box>
+
             <ShoppingCart></ShoppingCart>
         </>
     )
