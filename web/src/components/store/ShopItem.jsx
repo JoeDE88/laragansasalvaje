@@ -1,11 +1,10 @@
 import { Card, CardActionArea, CardContent, Typography, Box } from "@mui/material";
 
 export default function ObrasItem({ image, nombre, color, precio }) {
-    
 
     return (
         <Card elevation={0}>
-            <CardActionArea >
+            <CardActionArea>
                 <Box
                     sx={{
                         width: '100%',
@@ -25,9 +24,9 @@ export default function ObrasItem({ image, nombre, color, precio }) {
                             objectFit: 'contain'
                         }} />
                 </Box>
-                <CardContent sx={{ backgroundColor: color,p:0,paddingTop:1}}>
-                        <Typography sx={{ fontSize: 16 }}>{nombre}</Typography>
-                        <Typography sx={{ fontSize: 14 }}>€ {precio}</Typography>
+                <CardContent sx={{ backgroundColor: color, p: 0, paddingTop: 1 }}>
+                    <Typography sx={{ fontSize: 16 }}>{nombre}</Typography>
+                    <Typography sx={{ fontSize: 14 }}>€ {precio}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>

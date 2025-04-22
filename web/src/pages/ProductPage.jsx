@@ -1,36 +1,39 @@
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
 import { useParams } from "react-router";
 import ShoppingCart from "../components/store/ShoppingCart";
+import { useEffect, useState } from "react";
+import { baseURL } from "../services/api/api";
 
 export default function () {
-    let { name } = useParams()
-    let mayusc = name.toUpperCase()
+    const [producto, setProducto] = useState([])
+    let { slug } = useParams()
+
+    useEffect(() => {
+        fetch(`${baseURL}shop/productos/${slug}`)
+            .then((data) => data.json())
+            .then((response) => {
+                setProducto(response)
+            })
+    }, [])
+
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant="h4" color='secondary' sx={{ textAlign: 'center', mb: 3 }}>Shop</Typography>
-            <Box maxWidth={'lg'} sx={{ margin: 'auto' }}>
-                <Box container sx={{ display: 'flex', marginTop: 6, padding: 6 }}>
-                    <Box >
-                        <Box
-                            component='img'
-                            src='https://placehold.co/500x400/png'
-                        />
-                    </Box>
-                    <Box sx={{ marginLeft: 5 }}>
-                        <Box sx={{ marginTop: 1 }}>
-                            <Typography variant="h4" color="tertiary">{mayusc}</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography sx={{ fontSize: '18px' }}>€ 60.00</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h5'>Descripción</Typography>
-                        </Box>
-                        <Box sx={{ marginTop: 3 }}>
-                            <Typography variant='h5'>Otra información útil</Typography>
-                        </Box>
+            <Typography variant="h4" color='secondary' sx={{ textAlign: 'center' }}>Shop</Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 13 }}>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
+                    <Box
+                        component='img'
+                        src={`${baseURL}${producto.imagen}`}
+                        width={'400px'}
+                        height={'500px'}
+                    />
+                    <Box>
+                        <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
+                        <Typography sx={{ fontSize: '18px', marginTop:3 }}>{producto.precio}</Typography>
+                        <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
+                        <Typography variant='h6' marginTop={3}>Cantidad</Typography>
                         <Box component="form"
                             sx={{ '& .MuiTextField-root': { width: '15ch' } }}
                             noValidate
@@ -53,9 +56,26 @@ export default function () {
                                 }}
                             />
                         </Box>
+                        <Box sx={{ marginTop: 5 }}>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                sx={(theme) => ({
+                                    backgroundColor: 'blancoPerla.main',
+                                    color: 'tertiary.main',
+                                    border: `solid 1px ${theme.palette.tertiary.main}`,
+                                    "&:hover": {
+                                        backgroundColor: 'tertiary.main',
+                                        color: 'blancoPerla.main'
+                                    }
+                                })}
+                                disableElevation
+                            >Add to cart</Button>
+                        </Box>
                     </Box>
-                </Box>
+                </Stack>
             </Box>
+
             <ShoppingCart></ShoppingCart>
         </>
     )

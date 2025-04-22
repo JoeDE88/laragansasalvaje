@@ -13,7 +13,7 @@ function App() {
               <Route key={route.name} path={route.path} element={route.component} />
             )
           })}
-          <Route path="shop/:name" element={<ProductPage/>} />
+          <Route path="shop/:slug" element={<ProductPage/>} />
         </Routes>
     </>
   )
