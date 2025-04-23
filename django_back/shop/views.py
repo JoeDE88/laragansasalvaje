@@ -10,8 +10,19 @@ from .models import Producto
 #@csrf_exempt
 def productos_list(request):
     if request.method == 'GET':
-        productos = Producto.objects.all().values()
-        return JsonResponse(list(productos), safe=False)
+        productos = Producto.objects.all()
+        data = []
+
+        for producto in productos:
+            data.append({
+                'id': producto.id,
+                'nombre': producto.nombre,
+                'precio': producto.precio,
+                'imagen': producto.imagen.url if producto.imagen else None,
+                'slug': producto.slug
+            })
+
+        return JsonResponse(data, safe=False)
 
     elif request.method == 'POST':
         nombre = request.POST.get('nombre')
@@ -37,6 +48,7 @@ def detalle_producto(request, slug):
     try:
         producto = Producto.objects.get(slug=slug)
         data = {
+            'id': producto.id,
             'nombre': producto.nombre,
             'descripción': producto.descripción,
             'precio': str(producto.precio),

@@ -21,7 +21,7 @@ export default function ProductsGallery() {
             {productos.map((producto, index) => {
                 return (
                     <Grid component={NavLink} to={`/shop/${producto.slug}`} key={index} size={{ xs: 12, md: 6, lg: 3 }} sx={{ mb: 4, textDecoration: 'none' }}>
-                        <ShopItem image={`${baseURL}media/${producto.imagen}`} nombre={producto.nombre} precio={producto.precio} color={'blancoPerla.main'}></ShopItem>
+                        <ShopItem image={`${baseURL}${producto.imagen}`} nombre={producto.nombre} precio={producto.precio} color={'blancoPerla.main'}></ShopItem>
                     </Grid>
                 )
             })}
