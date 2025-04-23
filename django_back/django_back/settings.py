@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-2)_ygc#um)zhe)yy^6z09hvx5lni7650l079il2bio4b-&_*n@
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['.localhost']
+ALLOWED_HOSTS = ['.localhost','127.0.0.1']
 
 
 # Application definition
@@ -58,7 +58,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-ROOT_URLCONF = "api.urls"
+ROOT_URLCONF = "django_back.urls"
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "api.wsgi.application"
+WSGI_APPLICATION = "django_back.wsgi.application"
 
 
 # Database
