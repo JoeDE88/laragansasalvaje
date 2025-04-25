@@ -1,80 +1,64 @@
 import { Box, Grid, Stack } from "@mui/material";
 import BlogFirstItem from "./BlogFirstItem";
 import BlogSmallItem from "./BlogSmallItem";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { baseURL } from "../../services/api/api";
 
 export default function BlogGrid() {
+    const [articulos, setArticulos] = useState([]);
+    let { slug } = useParams();
 
-    const blog = [
-        {
-            "fecha": "01-01-2025",
-            "titulo": "Titulo max aumentando los caracteres un poco mas largo para que entre otra frase",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu."
-        },
-        {
-            "fecha": "02-01-2025",
-            "titulo": "Titulo max aumentando los caracteres un poco mas largo para que entre otra frase",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem."
-        },
-        {
-            "fecha": "03-01-2025",
-            "titulo": "Titulo3",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem."
-        },
-        {
-            "fecha": "04-01-2025",
-            "titulo": "Titulo4",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem."
-        },
-        {
-            "fecha": "05-01-2025",
-            "titulo": "Titulo5",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem."
-        },
-        {
-            "fecha": "06-01-2025",
-            "titulo": "Titulo6",
-            "texto": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem."
-        },
-    ]
+    useEffect(() => {
+        fetch(`${baseURL}blog/articulos/`)
+            .then((response) => response.json())
+            .then((data) => {
+                setArticulos(data);
+            })
+            .catch((error) => {
+                console.error("Error al obtener los artículos:", error);
+            });
+    }, []);
 
-    const blogElement1 = blog[0]
-
-    const slicedBlog = blog.slice(1, 4)
-    console.log(slicedBlog)
+    const [primerArticulo, ...restoArticulos] = articulos;
+    console.log(restoArticulos.imagen_destacada);
 
     return (
         <>
-            <Box maxWidth={'lg'} height={{ lg: '700px' }} sx={{ margin: 'auto' }}>
-                <Grid container spacing={3} height={'100%'}>
-                    <Grid size={{ xs: 12, md: 12, lg: 7 }} height={{ lg: '700px' }}>
-                        <BlogFirstItem
-                            image={'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg'}
-                            titulo={blogElement1.titulo}
-                            texto={blogElement1.texto}
-                            fecha={blogElement1.fecha}
-                        >
-                        </BlogFirstItem>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 12, lg: 5 }} height={{ lg: '700px' }}>
-                        <Stack spacing={2} height={'100%'}>
-                            {slicedBlog.map((blog, index) => {
+            <Box maxWidth={"lg"} sx={{ margin: "auto" }}>
+                <Grid container spacing={3}>
+                    {primerArticulo && (
+                        <Grid key={primerArticulo.titulo} size={{ xs: 12, md: 12, lg: restoArticulos? 7 : 12 }} >
+                            <BlogFirstItem
+                                imagen={primerArticulo.imagen_destacada ? primerArticulo.imagen_destacada : 'https://placehold.co/600x300/png'}
+                                titulo={primerArticulo.titulo}
+                                texto={primerArticulo.contenido}
+                                fecha={primerArticulo.creado_en}
+                                etiqueta={primerArticulo.etiqueta}
+                            ></BlogFirstItem>
+                        </Grid>
+                    )}
+                    <Grid size={{ xs: 12, md: 12, lg: 5 }}>
+                        <Stack spacing={2} height={"100%"}>
+                            {restoArticulos && restoArticulos.map((blog, index) => {
                                 return (
                                     <>
                                         <BlogSmallItem
                                             key={index}
-                                            image={'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg'}
-                                            bgColor={'secondary.main'}
+                                            imagen={`${baseURL}${blog.imagen_destacada}`}
+                                            bgColor={"secondary.main"}
                                             titulo={blog.titulo}
-                                            texto={blog.texto}
-                                            fecha={blogElement1.fecha}
+                                            texto={blog.contenido}
+                                            fecha={blog.creado_en}
+                                            etiqueta={blog.etiqueta}
                                         ></BlogSmallItem>
                                     </>
-                                )
+                                );
                             })}
                         </Stack>
                     </Grid>
                 </Grid>
             </Box>
         </>
-    )
+    );
 }
