@@ -1,6 +1,7 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Typography } from "@mui/material";
+import { baseURL } from "../../services/api/api";
 
-export default function BlogSmallItem({ titulo, texto, fecha }) {
+export default function BlogSmallItem({ titulo, texto, fecha, imagen, etiqueta }) {
 
     return (
         <Card elevation={0} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -8,7 +9,7 @@ export default function BlogSmallItem({ titulo, texto, fecha }) {
                 <CardContent sx={{ backgroundColor: 'blancoPerla.main', height: '100%' }}>
                     <Typography variant='h6' sx={{ color: 'blancoPerla.text' }}>{titulo}</Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', mx: 2,mb:1 }}>
-                        <Typography fontSize={'0.8rem'} color="blancoPerla.text">Etiqueta</Typography>
+                        <Typography fontSize={'0.8rem'} color="blancoPerla.text">{etiqueta}</Typography>
                         <Divider sx={{ height: '12px', mx: 2, borderColor: 'blancoPerla.text' }} orientation="vertical" variant="middle" flexItem />
                         <Typography fontSize={'0.8rem'} color="blancoPerla.text">{fecha}</Typography>
                     </Box>
@@ -20,7 +21,7 @@ export default function BlogSmallItem({ titulo, texto, fecha }) {
                                 lg: '68px'
                             }
                         }}
-                        image="https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_640.jpg"
+                        image={imagen}
                     />
                     <Typography sx={{ p: 0.5,fontSize:{xs:'20px',lg:'12px'} }}>
                         {texto.length > 140 ? texto.slice(0, 140) + '...' : texto}
