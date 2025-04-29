@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/layout/Appbar";
 import Footer from "../components/layout/Footer";
-import EventBanner from "../components/EventBanner";
+import EventBanner from "../components/layout/EventBanner";
 import Titulo from "../components/layout/Titulo";
 
 export default function () {
