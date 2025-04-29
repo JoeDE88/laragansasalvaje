@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import ResponsiveAppBar from "../components/Appbar";
-import BlogGrid from "../components/blog/BlogGrid.jsx";
+import BlogGrid from "../components/blog/structure/BlogGrid.jsx";
 import Footer from "../components/Footer.jsx";
 
 export default function BlogPage() {

@@ -11,9 +11,9 @@ export default function () {
 
     useEffect(() => {
         fetch(`${baseURL}shop/productos/${slug}`)
-            .then((data) => data.json())
-            .then((response) => {
-                setProducto(response)
+            .then((response) => response.json())
+            .then((data) => {
+                setProducto(data)
             })
     }, [])
 

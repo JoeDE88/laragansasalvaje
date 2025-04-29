@@ -23,6 +23,7 @@ def articulos_list(request):
                 'imagen_destacada': articulo.imagen_destacada.url if articulo.imagen_destacada else None,
                 'etiqueta': articulo.etiqueta,
                 'creado_en': articulo.creado_en,
+                'slug': articulo.slug,
                 'comentarios': [
                     {
                         'id': comentario.id,

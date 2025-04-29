@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router";
 import './App.css'
 import {routeConfig} from "./routes/routeConfig";
 import ProductPage from "./pages/ProductPage";
+import Articulo from "./components/blog/views/Articulo";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             )
           })}
           <Route path="shop/:slug" element={<ProductPage/>} />
+          <Route path="blog/articulos/:slug" element={<Articulo></Articulo>}/>
         </Routes>
     </>
   )
