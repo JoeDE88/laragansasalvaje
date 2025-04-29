@@ -1,9 +1,11 @@
-import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
-import ResponsiveAppBar from "../components/Appbar";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+
 import { useParams } from "react-router";
 import ShoppingCart from "../components/store/ShoppingCart";
 import { useEffect, useState } from "react";
 import { baseURL } from "../services/api/api";
+import Titulo from "../components/layout/Titulo";
+import ResponsiveAppBar from "../components/layout/Appbar";
 
 export default function () {
     const [producto, setProducto] = useState([])
@@ -20,7 +22,7 @@ export default function () {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Typography variant="h4" color='secondary' sx={{ textAlign: 'center' }}>Shop</Typography>
+            <Titulo titulo={'Tienda'}></Titulo>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 13 }}>
                 <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
                     <Box
@@ -31,7 +33,7 @@ export default function () {
                     />
                     <Box>
                         <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
-                        <Typography sx={{ fontSize: '18px', marginTop:3 }}>{producto.precio}</Typography>
+                        <Typography sx={{ fontSize: '18px', marginTop: 3 }}>{producto.precio}</Typography>
                         <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
                         <Typography variant='h6' marginTop={3}>Cantidad</Typography>
                         <Box component="form"

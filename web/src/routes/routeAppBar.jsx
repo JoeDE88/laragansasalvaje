@@ -1,5 +1,5 @@
 import AboutPage from "../pages/AboutPage";
-import BlogPage from "../pages/BlogPage";
+import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
 import ShopPage from "../pages/ShopPage";
 import WorksPage from "../pages/WorksPage";
