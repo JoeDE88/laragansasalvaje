@@ -1,8 +1,8 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Typography } from "@mui/material";
-import { baseURL } from "../../services/api/api";
+
 
 export default function BlogSmallItem({ titulo, texto, fecha, imagen, etiqueta }) {
-
+    
     return (
         <Card elevation={0} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <CardActionArea sx={{ height: '100%' }}>
