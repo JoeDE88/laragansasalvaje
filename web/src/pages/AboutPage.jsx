@@ -1,15 +1,16 @@
 import { Box, Card, Container, Typography } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
-import ResponsiveAppBar from "../components/Appbar";
+import ResponsiveAppBar from "../components/layout/Appbar";
 import propic from "../assets/about/profilepic.jpg"
-import Footer from "../components/Footer";
+import Titulo from "../components/layout/Titulo";
+import Footer from "../components/layout/Footer";
 
 export default function AboutPage() {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Container maxWidth="lg">
-                <Typography variant="h4">About Lara Gansa Salvaje:</Typography>
+                <Titulo titulo={'Quien soy'}></Titulo>
                 <Box sx={{ mt: 5 }}>
                     <Box sx={{ alignItems: 'center' }}>
                         <Card sx={{ maxWidth: 500, margin: 'auto' }}>
