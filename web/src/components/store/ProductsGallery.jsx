@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 export default function ProductsGallery() {
     const [productos, setProductos] = useState([]);
-    let { slug } = useParams();
 
     useEffect(() => {
         fetch(`${baseURL}shop/productos/`)

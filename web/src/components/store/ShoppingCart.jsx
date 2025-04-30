@@ -3,12 +3,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function () {
     return (
-        <Box>
+        <>
             <Box
                 position={"sticky"}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
+                    margin:'auto',
                     top: 'auto',
                     bottom: {
                         xs: 25,
@@ -52,6 +53,6 @@ export default function () {
                     <Typography variant='h6'>60 € </Typography>
                 </Box>
             </Box>
-        </Box>
+        </>
     )
 }

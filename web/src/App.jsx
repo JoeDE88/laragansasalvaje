@@ -3,6 +3,7 @@ import './App.css'
 import { routeConfig } from "./routes/routeConfig";
 import ProductPage from "./pages/ProductPage";
 import ArticuloPage from "./pages/Blog/ArticuloPage";
+import ObraPage from "./pages/ObraPage";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         })}
         <Route path="shop/:slug" element={<ProductPage />} />
         <Route path="blog/articulos/:slug" element={<ArticuloPage></ArticuloPage>} />
+        <Route path="obras/:titulo" element={<ObraPage/>} />
       </Routes>
     </>
   )

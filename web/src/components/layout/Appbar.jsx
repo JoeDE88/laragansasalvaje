@@ -61,6 +61,8 @@ function ResponsiveAppBar() {
               {routeAppBar.map((page) => (
                 <MenuItem
                   key={page.name}
+                  component={NavLink}
+                  to={page.path}
                   onClick={handleCloseNavMenu}
                   sx={{
                     backgroundColor: 'tertiary.main',
@@ -71,8 +73,6 @@ function ResponsiveAppBar() {
                     }
                   }}>
                   <Typography
-                    component={NavLink}
-                    to={page.path}
                     sx={{ textDecoration: 'none', color: 'inherit' }}
                   >
                     {page.name}
