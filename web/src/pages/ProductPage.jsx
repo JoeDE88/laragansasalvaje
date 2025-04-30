@@ -25,15 +25,27 @@ export default function () {
             <Titulo titulo={'Tienda'}></Titulo>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 13 }}>
                 <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
-                    <Box
-                        component='img'
-                        src={`${baseURL}${producto.imagen}`}
-                        width={'400px'}
-                        height={'500px'}
-                    />
+                    <Box sx={{
+                        width: '100%',
+                        aspectRatio: '16 / 9',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <Box
+                            component='img'
+                            src={`${baseURL}${producto.imagen}`}
+                            sx={{
+                                maxWidth: '100%',
+                                maxHeight: '100%',
+                                objectFit: 'contain'
+                            }}
+                        />
+                    </Box>
                     <Box>
                         <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
-                        <Typography sx={{ fontSize: '18px', marginTop: 3 }}>{producto.precio}</Typography>
+                        <Typography sx={{ fontSize: '18px', marginTop: 3 }}>€ {producto.precio}</Typography>
                         <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
                         <Typography variant='h6' marginTop={3}>Cantidad</Typography>
                         <Box component="form"
