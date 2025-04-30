@@ -7,7 +7,6 @@ import { baseURL } from "../../../services/api/api";
 
 export default function BlogGrid() {
     const [articulos, setArticulos] = useState([]);
-    let { slug } = useParams();
 
     useEffect(() => {
         fetch(`${baseURL}blog/articulos/`)
@@ -22,8 +21,6 @@ export default function BlogGrid() {
 
     const [primerArticulo, ...restoArticulos] = articulos;
     
-    
-
     return (
         <>
             <Box maxWidth={"lg"} sx={{ margin: "auto" }}>
@@ -34,6 +31,7 @@ export default function BlogGrid() {
                             to={`/blog/articulos/${primerArticulo.slug}`}
                             key={primerArticulo.titulo}
                             size={{ xs: 12, md: 12, lg: restoArticulos ? 7 : 12 }}
+                            sx={{textDecoration: 'none'}}
                         >
                             <BlogFirstItem
                                 imagen={
@@ -53,7 +51,7 @@ export default function BlogGrid() {
                             {restoArticulos &&
                                 restoArticulos.map((blog, index) => {
                                     return (
-                                        <Box component={NavLink} to={`/blog/articulos/${blog.slug}`}>
+                                        <Box component={NavLink} to={`/blog/articulos/${blog.slug}`} sx={{textDecoration: 'none'}}>
                                             <BlogSmallItem
                                                 key={index}
                                                 imagen={`${baseURL}${blog.imagen_destacada}`}
