@@ -12,8 +12,7 @@ export default function ShopPage() {
     return (
         <Box sx={{
             display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh', // 100% altura de la ventana
+            flexDirection: 'column' // 100% altura de la ventana
           }}>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'Tienda'}></Titulo>
