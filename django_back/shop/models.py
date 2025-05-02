@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from .utils import resize_image
 
 # Create your models here.
 class Producto(models.Model):
@@ -29,5 +30,8 @@ class Producto(models.Model):
                 contador += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+        if self.imagen:
+            resize_image(self.imagen.path)
 
     

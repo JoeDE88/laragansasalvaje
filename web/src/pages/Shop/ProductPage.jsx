@@ -26,27 +26,27 @@ export default function ProductPage() {
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'Tienda'}></Titulo>
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                <Stack direction={{ xs: 'column', md: 'row' }} spacing={1}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 8 }}>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={4}>
                     <Box sx={{
                         width: '100%',
-                        aspectRatio: '16 / 9',
+                        aspectRatio: '4 / 3',
                         overflow: 'hidden',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
                     }}>
                         <Box
                             component='img'
                             src={`${baseURL}${producto.imagen}`}
                             sx={{
-                                maxWidth: '100%',
-                                maxHeight: '100%',
+                                maxHeight:'100%',
+                                maxWidth:'100%',
                                 objectFit: 'contain'
                             }}
                         />
                     </Box>
-                    <Box>
+                    <Box sx={{ minWidth: { md: 300, lg: 400 } }}>
                         <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
                         <Typography sx={{ fontSize: '18px', marginTop: 3 }}>€ {producto.precio}</Typography>
                         <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
