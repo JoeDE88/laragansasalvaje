@@ -2,8 +2,8 @@ import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
 import HomePage from "../pages/HomePage";
-import ShopPage from "../pages/ShopPage";
-import WorksPage from "../pages/WorksPage";
+import WorksPage from "../pages/Obras/WorksPage";
+import ShopPage from "../pages/Shop/ShopPage";
 
 export const routeConfig = [
     {
@@ -14,7 +14,7 @@ export const routeConfig = [
     {
         name: "Works",
         path: "/works",
-        component: <WorksPage />
+        component: <WorksPage/>
     },
     {
         name: "Shop",

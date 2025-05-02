@@ -1,11 +1,11 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
 import { useParams } from "react-router";
-import ShoppingCart from "../components/store/ShoppingCart";
+import ShoppingCart from "../../components/store/ShoppingCart";
 import { useEffect, useState } from "react";
-import { baseURL } from "../services/api/api";
-import Titulo from "../components/layout/Titulo";
-import ResponsiveAppBar from "../components/layout/Appbar";
+import { baseURL } from "../../services/api/api";
+import Titulo from "../../components/layout/Titulo";
+import ResponsiveAppBar from "../../components/layout/Appbar";
 
 export default function () {
     const [producto, setProducto] = useState([])

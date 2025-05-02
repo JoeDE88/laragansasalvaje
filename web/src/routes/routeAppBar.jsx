@@ -1,14 +1,14 @@
 import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
-import ShopPage from "../pages/ShopPage";
-import WorksPage from "../pages/WorksPage";
+import WorksPage from "../pages/Obras/WorksPage";
+import ShopPage from "../pages/Shop/ShopPage";
 
 export const routeAppBar = [
     {
         name: "Works",
         path: "/works",
-        component: <WorksPage />
+        component: <WorksPage/>
     },
     {
         name: "Shop",
