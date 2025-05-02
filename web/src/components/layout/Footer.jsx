@@ -5,7 +5,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function () {
     return (
-        <Box sx={{ height: '150px',flexGrow: 1 }}>
+        <Box sx={{ height: '150px'}}>
             <Box justifyContent='center' sx={{ textAlign: 'center', mt: 5 }}>
                 <Typography variant="h5">Contact me:</Typography>
             </Box>

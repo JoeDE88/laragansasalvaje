@@ -4,11 +4,13 @@ import { routeConfig } from "./routes/routeConfig";
 import ArticuloPage from "./pages/Blog/ArticuloPage";
 import ProductPage from "./pages/Shop/ProductPage";
 import ObraPage from "./pages/Obras/ObraPage";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
 
   return (
     <>
+    <ShoppingCartProvider>
       <Routes>
         {routeConfig.map((route) => {
           return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="blog/articulos/:slug" element={<ArticuloPage/>} />
         <Route path="obras/:titulo" element={<ObraPage/>} />
       </Routes>
+        </ShoppingCartProvider>
     </>
   )
 }
