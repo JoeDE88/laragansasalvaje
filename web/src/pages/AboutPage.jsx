@@ -4,12 +4,13 @@ import ResponsiveAppBar from "../components/layout/Appbar";
 import propic from "../assets/about/profilepic.jpg"
 import Titulo from "../components/layout/Titulo";
 import Footer from "../components/layout/Footer";
+import ShoppingCart from "../components/store/ShoppingCart";
 
 export default function AboutPage() {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{mb:2}}>
                 <Titulo titulo={'Quien soy'}></Titulo>
                 <Box sx={{ mt: 5 }}>
                     <Box sx={{ alignItems: 'center' }}>
@@ -27,6 +28,7 @@ export default function AboutPage() {
                         Parafraseando a Forrest Gump `y esto es lo único que tengo que decir sobre .....la guerra de Vietnam´.</Typography>
                 </Box>
             </Container>
+            <ShoppingCart></ShoppingCart>
             <Footer></Footer>
         </>
     )

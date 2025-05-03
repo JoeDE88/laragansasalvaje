@@ -8,11 +8,11 @@ export default function ObrasItem({ image, nombre, color, precio }) {
                 <Box
                     sx={{
                         width: '100%',
-                        aspectRatio: '16 / 9',
+                        aspectRatio: '4 / 3',
                         overflow: 'hidden',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
                     }}>
                     <Box
                         component='img'
