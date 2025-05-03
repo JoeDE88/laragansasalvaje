@@ -22,9 +22,7 @@ export default function BlogGrid() {
     const [primerArticulo, ...restoArticulos] = articulos;
     
     return (
-        <>
-            <Box maxWidth={"lg"} sx={{ margin: "auto" }}>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} sx={{ margin: 5, padding: 5 }}>
                     {primerArticulo && (
                         <Grid
                             component={NavLink}
@@ -36,7 +34,7 @@ export default function BlogGrid() {
                             <BlogFirstItem
                                 imagen={
                                     primerArticulo.imagen_destacada
-                                        ? primerArticulo.imagen_destacada
+                                        ? `${baseURL}${primerArticulo.imagen_destacada}`
                                         : "https://placehold.co/600x300/png"
                                 }
                                 titulo={primerArticulo.titulo}
@@ -67,7 +65,5 @@ export default function BlogGrid() {
                         </Stack>
                     </Grid>
                 </Grid>
-            </Box>
-        </>
     );
 }

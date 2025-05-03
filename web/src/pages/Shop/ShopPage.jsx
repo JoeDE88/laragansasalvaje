@@ -6,9 +6,7 @@ import ProductsGallery from "../../components/store/ProductsGallery";
 import Titulo from "../../components/layout/Titulo";
 
 export default function ShopPage() {
-    const theme = useTheme();
-    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'))
-
+    
     return (
         <Box sx={{
             display: 'flex',
@@ -17,19 +15,8 @@ export default function ShopPage() {
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'Tienda'}></Titulo>
             <ProductsGallery></ProductsGallery>
-            {isLargeScreen ?
-                (
-                    <>
-                        <Footer></Footer>
-                        <ShoppingCart></ShoppingCart>
-                    </>
-                ) :
-                (
-                    <>
-                        <ShoppingCart></ShoppingCart>
-                        <Footer></Footer>
-                    </>
-                )}
+            <ShoppingCart></ShoppingCart>
+            <Footer></Footer>
         </Box>
     )
 }

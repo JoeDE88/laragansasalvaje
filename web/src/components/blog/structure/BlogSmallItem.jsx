@@ -18,7 +18,7 @@ export default function BlogSmallItem({ titulo, texto, fecha, imagen, etiqueta }
                         sx={{
                             height: {
                                 xs: '310px',
-                                lg: '68px'
+                                lg: '240px'
                             }
                         }}
                         image={imagen}

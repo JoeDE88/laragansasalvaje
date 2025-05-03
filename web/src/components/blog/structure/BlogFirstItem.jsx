@@ -26,7 +26,7 @@ export default function BlogFirstItem({ titulo, texto, fecha, imagen, etiqueta }
                         <Box>
                             <Typography variant="h6" sx={{ p: 0.5 }}>
                                 {
-                                    texto.length > 220 ? texto.slice(0, 220) + '...' : texto
+                                    texto.length > 400 ? texto.slice(0, 400) + '...' : texto
                                 }
                             </Typography>
                         </Box>
