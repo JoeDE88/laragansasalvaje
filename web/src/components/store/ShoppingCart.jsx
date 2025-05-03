@@ -1,6 +1,7 @@
 import { Box, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
+import { NavLink } from "react-router";
 
 export default function ShoppingCart() {
 
@@ -15,21 +16,24 @@ export default function ShoppingCart() {
         <>
             <Box
                 position={'sticky'}
+                component={NavLink}
+                to='/carrito/'
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     zIndex: 1000,
-                    bottom: 100,
+                    bottom: 50,
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    width: '270px',
+                    width: {xs:'270px',lg:'340px'},
                     height: '65px',
                     paddingX: 2,
                     margin: 0,
                     borderRadius: 8,
                     backgroundColor: 'secondary.main',
                     color: 'secondary.text',
+                    textDecoration: 'None'
                 }}>
                 <Box sx={{
                     px: 1
