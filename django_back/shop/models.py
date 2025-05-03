@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from .utils import resize_image
+from django_back.utils import resize_image
 
 # Create your models here.
 class Producto(models.Model):

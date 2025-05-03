@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django_back.utils import resize_image
 
 
 # Create your models here.
@@ -29,6 +30,9 @@ class Articulo(models.Model):
                 contador += 1
             self.slug = slug
         super().save(*args, **kwargs)
+
+        if self.imagen_destacada:
+            resize_image(self.imagen_destacada.path)
 
 class Comentario(models.Model):
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE,related_name='comentarios')

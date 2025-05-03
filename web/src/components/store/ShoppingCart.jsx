@@ -14,54 +14,30 @@ export default function ShoppingCart() {
     return (
         <>
             <Box
-                position={{ xs: "fixed", lg: "fixed" }}
+                position={'sticky'}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     zIndex: 1000,
-                    bottom: {
-                        xs: 30,
-                        lg: 0   
-                    },
-                    left: {
-                        xs: '50%',
-                        lg: 0
-                    },
-                    transform: {
-                        xs: 'translateX(-50%)',
-                        lg: 'none'
-                    },
-                    width: {
-                        xs: '270px',
-                        lg: '100%'
-                    },
+                    bottom: 100,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '270px',
                     height: '65px',
-                    paddingX: {
-                        xs: 2,
-                        lg: 0
-                    },
+                    paddingX: 2,
                     margin: 0,
-                    borderRadius: {
-                        xs: 8,
-                        lg: 0
-                    },
+                    borderRadius: 8,
                     backgroundColor: 'secondary.main',
                     color: 'secondary.text',
                 }}>
                 <Box sx={{
-                    px: {
-                        xs: 1,
-                        lg: 5
-                    }
+                    px: 1
                 }}>
                     <ShoppingCartIcon variant='h6'></ShoppingCartIcon>
                 </Box>
                 <Box sx={{
-                    p: {
-                        xs: 1,
-                        lg: 0
-                    }
+                    p: 1
                 }}>
                     <Typography variant="h6">
                         {totalItems} item{totalItems !== 1 ? 's' : ''}

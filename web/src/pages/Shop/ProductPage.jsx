@@ -11,7 +11,7 @@ import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 export default function ProductPage() {
     const [producto, setProducto] = useState([])
     const [cantidad, setCantidad] = useState(1)
-    const { shoppingCart, addToShoppingCart } = useShoppingCartContext()
+    const { addToShoppingCart } = useShoppingCartContext()
     let { slug } = useParams()
 
     useEffect(() => {
