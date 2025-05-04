@@ -1,7 +1,7 @@
 #from django.shortcuts import render
 import json
 from django.http import JsonResponse, HttpResponseBadRequest
-from .models import Articulo, Comentario
+from .models import Articulo
 
 #descomenta la siguiente linea si quieres hacer POST DE PRUEBA DESDE POSTMAN
 #from django.views.decorators.csrf import csrf_exempt
@@ -14,8 +14,7 @@ def articulos_list(request):
         data = []
 
         for articulo in articulos:
-            comentarios = Comentario.objects.filter(articulo=articulo)
-
+    
             data.append({
                 'id': articulo.id,
                 'titulo': articulo.titulo,
@@ -24,14 +23,6 @@ def articulos_list(request):
                 'etiqueta': articulo.etiqueta,
                 'creado_en': articulo.creado_en,
                 'slug': articulo.slug,
-                'comentarios': [
-                    {
-                        'id': comentario.id,
-                        'autor': comentario.autor,
-                        'contenido': comentario.contenido,
-                        'creado_en': comentario.creado_en,
-                    } for comentario in comentarios
-                ]
             })
 
         return JsonResponse(data, safe=False)
@@ -53,7 +44,6 @@ def articulos_list(request):
             "message": "Artículo creado",
             "articulo_id": nuevo_articulo.id
         }, status=201)
-
 
 def detalle_articulo(request, slug):
     try:

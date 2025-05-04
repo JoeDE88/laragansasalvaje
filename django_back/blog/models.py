@@ -33,12 +33,3 @@ class Articulo(models.Model):
 
         if self.imagen_destacada:
             resize_image(self.imagen_destacada.path)
-
-class Comentario(models.Model):
-    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE,related_name='comentarios')
-    autor = models.ForeignKey(User, on_delete=models.CASCADE)
-    contenido = models.TextField()
-    creado_en = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.autor.username} - {self.articulo.titulo}'

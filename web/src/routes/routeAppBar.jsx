@@ -6,18 +6,18 @@ import ShopPage from "../pages/Shop/ShopPage";
 
 export const routeAppBar = [
     {
-        name: "Works",
-        path: "/works",
+        name: "Obras",
+        path: "/obras",
         component: <WorksPage/>
     },
     {
-        name: "Shop",
-        path: "/shop",
+        name: "Tienda",
+        path: "/tienda",
         component: <ShopPage />
     },
     {
-        name: "Blog",
-        path: "/blog",
+        name: "Mi Espacio",
+        path: "/mi-espacio",
         component: <BlogPage />
     },
     {
@@ -26,8 +26,8 @@ export const routeAppBar = [
         component: <EventosPage />
     },
     {
-        name: "About",
-        path: "/about",
+        name: "Acerca de",
+        path: "/acerca-de",
         component: <AboutPage />
     }
 ]

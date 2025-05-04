@@ -13,7 +13,7 @@ export default function BlogPage() {
             flexDirection: 'column' // 100% altura de la ventana
         }}>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Titulo titulo={'Blog'}></Titulo>
+            <Titulo titulo={'Mi espacio'}></Titulo>
             <BlogGrid></BlogGrid>
             <ShoppingCart></ShoppingCart>
             <Footer></Footer>
