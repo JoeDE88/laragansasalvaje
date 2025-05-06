@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardContent, Typography, Box } from "@mui/material";
 
-export default function ShopItem({ image, titulo, color, texto }) {
+export default function ObraItem({ image, titulo, color }) {
     return (
         <Card elevation={0}>
             <CardActionArea >

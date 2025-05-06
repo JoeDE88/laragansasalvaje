@@ -14,11 +14,11 @@ def listado_obras_por_tema(request, categoria_slug):
     except Categoria.DoesNotExist:
         raise Http404("Tema no encontrado")
 
-    obras = Obra.objects.filter(categoria=categoria).values('imagen','slug')
+    obras = Obra.objects.filter(categoria=categoria)
     data = [
         {
-            'imagen': obra['imagen'].url,
-            'slug': obra['slug']
+            'imagen': obra.imagen.url,
+            'slug': obra.slug
         }
         for obra in obras
     ]

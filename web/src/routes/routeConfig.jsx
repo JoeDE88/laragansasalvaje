@@ -2,7 +2,7 @@ import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
 import HomePage from "../pages/HomePage";
-import WorksPage from "../pages/Obras/WorksPage";
+import GaleriaPage from "../pages/Galeria/GaleriaPage";
 import ShopPage from "../pages/Shop/ShopPage";
 
 export const routeConfig = [
@@ -12,9 +12,9 @@ export const routeConfig = [
         component: <HomePage />
     },
     {
-        name: "Obras",
-        path: "/obras",
-        component: <WorksPage/>
+        name: "Galeria",
+        path: "/galeria",
+        component: <GaleriaPage/>
     },
     {
         name: "Tienda",
