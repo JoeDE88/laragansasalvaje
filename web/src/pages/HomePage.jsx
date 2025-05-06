@@ -3,7 +3,6 @@ import ResponsiveAppBar from "../components/layout/Appbar";
 import Footer from "../components/layout/Footer";
 import EventBanner from "../components/layout/EventBanner";
 import Titulo from "../components/layout/Titulo";
-import Gallery from "../components/obras/Gallery";
 import ShoppingCart from "../components/store/ShoppingCart";
 
 export default function () {
@@ -12,7 +11,6 @@ export default function () {
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'LARA GANSA SALVAJE'}></Titulo>
             <EventBanner></EventBanner>
-            <Gallery></Gallery>
             <ShoppingCart></ShoppingCart>
             <Footer></Footer>
         </>

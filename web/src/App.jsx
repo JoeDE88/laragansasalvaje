@@ -3,9 +3,9 @@ import './App.css'
 import { routeConfig } from "./routes/routeConfig";
 import ArticuloPage from "./pages/Blog/ArticuloPage";
 import ProductPage from "./pages/Shop/ProductPage";
-import ObraPage from "./pages/Obras/ObraPage";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import ShopCartPage from "./pages/Shop/ShopCartPage";
+import CategoriaPage from "./pages/Galeria/CategoriaPage";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
         })}
         <Route path="shop/:slug" element={<ProductPage/>} />
         <Route path="blog/articulos/:slug" element={<ArticuloPage/>} />
-        <Route path="obras/:titulo" element={<ObraPage/>} />
+        <Route path="obras/:slug" element={<CategoriaPage/>} />
         <Route path="carrito/" element={<ShopCartPage/>} />
       </Routes>
         </ShoppingCartProvider>
