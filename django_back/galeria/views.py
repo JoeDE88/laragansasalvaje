@@ -24,17 +24,22 @@ def listado_obras_por_tema(request, categoria_slug):
     ]
     return JsonResponse(data, safe=False)
 
-def obras_completas(request):
+def primeras_obras_por_categoria(request):
     if request.method == 'GET':
-        obras = Obra.objects.all()
         data = []
+        categorias = Categoria.objects.all()
 
-        for obra in obras:
-            data.append({
-                'nombre': obra.nombre,
-                'imagen': obra.imagen.url
-            })
-    return JsonResponse(data, safe=False)
+        for categoria in categorias:
+            primera_obra = categoria.obras.order_by('creado_en').first()
+            if primera_obra:
+                data.append({
+                    'categoria': categoria.nombre,
+                    'categoria_slug': categoria.slug,
+                    'obra_nombre': primera_obra.nombre,
+                    'obra_slug': primera_obra.slug,
+                    'imagen': primera_obra.imagen.url
+                })
+        return JsonResponse(data, safe=False)
 
 def crear_obra(request):
     if request.method == 'POST':
