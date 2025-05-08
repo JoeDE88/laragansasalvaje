@@ -17,6 +17,7 @@ export default function CategoriaPage() {
         fetch(`${baseURL}galeria/${slug}`)
         .then((response) => response.json())
         .then((data) => {
+            console.log(data);
             setObras(data)
             setCategoria(data[0].categoria)
         })

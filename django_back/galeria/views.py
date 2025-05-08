@@ -12,14 +12,18 @@ def listado_obras_por_tema(request, categoria_slug):
     try:
         categoria = Categoria.objects.get(slug=categoria_slug)
     except Categoria.DoesNotExist:
-        raise Http404("Tema no encontrado")
+        raise Http404("Categoria no encontrada")
 
     obras = Obra.objects.filter(categoria=categoria)
     data = [
         {
             'imagen': obra.imagen.url,
-            'slug': obra.slug,
             'nombre': obra.nombre,
+            'slug': obra.slug,
+            'descripción': obra.descripción,
+            'tecnica': obra.tecnica,
+            'dimensiones': obra.dimensiones,
+            'creado_en': obra.creado_en,
             'categoria': categoria.nombre,
             'categoria_slug': categoria.slug
         }
@@ -43,7 +47,7 @@ def primeras_obras_por_categoria(request):
                     'imagen': primera_obra.imagen.url
                 })
         return JsonResponse(data, safe=False)
-
+    
 def crear_obra(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
