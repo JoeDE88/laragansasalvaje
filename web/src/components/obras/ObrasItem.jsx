@@ -5,8 +5,8 @@ export default function ObraItem({ image, titulo, color }) {
         <Card elevation={0}>
             <CardActionArea >
                 <CardContent sx={{ backgroundColor: color, p: 0 }}>
-                    <Box sx={{ marginBottom: '16px' }} >
-                        <Typography variant="h5" sx={{ textAlign: 'center' }}>{titulo}</Typography>
+                    <Box>
+                        <Typography variant="h5" sx={{ textAlign: 'center', backgroundColor:'blancoPerla.main'  }}>{titulo}</Typography>
                     </Box>
                     <Box
                         sx={{
