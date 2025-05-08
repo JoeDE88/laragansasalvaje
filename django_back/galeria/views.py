@@ -18,7 +18,10 @@ def listado_obras_por_tema(request, categoria_slug):
     data = [
         {
             'imagen': obra.imagen.url,
-            'slug': obra.slug
+            'slug': obra.slug,
+            'nombre': obra.nombre,
+            'categoria': categoria.nombre,
+            'categoria_slug': categoria.slug
         }
         for obra in obras
     ]
