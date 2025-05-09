@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator, MaxValueValidator
+from datetime import datetime
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -26,7 +28,12 @@ class Obra(models.Model):
     tecnica = models.CharField(max_length=100)
     dimensiones = models.CharField(max_length=50)
     imagen = models.ImageField(upload_to='galeria/')
-    creado_en = models.DateTimeField(auto_now_add=True)
+    creado_en = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(1900),
+            MaxValueValidator(datetime.now().year)],
+            help_text="Utiliza este formato: <YYYY>"
+    )
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE,related_name='obras',null=True)
 
     class Meta:
