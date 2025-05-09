@@ -1,5 +1,5 @@
-import { Box, Button, Grid, Modal, Typography, Zoom } from "@mui/material"
-import ObrasItem from "./ObrasItem"
+import { Box, Grid, Modal, Typography} from "@mui/material"
+import CategoriaItem from "./CategoriaItem"
 import { baseURL } from "../../services/api/api"
 import { useState } from "react"
 
@@ -8,7 +8,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    width: {xs:300,md:350},
+    height: {xs:300,md:350},
     bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 2,
@@ -36,28 +37,39 @@ export default function CategoriaGrid({ obras }) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
                 <Box sx={style}>
-                    <Zoom in={open}>
                         <Box>
                             {obraSeleccionada && (
                                 <>
-                                    <Typography>{obraSeleccionada.nombre}</Typography>
-                                    <Typography>{obraSeleccionada.descripción}</Typography>
+                                <Box>
+                                    <Typography sx={{marginBottom:2}} variant="h3">{obraSeleccionada.nombre}</Typography>
+                                    <Typography variant="h6" fontStyle={'oblique'}>{obraSeleccionada.descripción}</Typography>
+                                </Box>
+                                <Box sx={{position:'absolute', bottom:35}}>
+                                    <Typography variant="h6">{obraSeleccionada.tecnica}</Typography>
+                                    <Typography variant="h6">{obraSeleccionada.dimensiones}</Typography>
+                                    <Typography variant="h6">{obraSeleccionada.creado_en}</Typography>
+                                </Box>
                                 </>)}
                         </Box>
-                    </Zoom>
                 </Box>
             </Modal>
-            <Grid container spacing={0.5} sx={{ margin: 5, padding: 5 }}>
+            <Box sx={{
+                display:'flex',
+                flexDirection:'column',
+                alignItems:'center',
+                gap:4,
+                padding:4
+            }}>
                 {obras.map((obra, index) => {
                     return (
                         <>
-                            <Grid key={index} item xs={12} onClick={()=>handleOpen(obra)} sx={{ mb: 3, textDecoration: 'none' }}>
-                                <ObrasItem image={`${baseURL}${obra.imagen}`} color={'blancoPerla.main'}></ObrasItem>
+                            <Grid key={index} onClick={()=>handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
+                                <CategoriaItem image={`${baseURL}${obra.imagen}`} ></CategoriaItem>
                             </Grid>
                         </>
                     )
                 })}
-            </Grid>
+            </Box>
         </>
     )
 }
