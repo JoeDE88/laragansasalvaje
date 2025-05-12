@@ -52,5 +52,5 @@ class Publicacion(models.Model):
         if self.tipo == 'video':
             if not self.url_video and not self.archivo_video:
                 raise ValidationError("Para contenido de tipo 'video', debes subir un archivo o indicar una URL")
-            if self.url_video and not self.archivo_video:
+            if self.url_video and self.archivo_video:
                 raise ValidationError("No puedes subir un archivo video y una URL de video al mismo tiempo.")

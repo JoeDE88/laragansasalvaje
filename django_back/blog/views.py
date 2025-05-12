@@ -25,6 +25,7 @@ def lista_publicaciones(request):
                 'url_video': pub.url_video,
                 'etiqueta': pub.etiqueta,
                 'creado_en': pub.creado_en,
+                'tipo':pub.tipo
             })
             
         return JsonResponse(data, safe=False)

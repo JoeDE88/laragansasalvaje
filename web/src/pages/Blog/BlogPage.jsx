@@ -1,9 +1,9 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
-import BlogGrid from "../../components/blog/structure/BlogGrid.jsx";
+import { Box } from "@mui/material";
 import ResponsiveAppBar from "../../components/layout/Appbar.jsx";
 import Footer from "../../components/layout/Footer.jsx";
 import Titulo from "../../components/layout/Titulo.jsx";
 import ShoppingCart from "../../components/store/ShoppingCart.jsx";
+import Blog from "../../components/blog/structure/Blog.jsx";
 
 export default function BlogPage() {
 
@@ -14,7 +14,7 @@ export default function BlogPage() {
         }}>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'Mi espacio'}></Titulo>
-            <BlogGrid></BlogGrid>
+            <Blog></Blog>
             <ShoppingCart></ShoppingCart>
             <Footer></Footer>
         </Box>
