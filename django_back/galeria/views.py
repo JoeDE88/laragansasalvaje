@@ -8,6 +8,19 @@ from .models import Obra, Categoria
 
 #descomenta la siguiente linea si quieres hacer POST DE PRUEBA DESDE POSTMAN
 #@csrf_exempt
+def listado_obras(request):
+    if request.method == 'GET':
+        data = []
+        obras = Obra.objects.all()
+
+        for obra in obras:
+            data.append({
+                'imagen':obra.imagen.url
+            })
+
+        return JsonResponse(data,safe=False)
+
+
 def listado_obras_por_tema(request, categoria_slug):
     try:
         categoria = Categoria.objects.get(slug=categoria_slug)
