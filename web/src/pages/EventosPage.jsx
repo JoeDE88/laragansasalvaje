@@ -1,9 +1,12 @@
-import { Typography } from "@mui/material";
-
+import EventoCard from "../components/eventos/EventoCard";
+import ResponsiveAppBar from "../components/layout/Appbar";
+import Titulo from "../components/layout/Titulo"
 export default function EventosPage (){
     return(
         <>
-        <Typography variant="h1">Eventos</Typography>
+        <ResponsiveAppBar></ResponsiveAppBar>
+        <Titulo titulo={'Eventos'}></Titulo>
+        <EventoCard></EventoCard>
         </>
     )
 }
