@@ -26,6 +26,3 @@ class Evento(models.Model):
                 contador += 1
             self.slug = slug
         super().save(*args, **kwargs)
-
-        if self.imagen:
-            resize_image(self.imagen.path)
