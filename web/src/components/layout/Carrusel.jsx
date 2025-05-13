@@ -10,8 +10,6 @@ export default function Carrusel() {
         fetch(`${baseURL}galeria/obras/`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
-                
                 setObras(data)
             })
     }, [])

@@ -9,7 +9,7 @@ from .models import Evento
 #descomenta la siguiente linea si quieres hacer POST DE PRUEBA DESDE POSTMAN
 #@csrf_exempt
 def eventos_list(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         eventos = Evento.objects.all()
         data = []
 
