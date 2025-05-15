@@ -19,7 +19,7 @@ function App() {
           )
         })}
         <Route path="shop/:slug" element={<ProductPage/>} />
-        <Route path="blog/articulos/:slug" element={<ArticuloPage/>} />
+        <Route path="blog/publicaciones/:slug" element={<ArticuloPage/>} />
         <Route path="obras/:slug" element={<CategoriaPage/>} />
         <Route path="carrito/" element={<ShopCartPage/>} />
       </Routes>
