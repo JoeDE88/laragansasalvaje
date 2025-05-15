@@ -63,10 +63,14 @@ def detalle_pub(request, slug):
         data = {
             'id' : pub.id,
             'titulo' : pub.titulo,
+            'tipo': pub.tipo,
+            'slug': pub.slug,
             'contenido' : pub.contenido,
             'imagen_destacada' : pub.imagen_destacada.url if pub.imagen_destacada else None,
+            'url_video': pub.url_video if pub.url_video else None,
             'etiqueta' : pub.etiqueta,
-            'creado_en' : pub.creado_en
+            'creado_en' : pub.creado_en,
+            'archivo_video': pub.archivo_video.url if pub.archivo_video else None
         }
         return JsonResponse(data)
     except pub.DoesNotExist:

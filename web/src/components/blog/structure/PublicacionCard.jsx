@@ -1,6 +1,6 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Typography } from "@mui/material";
-import InstagramEmbed from "./InstagramEmbed";
 import { baseURL } from "../../../services/api/api";
+import getYoutubeThumbnail from "../../../utils/youtube/getYoutubeThumbnail";
 
 export default function PublicacionCard({ publicacion }) {
   const {
@@ -30,15 +30,17 @@ export default function PublicacionCard({ publicacion }) {
             <Typography fontSize={'0.8rem'} color="blancoPerla.text">{creado_en}</Typography>
           </Box>
 
-          {tipo === 'articulo' && (
+          {tipo === 'articulo' || tipo === 'imagen' && (
             <>
               {imagen_destacada && (
-                <CardMedia
-                  component="img"
-                  image={imagen_destacada}
-                  alt={titulo}
-                  sx={{ mt: 2, borderRadius: 2 }}
-                />
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <CardMedia
+                    component="img"
+                    image={`${baseURL}${imagen_destacada}`}
+                    alt={titulo}
+                    sx={{ mt: 2, borderRadius: 2, width: 600, height: 500 }}
+                  />
+                </Box>
               )}
               <Box>
                 <Typography variant="body1" sx={{ p: 0.5 }}>
@@ -63,12 +65,16 @@ export default function PublicacionCard({ publicacion }) {
                   </Box>
                 </>
               ) : url_video ? (
-                <Box sx={{ mt: 2 }}>
-                  {renderVideo(url_video, titulo)}
-                  <Typography variant="body1" sx={{ p: 0.5 }}>
-                    {contenido}
-                  </Typography>
-                </Box>
+                <>
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <img src={getYoutubeThumbnail(url_video)}></img>
+                  </Box>
+                  <Box sx={{ mt: 1 }}>
+                    <Typography variant="body1" sx={{ p: 0.5 }}>
+                      {contenido}
+                    </Typography>
+                  </Box>
+                </>
               ) : (
                 <Typography variant="body2">Sin video disponible</Typography>
               )}
@@ -80,64 +86,3 @@ export default function PublicacionCard({ publicacion }) {
   );
 }
 
-function renderVideo(url, titulo) {
-  
-  if (url.includes('youtube') || url.includes('youtu.be')) {
-    return (
-      <iframe
-        width="100%"
-        height="315"
-        src={convertirVideoEmbed(url)}
-        title={titulo}
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
-    );
-  } else if (url.includes('instagram.com')) {
-    return <InstagramEmbed url={url} />;
-  } else {
-    return <Typography variant="body2">Formato de video no compatible</Typography>;
-  }
-}
-
-function convertirVideoEmbed(url) {
-
-  try {
-    let videoId = null;
-
-    // Verificamos la URL corta de YouTube
-    const shortUrlMatch = url.match(/youtu\.be\/([^?&]+)/);
-    if (shortUrlMatch) {
-      videoId = shortUrlMatch[1];
-    }
-
-    // Verificamos la URL larga de YouTube
-    const longUrlMatch = url.match(/v=([^&]+)/);
-    if (longUrlMatch) {
-      videoId = longUrlMatch[1];
-    }
-
-    // Verificamos los YouTube Shorts
-    const shortsMatch = url.match(/youtube\.com\/shorts\/([^?&]+)/);
-    if (shortsMatch) {
-      videoId = shortsMatch[1];
-    }
-
-    // Verificamos el URL de embed
-    const embedMatch = url.match(/youtube\.com\/embed\/([^?&]+)/);
-    if (embedMatch) {
-      videoId = embedMatch[1];
-    }
-
-    // Si encontramos el videoId, generamos la URL del iframe
-    if (videoId) {
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
-
-    // Si no encontramos un ID de video válido, devolvemos la URL original
-    return url;
-  } catch (error) {
-    console.error("Error al convertir la URL del video:", error);
-    return url;
-  }
-}

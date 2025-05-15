@@ -1,7 +1,8 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container} from "@mui/material";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../../services/api/api";
 import PublicacionCard from "./PublicacionCard";
+import { NavLink } from "react-router";
 
 export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
@@ -22,7 +23,11 @@ export default function Blog() {
     return (
         <Container sx={{mt:4}}>
             {publicaciones.map((pub)=>(
-                <PublicacionCard key={pub.slug} publicacion={pub}></PublicacionCard>
+                <>
+                <Box key={pub.slug} component={NavLink} to={`/blog/publicaciones/${pub.slug}`} sx={{ textDecoration: "none" }}>
+                <PublicacionCard publicacion={pub}></PublicacionCard>
+                </Box>
+                </>
             ))}
         </Container>
     );
