@@ -5,7 +5,7 @@ import { Box, Container, Typography } from "@mui/material";
 import Titulo from "../../layout/Titulo";
 import rendervideo from "../../../utils/youtube/functions";
 
-export default function () {
+export default function PublicacionCard() {
   const [articulo, setArticulo] = useState([])
   let { slug } = useParams()
 
@@ -30,7 +30,6 @@ export default function () {
         <Typography>{articulo.contenido}</Typography>
       </Container>
       {articulo.imagen_destacada && (
-
         <Box sx={{
           width: '100%',
           height: '70%',

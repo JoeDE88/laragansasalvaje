@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ResponsiveAppBar from "../../components/layout/Appbar";
 import Titulo from "../../components/layout/Titulo";
+import CategoriaGrid from "../../components/obras/structure/CategoriaGrid"
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Footer from "../../components/layout/Footer";
-import { useEffect, useState } from "react";
+
 import { baseURL } from "../../services/api/api";
-import CategoriaGrid from "../../components/obras/CategoriaGrid";
 
 export default function CategoriaPage() {
     let { slug } = useParams()
@@ -17,7 +18,6 @@ export default function CategoriaPage() {
         fetch(`${baseURL}galeria/${slug}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             setObras(data)
             setCategoria(data[0].categoria)
         })

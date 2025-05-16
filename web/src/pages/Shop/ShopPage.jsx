@@ -2,7 +2,7 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import ResponsiveAppBar from "../../components/layout/Appbar";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Footer from "../../components/layout/Footer";
-import ProductsGallery from "../../components/store/ProductsGallery";
+import ProductsGallery from "../../components/store/structure/ProductosGrid";
 import Titulo from "../../components/layout/Titulo";
 
 export default function ShopPage() {
