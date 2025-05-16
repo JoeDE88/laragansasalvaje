@@ -1,7 +1,7 @@
 import { Box, Grid, Modal, Typography} from "@mui/material"
-import CategoriaItem from "./CategoriaItem"
-import { baseURL } from "../../services/api/api"
+import { baseURL } from "../../../services/api/api"
 import { useState } from "react"
+import CategoriaCard from "../view/CategoriaCard";
 
 const style = {
     position: 'absolute',
@@ -64,7 +64,7 @@ export default function CategoriaGrid({ obras }) {
                     return (
                         <>
                             <Grid key={index} onClick={()=>handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
-                                <CategoriaItem image={`${baseURL}${obra.imagen}`} ></CategoriaItem>
+                                <CategoriaCard image={`${baseURL}${obra.imagen}`} ></CategoriaCard>
                             </Grid>
                         </>
                     )

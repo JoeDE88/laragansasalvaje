@@ -1,10 +1,11 @@
 import { Grid } from "@mui/material";
-import ShopItem from "./ShopItem";
-import { NavLink, useParams } from "react-router";
-import { baseURL } from "../../services/api/api";
+import ShopItem from "../view/TiendaCard";
+import { NavLink} from "react-router";
+import { baseURL } from "../../../services/api/api";
 import { useEffect, useState } from "react";
+import TiendaCard from "../view/TiendaCard";
 
-export default function ProductsGallery() {
+export default function TiendaGrid() {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
@@ -26,12 +27,12 @@ export default function ProductsGallery() {
                         size={{ xs: 12, md: 6, lg: 3 }}
                         sx={{ mb: 4, textDecoration: "none" }}
                     >
-                        <ShopItem
+                        <TiendaCard
                             image={`${baseURL}${producto.imagen}`}
                             nombre={producto.nombre}
                             precio={producto.precio}
                             color={"blancoPerla.main"}
-                        ></ShopItem>
+                        ></TiendaCard>
                     </Grid>
                 );
             })}

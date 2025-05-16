@@ -2,7 +2,7 @@ import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Typography 
 import { baseURL } from "../../../services/api/api";
 import getYoutubeThumbnail from "../../../utils/youtube/getYoutubeThumbnail";
 
-export default function PublicacionCard({ publicacion }) {
+export default function BlogCard({ publicacion }) {
   const {
     tipo,
     titulo,

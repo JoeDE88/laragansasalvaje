@@ -1,6 +1,6 @@
 import { Box, Card, CardActionArea, CardContent } from "@mui/material";
 
-export default function CategoriaItem({ image }) {
+export default function CategoriaCard({ image }) {
     return (
         <Card elevation={0} sx={{display: 'flex',
             justifyContent: 'center',

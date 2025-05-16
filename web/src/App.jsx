@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router";
 import './App.css'
 import { routeConfig } from "./routes/routeConfig";
-import ArticuloPage from "./pages/Blog/ArticuloPage";
 import ProductPage from "./pages/Shop/ProductPage";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import ShopCartPage from "./pages/Shop/ShopCartPage";
+import PublicacionPage from "./pages/Blog/PublicacionPage";
+import CategoriaGrid from "./components/obras/structure/CategoriaGrid";
 import CategoriaPage from "./pages/Galeria/CategoriaPage";
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
           )
         })}
         <Route path="shop/:slug" element={<ProductPage/>} />
-        <Route path="blog/publicaciones/:slug" element={<ArticuloPage/>} />
-        <Route path="obras/:slug" element={<CategoriaPage/>} />
+        <Route path="blog/publicaciones/:slug" element={<PublicacionPage/>} />
+        <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
         <Route path="carrito/" element={<ShopCartPage/>} />
       </Routes>
         </ShoppingCartProvider>

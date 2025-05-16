@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ResponsiveAppBar from "../../components/layout/Appbar";
 import Footer from "../../components/layout/Footer";
 import Titulo from "../../components/layout/Titulo";
-import GalleryGrid from "../../components/obras/GalleryGrid";
+import GalleryGrid from "../../components/obras/structure/GalleryGrid";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import { baseURL } from "../../services/api/api";
 

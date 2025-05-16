@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material"
-import ObrasItem from "./ObrasItem"
 import { NavLink } from "react-router"
-import { baseURL } from "../../services/api/api"
+import { baseURL } from "../../../services/api/api"
+import GalleryCard from "../view/GalleryCard"
 
 
 export default function GalleryGrid({obras}) {
@@ -11,7 +11,7 @@ export default function GalleryGrid({obras}) {
             {obras.map((obra, index) => {
                 return (
                     <Grid key={index} component={NavLink} to={`/obras/${obra.categoria_slug}`} size={{ xs: 12, md: 6, lg: 6 }} sx={{ mb: 3, textDecoration:'none' }}>
-                        <ObrasItem titulo={obra.nombre? obra.nombre : obra.categoria} image={`${baseURL}${obra.imagen}`} color={'blancoPerla.main'}></ObrasItem>
+                        <GalleryCard titulo={obra.nombre? obra.nombre : obra.categoria} image={`${baseURL}${obra.imagen}`} color={'blancoPerla.main'}></GalleryCard>
                     </Grid>
                 )
             })}

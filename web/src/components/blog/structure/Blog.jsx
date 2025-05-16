@@ -1,8 +1,8 @@
 import { Box, Container} from "@mui/material";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../../services/api/api";
-import PublicacionCard from "./PublicacionCard";
 import { NavLink } from "react-router";
+import BlogCard from "../views/BlogCard";
 
 export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
@@ -25,7 +25,7 @@ export default function Blog() {
             {publicaciones.map((pub)=>(
                 <>
                 <Box key={pub.slug} component={NavLink} to={`/blog/publicaciones/${pub.slug}`} sx={{ textDecoration: "none" }}>
-                <PublicacionCard publicacion={pub}></PublicacionCard>
+                <BlogCard publicacion={pub}></BlogCard>
                 </Box>
                 </>
             ))}
