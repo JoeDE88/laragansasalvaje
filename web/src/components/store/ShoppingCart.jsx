@@ -26,7 +26,7 @@ export default function ShoppingCart() {
                     bottom: 50,
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    width: {xs:'270px',lg:'340px'},
+                    width: { xs: '270px', lg: '340px' },
                     height: '65px',
                     paddingX: 2,
                     margin: 0,

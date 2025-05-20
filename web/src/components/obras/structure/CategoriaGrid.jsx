@@ -1,4 +1,4 @@
-import { Box, Grid, Modal, Typography} from "@mui/material"
+import { Box, Grid, Modal, Typography } from "@mui/material"
 import { baseURL } from "../../../services/api/api"
 import { useState } from "react"
 import CategoriaCard from "../view/CategoriaCard";
@@ -8,8 +8,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: {xs:300,md:350},
-    height: {xs:300,md:350},
+    width: { xs: 300, md: 350 },
+    height: { xs: 300, md: 350 },
     bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 2,
@@ -37,33 +37,33 @@ export default function CategoriaGrid({ obras }) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description">
                 <Box sx={style}>
-                        <Box>
-                            {obraSeleccionada && (
-                                <>
+                    <Box>
+                        {obraSeleccionada && (
+                            <>
                                 <Box>
-                                    <Typography sx={{marginBottom:2}} variant="h3">{obraSeleccionada.nombre}</Typography>
+                                    <Typography sx={{ marginBottom: 2 }} variant="h3">{obraSeleccionada.nombre}</Typography>
                                     <Typography variant="h6" fontStyle={'oblique'}>{obraSeleccionada.descripción}</Typography>
                                 </Box>
-                                <Box sx={{position:'absolute', bottom:35}}>
+                                <Box sx={{ position: 'absolute', bottom: 35 }}>
                                     <Typography variant="h6">{obraSeleccionada.tecnica}</Typography>
                                     <Typography variant="h6">{obraSeleccionada.dimensiones}</Typography>
                                     <Typography variant="h6">{obraSeleccionada.creado_en}</Typography>
                                 </Box>
-                                </>)}
-                        </Box>
+                            </>)}
+                    </Box>
                 </Box>
             </Modal>
             <Box sx={{
-                display:'flex',
-                flexDirection:'column',
-                alignItems:'center',
-                gap:4,
-                padding:4
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 4,
+                padding: 4
             }}>
                 {obras.map((obra, index) => {
                     return (
                         <>
-                            <Grid key={index} onClick={()=>handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
+                            <Grid key={index} onClick={() => handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
                                 <CategoriaCard image={`${baseURL}${obra.imagen}`} ></CategoriaCard>
                             </Grid>
                         </>

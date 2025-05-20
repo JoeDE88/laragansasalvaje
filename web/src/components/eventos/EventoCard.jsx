@@ -2,7 +2,6 @@ import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { baseURL } from "../../services/api/api";
 
-
 export default function EventoCard() {
     const [eventos, setEventos] = useState([])
 

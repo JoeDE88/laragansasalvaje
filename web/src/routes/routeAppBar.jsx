@@ -8,7 +8,7 @@ export const routeAppBar = [
     {
         name: "Galeria",
         path: "/galeria",
-        component: <GaleriaPage/>
+        component: <GaleriaPage />
     },
     {
         name: "Tienda",

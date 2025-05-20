@@ -14,12 +14,12 @@ export const routeConfig = [
     {
         name: "Galeria",
         path: "/galeria",
-        component: <GaleriaPage/>
+        component: <GaleriaPage />
     },
     {
         name: "Tienda",
         path: "/tienda",
-        component: <ShopPage/>
+        component: <ShopPage />
     },
     {
         name: "Acerca de",

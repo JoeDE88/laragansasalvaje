@@ -10,7 +10,7 @@ export default function AboutPage() {
     return (
         <>
             <ResponsiveAppBar></ResponsiveAppBar>
-            <Container maxWidth="lg" sx={{mb:2}}>
+            <Container maxWidth="lg" sx={{ mb: 2 }}>
                 <Titulo titulo={'Quien soy'}></Titulo>
                 <Box sx={{ mt: 5 }}>
                     <Box sx={{ alignItems: 'center' }}>

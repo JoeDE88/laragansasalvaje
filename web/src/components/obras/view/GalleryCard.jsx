@@ -6,7 +6,7 @@ export default function GalleryCard({ image, titulo, color }) {
             <CardActionArea >
                 <CardContent sx={{ backgroundColor: color, p: 0 }}>
                     <Box>
-                        <Typography variant="h5" sx={{ textAlign: 'center', backgroundColor:'blancoPerla.main'  }}>{titulo}</Typography>
+                        <Typography variant="h5" sx={{ textAlign: 'center', backgroundColor: 'blancoPerla.main' }}>{titulo}</Typography>
                     </Box>
                     <Box
                         sx={{

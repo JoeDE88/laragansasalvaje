@@ -40,8 +40,8 @@ export default function ProductPage() {
                             component='img'
                             src={`${baseURL}${producto.imagen}`}
                             sx={{
-                                maxHeight:'100%',
-                                maxWidth:'100%',
+                                maxHeight: '100%',
+                                maxWidth: '100%',
                                 objectFit: 'contain'
                             }}
                         />
@@ -50,10 +50,12 @@ export default function ProductPage() {
                         <Typography variant="h4" color="tertiary">{producto.nombre?.toUpperCase()}</Typography>
                         <Typography sx={{ fontSize: '18px', marginTop: 3 }}>€ {producto.precio}</Typography>
                         <Typography variant='h5' sx={{ marginTop: 2 }}>{producto.descripción}</Typography>
-                        <Typography variant='h6' sx={{ marginTop: {
-                            xs:1,
-                            sm:2
-                        } }}>Cantidad</Typography>
+                        <Typography variant='h6' sx={{
+                            marginTop: {
+                                xs: 1,
+                                sm: 2
+                            }
+                        }}>Cantidad</Typography>
                         <Box component="form"
                             sx={{ '& .MuiTextField-root': { width: '15ch' } }}
                             noValidate
@@ -64,7 +66,7 @@ export default function ProductPage() {
                                 value={cantidad}
                                 type="number"
                                 size="small"
-                                onChange={(event)=>{
+                                onChange={(event) => {
                                     const value = Math.max(1, parseInt(event.target.value || 1))
                                     setCantidad(value)
                                 }}
@@ -75,10 +77,12 @@ export default function ProductPage() {
                                 }}
                             />
                         </Box>
-                        <Box sx={{ marginTop: {
-                            xs:1,
-                            sm:3
-                        } }}>
+                        <Box sx={{
+                            marginTop: {
+                                xs: 1,
+                                sm: 3
+                            }
+                        }}>
                             <Button
                                 onClick={() => { addToShoppingCart({ ...producto, cantidad }) }}
                                 variant="contained"
