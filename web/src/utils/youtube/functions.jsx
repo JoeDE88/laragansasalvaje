@@ -41,17 +41,17 @@ function convertirVideoEmbed(url) {
 }
 
 export default function rendervideo(url, titulo) {
-    return (
-      <>
+  return (
+    <>
       <iframe
         width="100%"
         height="315"
         src={convertirVideoEmbed(url)}
         title={titulo}
-        style={{border:0}}
+        style={{ border: 0 }}
         allowFullScreen
-        ></iframe>
-        </>
-    );
+      ></iframe>
+    </>
+  );
 }
 

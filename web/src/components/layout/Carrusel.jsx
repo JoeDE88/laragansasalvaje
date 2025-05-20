@@ -15,11 +15,11 @@ export default function Carrusel() {
     }, [])
 
     return (
-        <Box sx={{ width: '100%', margin: 'auto',py:2}}>
+        <Box sx={{ width: '100%', margin: 'auto', py: 2 }}>
             <Carousel autoplay autoplaySpeed={5000} adaptiveHeight={true} dots={false} fade={true}>
                 {obras.map((obra, index) => {
                     return (
-                        <Box key={index} sx={{ height: { xs: 200, sm: 300, md: 400 }, width: '100%'}}>
+                        <Box key={index} sx={{ height: { xs: 200, sm: 300, md: 400 }, width: '100%' }}>
                             <img
                                 style={{
                                     width: '100%',

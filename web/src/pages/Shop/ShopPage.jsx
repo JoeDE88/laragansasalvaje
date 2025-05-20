@@ -1,20 +1,20 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import ResponsiveAppBar from "../../components/layout/Appbar";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Footer from "../../components/layout/Footer";
-import ProductsGallery from "../../components/store/structure/ProductosGrid";
 import Titulo from "../../components/layout/Titulo";
+import TiendaGrid from "../../components/store/structure/TiendaGrid";
 
 export default function ShopPage() {
-    
+
     return (
         <Box sx={{
             display: 'flex',
             flexDirection: 'column' // 100% altura de la ventana
-          }}>
+        }}>
             <ResponsiveAppBar></ResponsiveAppBar>
             <Titulo titulo={'Tienda'}></Titulo>
-            <ProductsGallery></ProductsGallery>
+            <TiendaGrid></TiendaGrid>
             <ShoppingCart></ShoppingCart>
             <Footer></Footer>
         </Box>

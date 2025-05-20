@@ -12,15 +12,15 @@ export default function CategoriaPage() {
     let { slug } = useParams()
 
     const [obras, setObras] = useState([]);
-    const [ categoria, setCategoria] = useState('')
+    const [categoria, setCategoria] = useState('')
 
     useEffect(() => {
         fetch(`${baseURL}galeria/${slug}`)
-        .then((response) => response.json())
-        .then((data) => {
-            setObras(data)
-            setCategoria(data[0].categoria)
-        })
+            .then((response) => response.json())
+            .then((data) => {
+                setObras(data)
+                setCategoria(data[0].categoria)
+            })
     }, [])
 
     return (

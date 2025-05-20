@@ -12,19 +12,19 @@ function App() {
 
   return (
     <>
-    <ShoppingCartProvider>
-      <Routes>
-        {routeConfig.map((route) => {
-          return (
-            <Route key={route.name} path={route.path} element={route.component} />
-          )
-        })}
-        <Route path="shop/:slug" element={<ProductPage/>} />
-        <Route path="blog/publicaciones/:slug" element={<PublicacionPage/>} />
-        <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
-        <Route path="carrito/" element={<ShopCartPage/>} />
-      </Routes>
-        </ShoppingCartProvider>
+      <ShoppingCartProvider>
+        <Routes>
+          {routeConfig.map((route) => {
+            return (
+              <Route key={route.name} path={route.path} element={route.component} />
+            )
+          })}
+          <Route path="shop/:slug" element={<ProductPage />} />
+          <Route path="blog/publicaciones/:slug" element={<PublicacionPage />} />
+          <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
+          <Route path="carrito/" element={<ShopCartPage />} />
+        </Routes>
+      </ShoppingCartProvider>
     </>
   )
 }

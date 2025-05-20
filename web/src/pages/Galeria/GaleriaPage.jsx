@@ -6,25 +6,25 @@ import GalleryGrid from "../../components/obras/structure/GalleryGrid";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import { baseURL } from "../../services/api/api";
 
-export default function GaleriaPage (){
+export default function GaleriaPage() {
 
-    const [ obras, setObras] = useState([])
+    const [obras, setObras] = useState([])
 
-    useEffect(() =>{
+    useEffect(() => {
         fetch(`${baseURL}galeria/primeras/`)
-        .then((response) => response.json())
-        .then((data) => {
-            setObras(data)
-        })
-    },[])
+            .then((response) => response.json())
+            .then((data) => {
+                setObras(data)
+            })
+    }, [])
 
-    return(
+    return (
         <>
-        <ResponsiveAppBar/>
-        <Titulo titulo={'Galeria'}></Titulo>
-        <GalleryGrid obras={obras}></GalleryGrid>
-        <ShoppingCart></ShoppingCart>
-        <Footer></Footer>
+            <ResponsiveAppBar />
+            <Titulo titulo={'Galeria'}></Titulo>
+            <GalleryGrid obras={obras}></GalleryGrid>
+            <ShoppingCart></ShoppingCart>
+            <Footer></Footer>
         </>
     )
 }

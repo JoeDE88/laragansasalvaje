@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material";
-import ShopItem from "../view/TiendaCard";
-import { NavLink} from "react-router";
+import { NavLink } from "react-router";
 import { baseURL } from "../../../services/api/api";
 import { useEffect, useState } from "react";
 import TiendaCard from "../view/TiendaCard";
