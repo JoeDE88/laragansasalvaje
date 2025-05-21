@@ -38,6 +38,8 @@ export default function EventoCard() {
                                         objectFit: 'contain'
                                     }} />
                             </Card>
+                            <hr width='250px'/>
+                            <Box sx={{marginBottom:2}}></Box>
                         </>
                     )
                 })

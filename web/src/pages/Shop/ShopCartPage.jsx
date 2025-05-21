@@ -10,8 +10,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export default function () {
 
     const { shoppingCart, removeFromShoppingCart, addToShoppingCart, decreaseQuantity } = useShoppingCartContext()
-    console.log(shoppingCart);
-
 
     return (
         <>
