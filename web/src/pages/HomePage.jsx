@@ -12,6 +12,7 @@ export default function () {
             <Carrusel></Carrusel>
             <ShoppingCart></ShoppingCart>
             <Footer></Footer>
+            
         </>
     )
 }
