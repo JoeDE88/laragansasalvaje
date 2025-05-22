@@ -1,10 +1,12 @@
 import { Box, Container, Typography } from "@mui/material";
 import Titulo from "../components/layout/Titulo";
 import Footer from "../components/layout/Footer";
+import ResponsiveAppBar from "../components/layout/Appbar";
 
 export default function PrivacidadPage() {
     return (
         <>
+        <ResponsiveAppBar></ResponsiveAppBar>
         <Box height={200}></Box>
             <Titulo titulo={'POLÍTICA DE PRIVACIDAD DEL SITIO WEB'}></Titulo>
             <Container maxWidth="lg" sx={{ mb: 2 }}>
