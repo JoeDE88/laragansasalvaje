@@ -4,6 +4,7 @@ import { baseURL } from "../../../services/api/api";
 import { Box, Container, Typography } from "@mui/material";
 import Titulo from "../../layout/Titulo";
 import rendervideo from "../../../utils/youtube/functions";
+import RenderVideo from "../../../utils/youtube/functions";
 
 export default function PublicacionCard() {
   const [articulo, setArticulo] = useState([])
@@ -65,7 +66,7 @@ export default function PublicacionCard() {
             </>
           ) : articulo.url_video ? (
             <Box sx={{ mt: 1 }}>
-              {rendervideo(articulo.url_video, articulo.titulo)}
+              <RenderVideo url={articulo.url_video} titulo={articulo.titulo} />
             </Box>
           ) : (
             <Typography variant="body2">Sin video disponible</Typography>

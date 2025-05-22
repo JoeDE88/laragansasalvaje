@@ -1,38 +1,24 @@
-function convertirVideoEmbed(url) {
+import { Typography, Button, Box } from "@mui/material";
+import { useEffect, useState } from "react";
 
+function convertirVideoEmbed(url) {
   try {
     let videoId = null;
 
-    // Verificamos la URL corta de YouTube
     const shortUrlMatch = url.match(/youtu\.be\/([^?&]+)/);
-    if (shortUrlMatch) {
-      videoId = shortUrlMatch[1];
-    }
+    if (shortUrlMatch) videoId = shortUrlMatch[1];
 
-    // Verificamos la URL larga de YouTube
     const longUrlMatch = url.match(/v=([^&]+)/);
-    if (longUrlMatch) {
-      videoId = longUrlMatch[1];
-    }
+    if (longUrlMatch) videoId = longUrlMatch[1];
 
-    // Verificamos los YouTube Shorts
     const shortsMatch = url.match(/youtube\.com\/shorts\/([^?&]+)/);
-    if (shortsMatch) {
-      videoId = shortsMatch[1];
-    }
+    if (shortsMatch) videoId = shortsMatch[1];
 
-    // Verificamos el URL de embed
     const embedMatch = url.match(/youtube\.com\/embed\/([^?&]+)/);
-    if (embedMatch) {
-      videoId = embedMatch[1];
-    }
+    if (embedMatch) videoId = embedMatch[1];
 
-    // Si encontramos el videoId, generamos la URL del iframe
-    if (videoId) {
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
+    if (videoId) return `https://www.youtube.com/embed/${videoId}`;
 
-    // Si no encontramos un ID de video válido, devolvemos la URL original
     return url;
   } catch (error) {
     console.error("Error al convertir la URL del video:", error);
@@ -40,18 +26,66 @@ function convertirVideoEmbed(url) {
   }
 }
 
-export default function rendervideo(url, titulo) {
+export default function RenderVideo({ url, titulo }) {
+  const [consentYoutube, setConsentYoutube] = useState(false);
+
+  useEffect(() => {
+    if (window.CookieConsent) {
+      setConsentYoutube(window.CookieConsent.acceptedCategory("youtube"));
+    }
+
+    function onConsent() {
+      setConsentYoutube(window.CookieConsent.acceptedCategory("youtube"));
+    }
+
+    window.addEventListener("cc:onConsent", onConsent);
+
+    return () => {
+      window.removeEventListener("cc:onConsent", onConsent);
+    };
+  }, []);
+
+  if (!consentYoutube) {
+    return (
+      <>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 1,         
+          mt: 2,
+        }}>
+          <Typography variant="body2" sx={{ mt: 2 }}>
+            Para ver los videos de YouTube, acepta las cookies de contenido externo.{" "}
+          </Typography>
+          <Button
+            sx={(theme) => ({
+              backgroundColor: 'blancoPerla.main',
+              color: 'tertiary.main',
+              border: `solid 1px ${theme.palette.tertiary.main}`,
+              "&:hover": {
+                backgroundColor: 'tertiary.main',
+                color: 'blancoPerla.main'
+              }
+            })}
+            onClick={() => window.CookieConsent.showPreferences()}
+          >
+            Gestionar preferencias
+          </Button>
+        </Box>
+      </>
+    );
+  }
+
   return (
-    <>
-      <iframe
-        width="100%"
-        height="315"
-        src={convertirVideoEmbed(url)}
-        title={titulo}
-        style={{ border: 0 }}
-        allowFullScreen
-      ></iframe>
-    </>
+    <iframe
+      width="100%"
+      height="315"
+      src={convertirVideoEmbed(url)}
+      title={titulo}
+      style={{ border: 0 }}
+      allowFullScreen
+    />
   );
 }
-

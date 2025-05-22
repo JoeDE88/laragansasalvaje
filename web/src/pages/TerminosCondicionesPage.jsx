@@ -1,23 +1,23 @@
 import { Box, Typography, Link } from "@mui/material";
+import ResponsiveAppBar from "../components/layout/Appbar";
 
 export default function TerminosCondicionesPage() {
   return (
+    <>
+    <ResponsiveAppBar></ResponsiveAppBar>
     <Box sx={{ p: { xs: 2, md: 4 }, maxWidth: "800px", margin: "auto" }}>
       <Typography variant="h4" gutterBottom>
         Términos y Condiciones de Uso
       </Typography>
-
       <Typography variant="body1" paragraph>
         El presente documento establece los términos y condiciones que regulan el acceso y uso del sitio web, así como las condiciones de compra en la tienda en línea gestionada por la artista Lara Gansa Salvaje.
       </Typography>
-
       <Typography variant="h6" gutterBottom>
         1. Titular del sitio
       </Typography>
       <Typography variant="body2" paragraph>
         Este sitio es gestionado por Lara Gansa Salvaje. Para cualquier consulta, puedes contactar a través de los canales indicados en la sección de contacto.
       </Typography>
-
       <Typography variant="h6" gutterBottom>
         2. Uso del sitio web
       </Typography>
@@ -75,5 +75,6 @@ export default function TerminosCondicionesPage() {
         para más información sobre el tratamiento de datos personales y uso de cookies.
       </Typography>
     </Box>
+    </>
   );
 }

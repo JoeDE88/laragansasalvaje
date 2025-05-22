@@ -1,7 +1,10 @@
 import { Box, Typography, Link } from "@mui/material";
+import ResponsiveAppBar from "../components/layout/Appbar";
 
 export default function CookiesPage() {
   return (
+    <>
+    <ResponsiveAppBar></ResponsiveAppBar>
     <Box sx={{ p: { xs: 2, md: 4 }, maxWidth: "800px", margin: "auto" }}>
       <Typography variant="h4" gutterBottom>
         Política de Cookies
@@ -54,5 +57,6 @@ export default function CookiesPage() {
         para más información sobre el tratamiento de tus datos personales.
       </Typography>
     </Box>
+    </>
   );
 }
