@@ -4,6 +4,7 @@ import EventosPage from "../pages/EventosPage";
 import HomePage from "../pages/HomePage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
 import ShopPage from "../pages/Shop/ShopPage";
+import NotFound from "../pages/NotFound";
 
 export const routeConfig = [
     {
@@ -16,11 +17,11 @@ export const routeConfig = [
         path: "/galeria",
         component: <GaleriaPage />
     },
-    {
+    /* {
         name: "Tienda",
         path: "/tienda",
         component: <ShopPage />
-    },
+    } */,
     {
         name: "Acerca de",
         path: "/acerca-de",
@@ -35,5 +36,10 @@ export const routeConfig = [
         name: "Eventos",
         path: "/eventos",
         component: <EventosPage />
+    },
+    {
+        name: "NotFound",
+        path: "*",
+        component: <NotFound/>
     }
 ]

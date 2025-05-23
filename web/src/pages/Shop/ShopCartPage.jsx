@@ -51,10 +51,10 @@ export default function () {
                                         <Button color="blancoPerla"
                                             sx={{ color: 'tertiary.main' }}
                                             onClick={() => decreaseQuantity(item.id)}>
-                                            <RemoveIcon/>
+                                            <RemoveIcon />
                                         </Button>
-                                        <Box sx={{width:'10px'}}>
-                                        <Typography>{item.cantidad}</Typography>
+                                        <Box sx={{ width: '10px' }}>
+                                            <Typography>{item.cantidad}</Typography>
                                         </Box>
                                         <Button color="blancoPerla" onClick={() => addToShoppingCart(item)}
                                             variant="contained"

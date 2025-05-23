@@ -15,7 +15,7 @@ export default function Carrusel() {
     }, [])
 
     return (
-        <Box sx={{ width: '100%', margin: 'auto', py: 2 }}>
+        <Box sx={{ width: '100%', margin: 'auto' }}>
             <Carousel autoplay autoplaySpeed={5000} adaptiveHeight={true} dots={false} fade={true}>
                 {obras.map((obra, index) => {
                     return (
