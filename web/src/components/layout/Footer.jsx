@@ -5,7 +5,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function () {
     return (
-        <Box sx={{ height: '100%', backgroundColor: 'blancoPerla.main', filter: 'brightness(90%)'}}>
+        <Box sx={{backgroundColor: 'blancoPerla.main', filter: 'brightness(90%)'}}>
             <Box justifyContent='center' sx={{ textAlign: 'center', marginTop: 3 }}>
                 <Typography variant="h5">Contact me:</Typography>
             </Box>
@@ -37,6 +37,11 @@ export default function () {
                     <Grid size={{ xs: 12, md: 4, lg: 4 }}>
                         <Link href="/terminos-y-condiciones" underline="hover">
                             Términos y Condiciones
+                        </Link>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                        <Link href="/politica-de-cookies" underline="hover">
+                            Política de Cookies
                         </Link>
                     </Grid>
                 </Typography>

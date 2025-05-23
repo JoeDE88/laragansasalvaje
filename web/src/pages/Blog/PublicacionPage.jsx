@@ -1,16 +1,14 @@
-
 import PublicacionCard from "../../components/blog/views/PublicacionCard";
-import ResponsiveAppBar from "../../components/layout/Appbar";
-import Footer from "../../components/layout/Footer";
+import Layout from "../../components/layout/Layout";
 import ShoppingCart from "../../components/store/ShoppingCart";
 
 export default function PublicacionPage() {
     return (
         <>
-            <ResponsiveAppBar></ResponsiveAppBar>
-            <PublicacionCard></PublicacionCard>
-            <ShoppingCart></ShoppingCart>
-            <Footer />
+            <Layout>
+                <PublicacionCard></PublicacionCard>
+                <ShoppingCart></ShoppingCart>
+            </Layout>
         </>
     )
 }

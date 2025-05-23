@@ -10,11 +10,11 @@ export const routeAppBar = [
         path: "/galeria",
         component: <GaleriaPage />
     },
-    {
+    /* {
         name: "Tienda",
         path: "/tienda",
         component: <ShopPage />
-    },
+    } */,
     {
         name: "Mi Espacio",
         path: "/mi-espacio",
