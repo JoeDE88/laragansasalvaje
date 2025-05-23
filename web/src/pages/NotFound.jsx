@@ -1,6 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import ResponsiveAppBar from "../components/layout/Appbar";
-import Footer from "../components/layout/Footer";
 import Layout from "../components/layout/Layout";
 
 export default function NotFound (){
