@@ -2,7 +2,6 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
@@ -10,6 +9,8 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from "react-router";
 import { routeAppBar } from '../../routes/routeAppBar';
+import Logo from "../../assets/logo/Logo.png"
+import { Card, CardMedia } from '@mui/material';
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -25,7 +26,7 @@ function ResponsiveAppBar() {
   return (
     <AppBar position="static" color='blancoPerla' elevation={0} sx={{ mb: 4 }}>
       <Container maxWidth="xl">
-        <Toolbar >
+        <Toolbar sx={{ position: 'relative' }}>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <Button
               size="large"
@@ -94,10 +95,24 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton component={NavLink} to="/" sx={{ p: 0 }}>
-              <Typography sx={{ color: 'secondary.main' }}>LOGO</Typography>
-            </IconButton>
+          <Box
+            sx={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <Button component={NavLink} to="/">
+              <Card sx={{ backgroundColor: 'transparent', boxShadow: 'none',marginTop:2 }}>
+                <CardMedia
+                  component="img"
+                  src={Logo}
+                  alt="Logo"
+                  sx={{ height: 100, width: 200, objectFit: 'contain' }}
+                />
+              </Card>
+            </Button>
           </Box>
         </Toolbar>
       </Container>
