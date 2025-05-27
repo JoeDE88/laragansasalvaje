@@ -28,7 +28,12 @@ SECRET_KEY = os.getenv("SECRET_KEY","clave_por_defecto_para_dev")
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
-ALLOWED_HOSTS = ['.localhost','127.0.0.1','laragansasalvaje.onrender.com']
+ALLOWED_HOSTS = ['.localhost',
+    '127.0.0.1',
+    'laragansasalvaje.onrender.com',
+    'laragansasalvaje.com',
+    'www.laragansasalvaje.com'
+    ]
 
 
 # Application definition
