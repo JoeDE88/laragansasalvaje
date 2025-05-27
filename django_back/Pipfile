@@ -9,6 +9,7 @@ pillow = "*"
 django-cors-headers = "*"
 tzdata = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
