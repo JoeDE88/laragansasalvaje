@@ -6,6 +6,8 @@ from .models import Perfil
 # Register your models here.
 
 class ReadOnlyUserAdmin(DefaultUserAdmin):
+    add_fieldsets = DefaultUserAdmin.add_fieldsets
+
     def has_add_permission(self, request):
         return request.user.is_superuser
     
