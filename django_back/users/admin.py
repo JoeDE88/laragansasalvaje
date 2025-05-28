@@ -7,7 +7,7 @@ from .models import Perfil
 
 class ReadOnlyUserAdmin(DefaultUserAdmin):
     def has_add_permission(self, request):
-        return False
+        return request.user.is_superuser
     
     def has_change_permission(self, request, obj = None):
         return request.user.is_superuser
@@ -21,7 +21,7 @@ admin.site.register(User,ReadOnlyUserAdmin)
 
 class ReadOnlyPerfilAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        return False
+        return request.user.is_superuser
 
     def has_change_permission(self, request, obj=None):
         return request.user.is_superuser
