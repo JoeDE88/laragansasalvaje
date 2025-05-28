@@ -11,6 +11,8 @@ tzdata = "*"
 gunicorn = "*"
 whitenoise = "*"
 python-decouple = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
