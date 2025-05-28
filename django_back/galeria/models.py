@@ -32,7 +32,7 @@ class Obra(models.Model):
         validators=[
             MinValueValidator(1900),
             MaxValueValidator(datetime.now().year)],
-            help_text="Utiliza este formato: <YYYY>"
+            help_text="Utiliza este formato: YYYY"
     )
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE,related_name='obras',null=True)
 
