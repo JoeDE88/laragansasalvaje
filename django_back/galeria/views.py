@@ -88,3 +88,11 @@ def crear_obra(request):
         'message':'Obra creada',
         'obra_id':nueva_obra.id
     }, status=201)
+
+from django.conf import settings
+
+def verificar_storage(request):
+    return JsonResponse({
+        "USE_CLOUDINARY": settings.USE_CLOUDINARY,
+        "DEFAULT_FILE_STORAGE": settings.DEFAULT_FILE_STORAGE
+    })
