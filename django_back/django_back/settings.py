@@ -157,8 +157,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 USE_CLOUDINARY = os.getenv('USE_CLOUDINARY','False') == 'True'
 print(f"USE_CLOUDINARY es: {USE_CLOUDINARY}")
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 if USE_CLOUDINARY:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
