@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django_back.utils import resize_image
 from django.core.validators import FileExtensionValidator
 from django.core.exceptions import ValidationError
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Publicacion(models.Model):
@@ -16,7 +17,7 @@ class Publicacion(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     tipo = models.CharField(max_length=10,choices=TIPOS_CONTENIDO,default='articulo')
     contenido = models.TextField(blank=True,null=True)
-    imagen_destacada = models.ImageField(upload_to='blog/',blank=True,null=True)
+    imagen_destacada = CloudinaryField('image', blank=True, null=True)
     url_video = models.URLField(blank=True, null=True)
     etiqueta = models.CharField(max_length=20)
     creado_en = models.DateTimeField(auto_now_add=True)

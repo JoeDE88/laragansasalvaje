@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
+from cloudinary.models import CloudinaryField
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -27,7 +28,7 @@ class Obra(models.Model):
     descripción = models.TextField(blank=True)
     tecnica = models.CharField(max_length=100)
     dimensiones = models.CharField(max_length=50)
-    imagen = models.ImageField(upload_to='galeria/')
+    imagen = CloudinaryField('image')
     creado_en = models.PositiveIntegerField(
         validators=[
             MinValueValidator(1900),
