@@ -5,5 +5,5 @@ class GaleriaConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'galeria'
 
-def ready(self):
-    import galeria.signals
+    def ready(self):
+        import galeria.signals

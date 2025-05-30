@@ -54,10 +54,10 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'users',
-    'blog',
-    'shop',
-    'galeria',
-    'eventos',
+    'blog.apps.BlogConfig',
+    'shop.apps.ShopConfig',
+    'galeria.apps.GaleriaConfig',
+    'eventos.apps.EventosConfig',
     'corsheaders'
 ]
 
@@ -155,7 +155,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #definiendo las rutas donde se guardarán las imagenes
 USE_CLOUDINARY = os.getenv('USE_CLOUDINARY','False') == 'True'
-print(f"USE_CLOUDINARY es: {USE_CLOUDINARY}")
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 if USE_CLOUDINARY:
