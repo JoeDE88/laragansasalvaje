@@ -72,7 +72,10 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware"
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://laragansasalvaje.com",
+    "https://www.laragansasalvaje.com",
+]
 
 ROOT_URLCONF = "django_back.urls"
 
