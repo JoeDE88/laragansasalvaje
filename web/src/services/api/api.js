@@ -1,2 +1,2 @@
-export const baseURL = 'https://www.laragansasalvaje.com/'
+export const baseURL = 'https://api.laragansasalvaje.com/'
 

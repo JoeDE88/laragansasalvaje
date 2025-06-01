@@ -74,6 +74,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://laragansasalvaje.com",
     "https://www.laragansasalvaje.com",
+    "http://localhost:5173"
 ]
 
 ROOT_URLCONF = "django_back.urls"
