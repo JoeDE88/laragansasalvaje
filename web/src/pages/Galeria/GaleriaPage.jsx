@@ -4,6 +4,7 @@ import GalleryGrid from "../../components/obras/structure/GalleryGrid";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import { baseURL } from "../../services/api/api";
 import Layout from "../../components/layout/Layout";
+import { Box, Typography } from "@mui/material";
 
 export default function GaleriaPage() {
 
@@ -21,7 +22,23 @@ export default function GaleriaPage() {
         <>
             <Layout>
                 <Titulo titulo={'Galeria'}></Titulo>
-                <GalleryGrid obras={obras}></GalleryGrid>
+                {obras.length === 0 ? (
+                    <Box
+                        sx={{
+                            height: "100vh",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            textAlign: "center",
+                        }}
+                    >
+                        <Typography variant="h5">
+                            La página se abrirá cuando el Gansismo surja.
+                        </Typography>
+                    </Box>
+                ) : (
+                    <GalleryGrid obras={obras}></GalleryGrid>
+                )}
                 <ShoppingCart></ShoppingCart>
             </Layout>
         </>
