@@ -10,7 +10,7 @@ export default function GalleryGrid({ obras }) {
             {obras.map((obra, index) => {
                 return (
                     <Grid key={index} component={NavLink} to={`/obras/${obra.categoria_slug}`} size={{ xs: 12, md: 6, lg: 6 }} sx={{ mb: 3, textDecoration: 'none' }}>
-                        <GalleryCard titulo={obra.nombre ? obra.nombre : obra.categoria} image={`${baseURL}${obra.imagen}`} color={'blancoPerla.main'}></GalleryCard>
+                        <GalleryCard titulo={obra.nombre ? obra.nombre : obra.categoria} image={`${obra.imagen}`} color={'blancoPerla.main'}></GalleryCard>
                     </Grid>
                 )
             })}

@@ -30,7 +30,7 @@ export default function EventoCard() {
                             <Card key={index} sx={{ margin: 'auto', backgroundColor: 'blancoPerla.main' }}>
                                 <CardMedia
                                     component='img'
-                                    image={`${baseURL}${evento.imagen}`}
+                                    image={`${evento.imagen}`}
                                     sx={{
                                         width: '100%',
                                         height: 'auto',

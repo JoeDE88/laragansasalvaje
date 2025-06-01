@@ -27,7 +27,7 @@ export default function TiendaGrid() {
                         sx={{ mb: 4, textDecoration: "none" }}
                     >
                         <TiendaCard
-                            image={`${baseURL}${producto.imagen}`}
+                            image={`${producto.imagen}`}
                             nombre={producto.nombre}
                             precio={producto.precio}
                             color={"blancoPerla.main"}

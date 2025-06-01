@@ -38,7 +38,7 @@ export default function ProductPage() {
                         }}>
                             <Box
                                 component='img'
-                                src={`${baseURL}${producto.imagen}`}
+                                src={`${producto.imagen}`}
                                 sx={{
                                     maxHeight: '100%',
                                     maxWidth: '100%',

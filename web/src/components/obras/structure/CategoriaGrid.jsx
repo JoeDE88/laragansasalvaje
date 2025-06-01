@@ -64,7 +64,7 @@ export default function CategoriaGrid({ obras }) {
                     return (
                         <>
                             <Grid key={index} onClick={() => handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
-                                <CategoriaCard image={`${baseURL}${obra.imagen}`} ></CategoriaCard>
+                                <CategoriaCard image={`${obra.imagen}`} ></CategoriaCard>
                             </Grid>
                         </>
                     )

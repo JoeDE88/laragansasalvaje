@@ -41,7 +41,7 @@ export default function PublicacionCard() {
         }}>
           <Box
             component='img'
-            src={`${baseURL}${articulo.imagen_destacada}`}
+            src={`${articulo.imagen_destacada}`}
             sx={{
               maxWidth: 'lg',
               objectFit: 'contain'

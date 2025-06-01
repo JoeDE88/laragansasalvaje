@@ -22,7 +22,7 @@ export default function () {
                             <Box sx={{ display: 'flex' }}>
                                 <Box
                                     component='img'
-                                    src={`${baseURL}${item.imagen}`}
+                                    src={`${item.imagen}`}
                                     sx={{ width: '150px', objectFit: 'cover' }}
                                 />
                                 <Stack direction={'column'} width={'100%'} justifyContent={'space-between'}>

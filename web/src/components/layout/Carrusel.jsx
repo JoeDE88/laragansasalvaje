@@ -26,7 +26,7 @@ export default function Carrusel() {
                                     height: '100%',
                                     objectFit: 'contain',
                                     display: 'block'
-                                }} src={`${baseURL}${obra.imagen}`}></img>
+                                }} src={`${obra.imagen}`}></img>
                         </Box>
                     )
                 })}
