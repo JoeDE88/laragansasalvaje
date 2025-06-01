@@ -40,7 +40,6 @@ ALLOWED_HOSTS = ['.localhost',
     'api.laragansasalvaje.com',
     ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
