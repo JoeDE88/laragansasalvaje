@@ -5,7 +5,7 @@ const ShoppingCartContext = createContext({
     cantidad: 0,
     addToShoppingCart: () => { },
     removeFromShoppingCart: () => { },
-    decreaseQuantity: ()=>{},
+    decreaseQuantity: () => { },
 })
 
 export const ShoppingCartProvider = ({ children }) => {
@@ -26,15 +26,15 @@ export const ShoppingCartProvider = ({ children }) => {
     }
 
     const decreaseQuantity = (itemID) => {
-        setShoppingCart((prevCart)=> {
-            const item = prevCart.find((producto)=> producto.id === itemID)
+        setShoppingCart((prevCart) => {
+            const item = prevCart.find((producto) => producto.id === itemID)
 
-            if (item && item.cantidad > 1){
-                return prevCart.map((producto)=> 
-                    producto.id === itemID ? {...producto,cantidad:producto.cantidad -1}: producto
+            if (item && item.cantidad > 1) {
+                return prevCart.map((producto) =>
+                    producto.id === itemID ? { ...producto, cantidad: producto.cantidad - 1 } : producto
                 )
             } else {
-                return prevCart.filter((producto)=> producto.id !== itemID)
+                return prevCart.filter((producto) => producto.id !== itemID)
             }
         })
     }
@@ -44,7 +44,7 @@ export const ShoppingCartProvider = ({ children }) => {
     };
 
     return (
-        <ShoppingCartContext.Provider value={{ shoppingCart, addToShoppingCart, removeFromShoppingCart, cantidad, setCantidad,decreaseQuantity }}>
+        <ShoppingCartContext.Provider value={{ shoppingCart, addToShoppingCart, removeFromShoppingCart, cantidad, setCantidad, decreaseQuantity }}>
             {children}
         </ShoppingCartContext.Provider>
     )
