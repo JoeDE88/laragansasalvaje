@@ -7,7 +7,7 @@ export default function () {
     return (
         <Box sx={{backgroundColor: 'blancoPerla.main', filter: 'brightness(90%)'}}>
             <Box justifyContent='center' sx={{ textAlign: 'center', marginTop: 3 }}>
-                <Typography variant="h5">Contact me:</Typography>
+                <Typography variant="h5">Contáctame:</Typography>
             </Box>
             <Grid container spacing={0.5} sx={{ mt: 2.5, textAlign: 'center', m: 4 }}>
                 <Grid size={{ xs: 12, md: 4, lg: 4 }}>

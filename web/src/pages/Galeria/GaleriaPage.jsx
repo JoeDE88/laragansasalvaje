@@ -32,7 +32,7 @@ export default function GaleriaPage() {
                             textAlign: "center",
                         }}
                     >
-                        <Typography variant="h5">
+                        <Typography variant="h3">
                             La página se abrirá cuando el Gansismo surja.
                         </Typography>
                     </Box>
