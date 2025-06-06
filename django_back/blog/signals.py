@@ -8,7 +8,10 @@ from .models import Publicacion
 
 @receiver(post_delete,sender=Publicacion)
 def eliminar_imagen_cloudinary(sender,instance, **kwargs):
-    if instance.imagen:
-        public_id = instance.imagen.public_id
-        if public_id:
-            cloudinary.uploader.destroy(public_id)
+    try:
+        if instance.imagen_destacada:
+            public_id = instance.imagen_destacada.public_id
+            if public_id:
+                cloudinary.uploader.destroy(public_id)
+    except Exception as e:
+        print(f'Error al eliminar imagen de Cloudinary: {e}')

@@ -53,7 +53,7 @@ export default function RenderVideo({ url, titulo }) {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: 1,         
+          gap: 1,
           mt: 2,
         }}>
           <Typography variant="body2" sx={{ mt: 2 }}>
@@ -79,13 +79,30 @@ export default function RenderVideo({ url, titulo }) {
   }
 
   return (
-    <iframe
-      width="100%"
-      height="315"
-      src={convertirVideoEmbed(url)}
-      title={titulo}
-      style={{ border: 0 }}
-      allowFullScreen
-    />
+    <>
+      <Box sx={{
+        position: 'relative',
+        width: '60%',           // Un poco más del 50%
+        paddingBottom: '33.75%', // 16:9 aspect ratio con 60% de ancho (60% * 9 / 16 = 33.75%)
+        height: 0,
+        overflow: 'hidden',
+        maxWidth: '100%',       // Para que no se desborde en pantallas pequeñas
+        margin: '0 auto'
+      }}>
+        <iframe
+          src={convertirVideoEmbed(url)}
+          title={titulo}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 0,
+          }}
+          allowFullScreen
+        />
+      </Box>
+    </>
   );
 }
