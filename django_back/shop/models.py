@@ -32,7 +32,7 @@ class Producto(models.Model):
             self.slug = slug
         super().save(*args, **kwargs)
 
-        if self.imagen:
+        if hasattr(self.imagen, 'path'):
             resize_image(self.imagen.path)
 
     

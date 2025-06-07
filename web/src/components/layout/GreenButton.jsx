@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
 
-export default function GreenButton(texto){
+export default function GreenButton({texto,onClick}){
     return (
         <Button
+        onClick={onClick}
         variant="contained"
         size="large"
         sx={(theme)=>({

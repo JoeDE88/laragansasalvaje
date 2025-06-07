@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-const blancoPerla = '#FFFAF0'
+const blancoPerla = '#E3D9C7'
 
 export const theme = createTheme({
     palette: {

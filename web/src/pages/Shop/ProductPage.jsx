@@ -7,6 +7,7 @@ import { baseURL } from "../../services/api/api";
 import Titulo from "../../components/layout/Titulo";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import Layout from "../../components/layout/Layout";
+import GreenButton from "../../components/layout/GreenButton";
 
 export default function ProductPage() {
     const [producto, setProducto] = useState([])
@@ -18,6 +19,8 @@ export default function ProductPage() {
         fetch(`${baseURL}shop/productos/${slug}`)
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
+                
                 setProducto(data)
             })
     }, [])
@@ -83,21 +86,7 @@ export default function ProductPage() {
                                     sm: 3
                                 }
                             }}>
-                                <Button
-                                    onClick={() => { addToShoppingCart({ ...producto, cantidad }) }}
-                                    variant="contained"
-                                    size="large"
-                                    sx={(theme) => ({
-                                        backgroundColor: 'blancoPerla.main',
-                                        color: 'tertiary.main',
-                                        border: `solid 1px ${theme.palette.tertiary.main}`,
-                                        "&:hover": {
-                                            backgroundColor: 'tertiary.main',
-                                            color: 'blancoPerla.main'
-                                        }
-                                    })}
-                                    disableElevation
-                                >Add to cart</Button>
+                                <GreenButton onClick={() => { addToShoppingCart({ ...producto, cantidad }) }}  texto={'Add to Cart'}/>
                             </Box>
                         </Box>
                     </Stack>

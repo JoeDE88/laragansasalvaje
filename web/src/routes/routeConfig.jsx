@@ -18,11 +18,11 @@ export const routeConfig = [
         path: "/galeria",
         component: <GaleriaPage />
     },
-     {
+     /* {
         name: "Tienda",
         path: "/tienda",
         component: <ShopPage />
-    } ,
+    }  */,
     {
         name: "Acerca de",
         path: "/acerca-de",
