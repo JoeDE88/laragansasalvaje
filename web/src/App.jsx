@@ -10,27 +10,30 @@ import PrivacidadPage from "./pages/PrivacidadPage";
 import CookiesPage from "./pages/CookiesPage";
 import TerminosCondicionesPage from "./pages/TerminosCondicionesPage";
 import './assets/css/cookieconsent-style.css'
+import { AdminProvider } from "./context/AdminContext";
 
 function App() {
 
   return (
     <>
-      <ShoppingCartProvider>
-        <Routes>
-          {routeConfig.map((route) => {
-            return (
-              <Route key={route.name} path={route.path} element={route.component} />
-            )
-          })}
-          <Route path="shop/:slug" element={<ProductPage />} />
-          <Route path="blog/publicaciones/:slug" element={<PublicacionPage />} />
-          <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
-          <Route path="carrito/" element={<ShopCartPage />} />
-          <Route path="politica-de-privacidad" element={<PrivacidadPage></PrivacidadPage>} />
-          <Route path='politica-de-cookies' element={<CookiesPage></CookiesPage>} />
-          <Route path='terminos-y-condiciones' element={<TerminosCondicionesPage></TerminosCondicionesPage>} />
-        </Routes>
-      </ShoppingCartProvider>
+      <AdminProvider>
+        <ShoppingCartProvider>
+          <Routes>
+            {routeConfig.map((route) => {
+              return (
+                <Route key={route.name} path={route.path} element={route.component} />
+              )
+            })}
+            <Route path="shop/:slug" element={<ProductPage />} />
+            <Route path="blog/publicaciones/:slug" element={<PublicacionPage />} />
+            <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
+            <Route path="carrito/" element={<ShopCartPage />} />
+            <Route path="politica-de-privacidad" element={<PrivacidadPage></PrivacidadPage>} />
+            <Route path='politica-de-cookies' element={<CookiesPage></CookiesPage>} />
+            <Route path='terminos-y-condiciones' element={<TerminosCondicionesPage></TerminosCondicionesPage>} />
+          </Routes>
+        </ShoppingCartProvider>
+      </AdminProvider>
     </>
   )
 }

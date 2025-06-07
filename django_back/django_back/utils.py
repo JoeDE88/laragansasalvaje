@@ -22,7 +22,7 @@ def get_user_from_token(token):
         payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM])
 
         user = User.objects.get(id=payload['user_id'])
-        return User
+        return user
     
     except (jwt.ExpiredSignatureError, jwt.InvalidTokenError, User.DoesNotExist):
         return None

@@ -1,5 +1,4 @@
 import { Box, Typography, Link } from "@mui/material";
-import ResponsiveAppBar from "../components/layout/Appbar";
 import Layout from "../components/layout/Layout";
 
 export default function CookiesPage() {

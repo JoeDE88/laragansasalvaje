@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
 import ShopPage from "../pages/Shop/ShopPage";
 import NotFound from "../pages/NotFound";
+import LoginPage from "../pages/LoginPage";
 
 export const routeConfig = [
     {
@@ -17,11 +18,11 @@ export const routeConfig = [
         path: "/galeria",
         component: <GaleriaPage />
     },
-    /* {
+     {
         name: "Tienda",
         path: "/tienda",
         component: <ShopPage />
-    } */,
+    } ,
     {
         name: "Acerca de",
         path: "/acerca-de",
@@ -37,6 +38,12 @@ export const routeConfig = [
         path: "/eventos",
         component: <EventosPage />
     },
+    {
+        name: 'Login',
+        path: '/login',
+        component : <LoginPage></LoginPage>
+    }
+    ,
     {
         name: "NotFound",
         path: "*",
