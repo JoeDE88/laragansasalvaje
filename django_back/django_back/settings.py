@@ -18,10 +18,13 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from dotenv import load_dotenv
+import dj_database_url
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
 SECRET_KEY = os.getenv("SECRET_KEY","clave_por_defecto_para_dev")
 
@@ -92,8 +95,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "django_back.wsgi.application"
 
-DATABASES = {
-    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+if ENVIRONMENT == "production":
+    DATABASES = {
+        "default": dj_database_url.config(default=os.getenv("DATABASE_URL"), conn_max_age=600, ssl_require=True)
+        }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / "db.sqlite3"
+        }
     }
 
 
