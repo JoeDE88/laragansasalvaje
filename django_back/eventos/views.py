@@ -17,7 +17,7 @@ def eventos_list(request):
             'id': evento.id,
             'nombre': evento.nombre,
             'descripcion': evento.descripcion,
-            'imagen': evento.imagen.url,
+            'imagen': evento.imagen.url if evento.imagen else None,
             'creado_en': evento.creado_en,
             'slug': evento.slug
         })

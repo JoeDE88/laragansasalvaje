@@ -6,10 +6,9 @@ export default function EventoCard() {
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}eventos/todos/`)
+        fetch(`${baseURL}eventos/lista-eventos/`)
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data);
                 setEventos(data)
             })
     }, [])
