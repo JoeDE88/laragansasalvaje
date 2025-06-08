@@ -31,9 +31,9 @@ export const routeAppBar = [
         path: "/acerca-de",
         component: <AboutPage />
     },
-    {
+   /*  {
         name: "Login",
         path: "/login",
         component: <LoginPage></LoginPage>
-    }
+    } */
 ]

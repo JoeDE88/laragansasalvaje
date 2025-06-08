@@ -22,12 +22,7 @@ class Publicacion(models.Model):
     etiqueta = models.CharField(max_length=20)
     creado_en = models.DateTimeField(auto_now_add=True)
     actualizado_en = models.DateTimeField(auto_now=True)
-    archivo_video = models.FileField(
-        upload_to='videos/',
-        blank=True,
-        null=True,
-        validators=[FileExtensionValidator(allowed_extensions=['mp4','mov','webm'])]
-    )
+    archivo_video = CloudinaryField('video',blank=True,null=True)
 
     class Meta:
         ordering = ['creado_en']

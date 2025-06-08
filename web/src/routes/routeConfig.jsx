@@ -38,11 +38,11 @@ export const routeConfig = [
         path: "/eventos",
         component: <EventosPage />
     },
-    {
+    /* {
         name: 'Login',
         path: '/login',
         component : <LoginPage></LoginPage>
-    }
+    } */
     ,
     {
         name: "NotFound",
