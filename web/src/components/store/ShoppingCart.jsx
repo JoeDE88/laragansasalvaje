@@ -17,7 +17,7 @@ export default function ShoppingCart() {
             <Box
                 position={'sticky'}
                 component={NavLink}
-                to='/carrito/'
+                to='/carrito'
                 sx={{
                     display: 'flex',
                     alignItems: 'center',

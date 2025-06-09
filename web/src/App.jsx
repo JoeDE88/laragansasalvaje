@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
 import './App.css'
-import { routeConfig } from "./routes/routeConfig";
+import { publicRoutes, privateRoutes } from "./routes/routeConfig";
 import ProductPage from "./pages/Shop/ProductPage";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import ShopCartPage from "./pages/Shop/ShopCartPage";
@@ -11,6 +11,7 @@ import CookiesPage from "./pages/CookiesPage";
 import TerminosCondicionesPage from "./pages/TerminosCondicionesPage";
 import './assets/css/cookieconsent-style.css'
 import { AdminProvider } from "./context/AdminContext";
+import PrivateRoute from "./components/admin/PrivateRoute";
 
 function App() {
 
@@ -19,18 +20,16 @@ function App() {
       <AdminProvider>
         <ShoppingCartProvider>
           <Routes>
-            {routeConfig.map((route) => {
+            {publicRoutes.map((route) => {
               return (
                 <Route key={route.name} path={route.path} element={route.component} />
               )
             })}
-            <Route path="shop/:slug" element={<ProductPage />} />
-            <Route path="blog/publicaciones/:slug" element={<PublicacionPage />} />
-            <Route path="obras/:slug" element={<CategoriaPage></CategoriaPage>} />
-            <Route path="carrito/" element={<ShopCartPage />} />
-            <Route path="politica-de-privacidad" element={<PrivacidadPage></PrivacidadPage>} />
-            <Route path='politica-de-cookies' element={<CookiesPage></CookiesPage>} />
-            <Route path='terminos-y-condiciones' element={<TerminosCondicionesPage></TerminosCondicionesPage>} />
+            {privateRoutes.map((route)=>{
+              return (
+                <Route key={route.name} path={route.path} element={<PrivateRoute>{route.component}</PrivateRoute>} />
+              )
+            })}
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

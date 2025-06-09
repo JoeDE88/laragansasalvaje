@@ -2,7 +2,6 @@ import AboutPage from "../pages/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
-import LoginPage from "../pages/LoginPage";
 import ShopPage from "../pages/Shop/ShopPage";
 
 export const routeAppBar = [
@@ -31,9 +30,4 @@ export const routeAppBar = [
         path: "/acerca-de",
         component: <AboutPage />
     },
-   /*  {
-        name: "Login",
-        path: "/login",
-        component: <LoginPage></LoginPage>
-    } */
 ]

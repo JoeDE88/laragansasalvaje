@@ -59,6 +59,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -66,8 +67,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware"
+    "django.middleware.clickjacking.XFrameOptionsMiddleware"
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -75,6 +75,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.laragansasalvaje.com",
     "http://localhost:5173"
 ]
+
 
 ROOT_URLCONF = "django_back.urls"
 
