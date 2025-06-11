@@ -32,8 +32,8 @@ JWT_SECRET = SECRET_KEY
 JWT_ALGORITHM = 'HS256'
 JWT_EXP_DELTA_SECONDS = 3600
 
-DEBUG = True
-# DEBUG = os.getenv("DEBUG", "False") == "True"
+
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['.localhost',
     '127.0.0.1',
