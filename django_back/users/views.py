@@ -27,28 +27,3 @@ def login_view(request):
     
     token = generate_jwt(user)
     return JsonResponse({'token':token})
-
-User = get_user_model()
-
-@csrf_exempt
-def create_superuser(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            username = data.get('username')
-            email = data.get('email')
-            password = data.get('password')
-
-            if not username or not email or not password:
-                return JsonResponse({'error': 'Faltan datos.'}, status=400)
-
-            if User.objects.filter(username=username).exists():
-                return JsonResponse({'error': 'El usuario ya existe.'}, status=400)
-
-            User.objects.create_superuser(username=username, email=email, password=password)
-            return JsonResponse({'message': 'Superuser creado correctamente.'}, status=201)
-
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-
-    return JsonResponse({'error': 'Solo se permiten peticiones POST.'}, status=405)
