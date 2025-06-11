@@ -102,5 +102,10 @@ export const privateRoutes = [
         name: 'Dashboard',
         path: '/dashboard',
         component : <DashBoard></DashBoard>
+    },
+    {
+        name: 'Obras',
+        path: '/obras',
+        component : <DashBoard></DashBoard>
     }
 ]

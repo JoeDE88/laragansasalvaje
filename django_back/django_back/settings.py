@@ -32,6 +32,7 @@ JWT_SECRET = SECRET_KEY
 JWT_ALGORITHM = 'HS256'
 JWT_EXP_DELTA_SECONDS = 3600
 
+# DEBUG = True
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['.localhost',
@@ -75,6 +76,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.laragansasalvaje.com",
     "http://localhost:5173"
 ]
+
+#CORS_ALLOW_ALL_ORIGINS = True
 
 
 ROOT_URLCONF = "django_back.urls"

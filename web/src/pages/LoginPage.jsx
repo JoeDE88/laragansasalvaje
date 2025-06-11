@@ -20,11 +20,16 @@ export default function LoginPage() {
         }
     }, [isAuth,navigate])
 
+    const handleLogin = ( e ) => {
+        if (e.key === 'Enter' || e.keyCode === 13){
+            login(loginUsername, loginPassword)
+        }
+    }
+
     return (
         <>
         <Titulo titulo={'Admin'}/>
             <Box sx={{ height: "100vh", display: 'flex', justifyContent: 'center'}}>
-
                 <Box
                     component="form"
                     sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
@@ -38,6 +43,7 @@ export default function LoginPage() {
                             label="Username"
                             value={loginUsername}
                             onChange={(e)=>setLoginUsername(e.target.value)}
+                            onKeyDown={(e)=>{handleLogin(e)}}
                         />
                     </div>
                     <div>
@@ -48,10 +54,11 @@ export default function LoginPage() {
                             type="password"
                             value={loginPassword}
                             onChange={(e)=>setLoginPassword(e.target.value)}
+                            onKeyDown={(e)=>{handleLogin(e)}}
                         />
                     </div>
                     <Box sx={{display:'flex',justifyContent:'center'}}>
-                        <GreenButton texto={'Login'} onClick={()=> login(loginUsername,loginPassword)}/>
+                        <GreenButton texto={'Login'} onClick={()=>login(loginUsername,loginPassword)}/>
                     </Box>
                 </Box>
             </Box>

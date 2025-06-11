@@ -2,12 +2,13 @@ from django.shortcuts import render
 import json
 from django.http import JsonResponse, Http404
 from .models import Obra, Categoria
+from django_back.utils import jwt_required, get_user_from_token
 
 #descomenta la siguiente linea si quieres hacer POST DE PRUEBA DESDE POSTMAN
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 #descomenta la siguiente linea si quieres hacer POST DE PRUEBA DESDE POSTMAN
-#@csrf_exempt
+@csrf_exempt
 def listado_obras(request):
     if request.method == 'GET':
         data = []
@@ -15,6 +16,7 @@ def listado_obras(request):
 
         for obra in obras:
             data.append({
+                'nombre':obra.nombre,
                 'imagen':obra.imagen.url
             })
 
@@ -60,34 +62,38 @@ def primeras_obras_por_categoria(request):
                     'imagen': primera_obra.imagen.url
                 })
         return JsonResponse(data, safe=False)
-    
+
+@csrf_exempt
+@jwt_required
 def crear_obra(request):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
-        descripción = request.POST.get('descripción')
+        descripción = request.POST.get('descripcion')
         tecnica = request.POST.get('tecnica')
         dimensiones = request.POST.get('dimensiones')
         imagen = request.FILES.get('imagen')
         categoria_nombre = request.POST.get('categoria')
+        creado_en = request.POST.get('creado_en')
 
-    try:
-        categoria = Categoria.objects.get(nombre=categoria_nombre)
-    except Categoria.DoesNotExist:
-        categoria = Categoria.objects.create(nombre=categoria_nombre)
+        try:
+            categoria = Categoria.objects.get(nombre=categoria_nombre)
+        except Categoria.DoesNotExist:
+            categoria = Categoria.objects.create(nombre=categoria_nombre)
 
-    nueva_obra = Obra.objects.create(
-        nombre=nombre,
-        descripción=descripción,
-        tecnica=tecnica,
-        dimensiones=dimensiones,
-        imagen=imagen,
-        categoria=categoria
-    )
+        nueva_obra = Obra.objects.create(
+            nombre=nombre,
+            descripción=descripción,
+            tecnica=tecnica,
+            dimensiones=dimensiones,
+            imagen=imagen,
+            categoria=categoria,
+            creado_en=creado_en
+        )
 
-    return JsonResponse({
-        'message':'Obra creada',
-        'obra_id':nueva_obra.id
-    }, status=201)
+        return JsonResponse({
+            'message':'Obra creada',
+            'obra_id':nueva_obra.id
+        }, status=201)
 
 from django.conf import settings
 

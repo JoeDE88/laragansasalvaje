@@ -104,7 +104,7 @@ function ResponsiveAppBar() {
             }}
           >
             <Button component={NavLink} to="/">
-              <Card sx={{ backgroundColor: 'transparent', boxShadow: 'none',marginTop:2 }}>
+              <Card sx={{ backgroundColor: 'transparent', boxShadow: 'none', marginTop: 2 }}>
                 <CardMedia
                   component="img"
                   src={Logo}
