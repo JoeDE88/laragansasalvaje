@@ -32,18 +32,23 @@ User = get_user_model()
 
 @csrf_exempt
 def create_superuser(request):
-    if User.objects.filter(is_superuser=True).exists():
-        return JsonResponse({'error': 'Superuser already exists'}, status=400)
-
     if request.method == 'POST':
-        # ⚠️ Estos datos solo deben pasarse una vez.
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        try:
+            data = json.loads(request.body)
+            username = data.get('username')
+            email = data.get('email')
+            password = data.get('password')
 
-        if email and password:
-            user = User.objects.create_superuser(email=email, password=password)
-            return JsonResponse({'message': 'Superuser created successfully'})
+            if not username or not email or not password:
+                return JsonResponse({'error': 'Faltan datos.'}, status=400)
 
-        return JsonResponse({'error': 'Email and password required'}, status=400)
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({'error': 'El usuario ya existe.'}, status=400)
 
-    return JsonResponse({'error': 'Only POST allowed'}, status=405)
+            User.objects.create_superuser(username=username, email=email, password=password)
+            return JsonResponse({'message': 'Superuser creado correctamente.'}, status=201)
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Solo se permiten peticiones POST.'}, status=405)
