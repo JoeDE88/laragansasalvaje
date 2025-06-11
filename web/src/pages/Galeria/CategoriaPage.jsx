@@ -14,7 +14,7 @@ export default function CategoriaPage() {
     const [categoria, setCategoria] = useState('')
 
     useEffect(() => {
-        fetch(`${baseURL}galeria/${slug}`)
+        fetch(`${baseURL}/galeria/${slug}`)
             .then((response) => response.json())
             .then((data) => {
                 setObras(data)

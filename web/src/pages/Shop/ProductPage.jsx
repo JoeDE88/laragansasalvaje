@@ -16,7 +16,7 @@ export default function ProductPage() {
     let { slug } = useParams()
 
     useEffect(() => {
-        fetch(`${baseURL}shop/productos/${slug}`)
+        fetch(`${baseURL}/shop/productos/${slug}`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);

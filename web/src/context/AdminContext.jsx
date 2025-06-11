@@ -26,7 +26,7 @@ export const AdminProvider = ({ children }) => {
 
     const login = (username, password) => {
         setError(null)
-        fetch(`${baseURL}users/login/`, {
+        fetch(`${baseURL}/users/login/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

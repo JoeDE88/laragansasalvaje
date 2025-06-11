@@ -7,7 +7,7 @@ export default function Carrusel() {
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}galeria/obras/`)
+        fetch(`${baseURL}/galeria/obras/`)
             .then((response) => response.json())
             .then((data) => {
                 setObras(data)

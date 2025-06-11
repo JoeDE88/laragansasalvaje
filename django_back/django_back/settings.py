@@ -71,13 +71,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware"
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://laragansasalvaje.com",
-    "https://www.laragansasalvaje.com",
-    "http://localhost:5173"
-]
-
-#CORS_ALLOW_ALL_ORIGINS = True
+if ENVIRONMENT == "production":
+    CORS_ALLOWED_ORIGINS = [
+        "https://dashboard.laragansasalvaje.com",
+        "https://laragansasalvaje.com"
+    ]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:5173"
+    ]
 
 
 ROOT_URLCONF = "django_back.urls"

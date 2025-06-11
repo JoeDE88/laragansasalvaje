@@ -43,7 +43,7 @@ export default function Obras() {
         formData.append('categoria', categoria);
         formData.append('creado_en', creadoEn);
 
-        fetch(`${baseURL}galeria/nueva/`, {
+        fetch(`${baseURL}/galeria/nueva/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
