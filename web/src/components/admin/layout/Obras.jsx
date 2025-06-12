@@ -20,7 +20,7 @@ export default function Obras() {
     const [creadoEn, setCreadoEn] = useState(año);
 
     useEffect(() => {
-        fetch(`${baseURL}galeria/obras/`)
+        fetch(`${baseURL}/galeria/obras/`)
             .then((res) => res.json())
             .then((data) => {
                 setObras(data)

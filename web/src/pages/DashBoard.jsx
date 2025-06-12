@@ -6,6 +6,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useState } from "react";
 import Obras from "../components/admin/layout/Obras";
+import Eventos from "../components/admin/layout/Eventos";
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -65,7 +66,7 @@ export default function DashBoard() {
                         Item Two
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={2}>
-                        Item Three
+                        <Eventos></Eventos>
                     </CustomTabPanel>
                     <CustomTabPanel value={value} index={3}>
                         Item Three
