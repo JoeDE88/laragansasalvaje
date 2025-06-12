@@ -74,7 +74,8 @@ MIDDLEWARE = [
 if ENVIRONMENT == "production":
     CORS_ALLOWED_ORIGINS = [
         "https://dashboard.laragansasalvaje.com",
-        "https://laragansasalvaje.com"
+        "https://laragansasalvaje.com",
+        "https://www.laragansasalvaje.com"
     ]
 else:
     CORS_ALLOWED_ORIGINS = [
