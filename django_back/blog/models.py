@@ -41,8 +41,8 @@ class Publicacion(models.Model):
             self.slug = slug
         super().save(*args, **kwargs)
 
-        if hasattr(self.imagen, 'path'):
-            resize_image(self.imagen.path)
+        if hasattr(self.imagen_destacada, 'path'):
+            resize_image(self.imagen_destacada.path)
 
     def clean(self):
         if self.tipo == 'video':

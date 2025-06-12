@@ -1,10 +1,9 @@
 from django.shortcuts import render
 import json
 from django.views.decorators.http import require_GET,require_POST
-from django_back.utils import jwt_required, get_user_from_token
+from django_back.utils import jwt_required
 from django.http import JsonResponse
 from .models import Evento
-
 from django.views.decorators.csrf import csrf_exempt
 
 @require_GET
@@ -25,8 +24,8 @@ def eventos_list(request):
     return JsonResponse(data, safe=False)
     
 @csrf_exempt
-@jwt_required
 @require_POST
+@jwt_required
 def create_event(request):
     nombre = request.POST.get('nombre')
     descripcion = request.POST.get('descripcion')

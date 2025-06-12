@@ -25,15 +25,16 @@ class Categoria(models.Model):
 class Obra(models.Model):
     nombre = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
-    descripción = models.TextField(blank=True)
+    descripcion = models.TextField(blank=True)
     tecnica = models.CharField(max_length=100)
     dimensiones = models.CharField(max_length=50)
     imagen = CloudinaryField('image')
     creado_en = models.PositiveIntegerField(
         validators=[
-            MinValueValidator(1900),
+            MinValueValidator(2000),
             MaxValueValidator(datetime.now().year)],
-            help_text="Utiliza este formato: YYYY"
+            help_text="Utiliza este formato: AAAA",
+            default=2025
     )
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE,related_name='obras',null=True)
 

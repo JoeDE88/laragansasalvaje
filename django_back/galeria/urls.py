@@ -1,10 +1,10 @@
 from django.urls import path
 
-from .views import listado_obras, listado_obras_por_tema, crear_obra, primeras_obras_por_categoria
+from .views import obras_list, obras_list_por_categoria, create_obra, first_obra_por_categoria
 
 urlpatterns = [
-    path("obras/", listado_obras, name='listado_obras'),
-    path("<slug:categoria_slug>", listado_obras_por_tema, name='obras_por_tema'),
-    path("nueva/", crear_obra,name='crear_obra'),
-    path("primeras/", primeras_obras_por_categoria,name='primeras_obras')
+    path("obras/", obras_list, name='listado_obras'),
+    path("<slug:categoria_slug>", obras_list_por_categoria, name='obras_por_tema'),
+    path("primeras/", first_obra_por_categoria,name='primeras_obras'),
+    path("nueva/", create_obra,name='crear_obra')
 ]
