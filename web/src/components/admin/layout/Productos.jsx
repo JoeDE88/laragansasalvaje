@@ -1,35 +1,34 @@
-import { useContext, useEffect, useState } from "react";
-import { AdminContext } from "../../../context/AdminContext";
-import { baseURL } from "../../../services/api/api";
-import { Box, Grid, TextField, Typography } from "@mui/material";
-import GreenButton from "../../layout/GreenButton";
+import { useContext, useEffect, useState } from "react"
+import { AdminContext } from "../../../context/AdminContext"
+import { baseURL } from "../../../services/api/api"
+import { Box, Grid, TextField, Typography } from "@mui/material"
+import GreenButton from "../../layout/GreenButton"
 
-export default function Eventos() {
+export default function Productos() {
     const { token } = useContext(AdminContext)
-    const [eventos, setEventos] = useState([])
+    const [productos, setProductos] = useState([])
 
     const [nombre, setNombre] = useState("")
     const [descripcion, setDescripcion] = useState("")
+    const [precio, setPrecio] = useState("")
+    const [stock, setStock] = useState("")
     const [imagen, setImagen] = useState("")
 
     useEffect(() => {
-        fetch(`${baseURL}/eventos/lista-eventos/`)
+        fetch(`${baseURL}/shop/productos/`)
             .then((res) => res.json())
-            .then((data) => setEventos(data))
+            .then((data) => setProductos(data))
     }, [])
 
-    function postNewEvento() {
-        if (!imagen) {
-            alert("Debes seleccionar una imagen.")
-            return
-        }
-
+    function postNewProducto() {
         const formData = new FormData()
         formData.append('nombre', nombre)
         formData.append('descripcion', descripcion)
+        formData.append('precio', precio)
+        formData.append('stock', stock)
         formData.append('imagen', imagen)
 
-        fetch(`${baseURL}/eventos/nuevo-evento/`, {
+        fetch(`${baseURL}/shop/nuevo/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -37,23 +36,24 @@ export default function Eventos() {
             body: formData
         })
             .then(res => {
-                if (!res.ok) throw new Error('Error al crear el evento.')
+                if (!res.ok) throw new Error('Error al crear nuevo producto.')
                 return res.json()
             })
             .then(data => {
-                alert('Evento creada correctamente')
-                setEventos([...eventos, data])
+                alert('Producto creado correctamente.')
+                setProductos([...productos, data])
             })
             .catch(err => {
                 alert(err.message)
             })
     }
 
+
     return (
         <Box>
             <Grid container spacing={2}>
                 <Grid size={6}>
-                    <Typography variant="h5">Añade nuevo evento:</Typography>
+                    <Typography variant="h5">Añade nuevo producto:</Typography>
                     <Box
                         component="form"
                         sx={{
@@ -100,6 +100,39 @@ export default function Eventos() {
                             />
                         </div>
                         <div>
+                            <TextField
+                                id="outlined-number"
+                                label="Precio:"
+                                type="number"
+                                slotProps={{
+                                    htmlInput: {
+                                        step: "0.01",
+                                        min: 0.00
+                                    }      
+                                }}
+                                placeholder="€"
+                                value={precio}
+                                onChange={(e) => setPrecio(parseFloat(e.target.value).toFixed(2))}
+                                color='tertiary'
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="outlined-number"
+                                label="Stock:"
+                                type="number"
+                                slotProps={{
+                                    htmlInput: {
+                                        min: 0
+                                    }
+                                }}
+                                placeholder="Stock"
+                                value={stock}
+                                onChange={(e) => setStock(parseInt(e.target.value))}
+                                color='tertiary'
+                            />
+                        </div>
+                        <div>
                             <Typography>Selecciona la imagen:</Typography>
                             <input
                                 accept="image/*"
@@ -110,16 +143,16 @@ export default function Eventos() {
                         </div>
                     </Box>
                     <Box sx={{ marginTop: 2 }}>
-                        <GreenButton texto={'Guardar'} onClick={postNewEvento}></GreenButton>
+                        <GreenButton texto={'Guardar'} onClick={postNewProducto}></GreenButton>
                     </Box>
                 </Grid>
                 <Grid size={6}>
-                    <Typography variant="h5">Eventos existentes:</Typography>
+                    <Typography variant="h5">Productos existentes:</Typography>
                     <ul>
-                        {eventos.map((evento) => {
+                        {productos.map((producto) => {
                             return (
                                 <li>
-                                    <Typography>{evento.nombre}</Typography>
+                                    <Typography>{producto.nombre}</Typography>
                                 </li>
                             )
                         })}

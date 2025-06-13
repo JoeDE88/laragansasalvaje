@@ -65,12 +65,30 @@ export default function Obras() {
 
     return (
         <Box>
-            <Typography variant="h5">Añade una nueva obra:</Typography>
             <Grid container spacing={2}>
                 <Grid size={6}>
+                    <Typography variant="h5">Añade una nueva obra:</Typography>
                     <Box
                         component="form"
-                        sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
+                        sx={{
+                            '& .MuiTextField-root': {
+                                m: 1,
+                                width: '25ch'
+                            },
+                            "& .MuiOutlinedInput-root": {
+                                color: 'secondary.main',
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "secondary.main",
+                                    borderWidth: "1px",
+                                }, "&.Mui-focused": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "tertiary.main",
+                                        borderWidth: "1px",
+                                        color: 'tertiary.main'
+                                    }
+                                },
+                            },
+                        }}
                         noValidate
                         autoComplete="off"
                     >
@@ -81,6 +99,7 @@ export default function Obras() {
                                 label="Nombre"
                                 value={nombre}
                                 onChange={(e) => setNombre(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -91,6 +110,7 @@ export default function Obras() {
                                 rows={4}
                                 value={descripcion}
                                 onChange={(e) => setDescripcion(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -100,6 +120,7 @@ export default function Obras() {
                                 label="Tecnica"
                                 value={tecnica}
                                 onChange={(e) => setTecnica(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -109,6 +130,7 @@ export default function Obras() {
                                 label="Dimensiones"
                                 value={dimensiones}
                                 onChange={(e) => setDimensiones(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -116,14 +138,15 @@ export default function Obras() {
                                 id="outlined-number"
                                 label="Creado en:"
                                 type="number"
-                                InputProps={{
-                                    inputProps: {
+                                slotProps={{
+                                    htmlInput: {
                                         max: año, min: 2000
                                     }
                                 }}
                                 placeholder="AAAA"
                                 value={creadoEn}
                                 onChange={(e) => setCreadoEn(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -133,6 +156,7 @@ export default function Obras() {
                                 label="Categoría"
                                 value={categoria}
                                 onChange={(e) => setCategoria(e.target.value)}
+                                color='tertiary'
                             />
                         </div>
                         <div>
@@ -141,13 +165,16 @@ export default function Obras() {
                                 accept="image/*"
                                 type="file"
                                 onChange={(e) => setImagen(e.target.files[0])}
+                                color='tertiary'
                             />
                         </div>
                     </Box>
-                    <GreenButton texto={'Guardar'} onClick={postNewObra}></GreenButton>
+                    <Box sx={{ marginTop: 2 }}>
+                        <GreenButton texto={'Guardar'} onClick={postNewObra}></GreenButton>
+                    </Box>
                 </Grid>
                 <Grid size={6}>
-                    <Typography variant="h6">Obras existentes</Typography>
+                    <Typography variant="h5">Obras existentes:</Typography>
                     <ul>
                         {obras.map((obra) => {
                             return (
