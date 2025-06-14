@@ -10,10 +10,6 @@ const tipos = [
         label: "Articulo"
     },
     {
-        value: "imagen",
-        label: "Imagen"
-    },
-    {
         value: "video",
         label: "Video"
     }
@@ -179,7 +175,8 @@ export default function Publicaciones() {
                         <Box sx={{ padding: 1 }}>
                             <hr />
                             <Typography variant="h6">Multimedia</Typography>
-                            <Typography variant="p">Agrega una imagen, un archivo de video o una URL de YouTube:</Typography>
+
+                            {tipo === 'articulo'? (<Typography variant="p">Agrega una imagen, si quieres:</Typography>) : (<Typography variant="p">Agrega un archivo de video o una URL de YouTube:</Typography>)}
 
                             {tipo === 'articulo' ? (<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
                                 <Typography sx={{ marginRight: 2 }}>Imagen:</Typography>
@@ -194,7 +191,7 @@ export default function Publicaciones() {
 
                             {tipo === 'video' ? (
                                 <>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', marginBottom: 2 }}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
                                     <Typography sx={{ marginRight: 4 }}>Video:</Typography>
                                     <input
                                         accept="media_type"
