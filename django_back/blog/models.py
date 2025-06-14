@@ -9,7 +9,6 @@ from cloudinary.models import CloudinaryField
 class Publicacion(models.Model):
     TIPOS_CONTENIDO = [
         ('articulo','Articulo'),
-        ('imagen','Imagen'),
         ('video','Video')
     ]
 

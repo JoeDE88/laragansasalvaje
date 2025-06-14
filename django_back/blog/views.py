@@ -4,7 +4,7 @@ from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseNotAll
 from django.core.exceptions import ValidationError
 from .models import Publicacion
 from django_back.utils import jwt_required
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
 @require_GET
@@ -28,6 +28,26 @@ def publicacion_list(request):
         })
         
     return JsonResponse(data, safe=False)
+
+@require_GET
+def detalle_pub(request, slug):
+    try:
+        pub = Publicacion.objects.get(slug=slug)
+        data = {
+            'id' : pub.id,
+            'titulo' : pub.titulo,
+            'tipo': pub.tipo,
+            'slug': pub.slug,
+            'contenido' : pub.contenido,
+            'imagen_destacada' : pub.imagen_destacada.url if pub.imagen_destacada else None,
+            'url_video': pub.url_video if pub.url_video else None,
+            'etiqueta' : pub.etiqueta,
+            'creado_en' : pub.creado_en,
+            'archivo_video': pub.archivo_video.url if pub.archivo_video else None
+        }
+        return JsonResponse(data)
+    except pub.DoesNotExist:
+        return JsonResponse({'error':'pub no encontrando'}, status=404)
 
 @csrf_exempt
 @require_POST
@@ -65,22 +85,45 @@ def create_publicacion(request):
         "pub_id": nueva_pub.id
     }, status=201)
 
-@require_GET
-def detalle_pub(request, slug):
+@csrf_exempt
+@require_http_methods(['PUT','DELETE'])
+@jwt_required
+def manage_publicacion(request,pub_id):
     try:
-        pub = Publicacion.objects.get(slug=slug)
-        data = {
-            'id' : pub.id,
-            'titulo' : pub.titulo,
-            'tipo': pub.tipo,
-            'slug': pub.slug,
-            'contenido' : pub.contenido,
-            'imagen_destacada' : pub.imagen_destacada.url if pub.imagen_destacada else None,
-            'url_video': pub.url_video if pub.url_video else None,
-            'etiqueta' : pub.etiqueta,
-            'creado_en' : pub.creado_en,
-            'archivo_video': pub.archivo_video.url if pub.archivo_video else None
-        }
-        return JsonResponse(data)
-    except pub.DoesNotExist:
-        return JsonResponse({'error':'pub no encontrando'}, status=404)
+        publicacion = Publicacion.objects.get(pub_id)
+    except Publicacion.DoesNotExist:
+        return JsonResponse({"error":"Publicación no encontrada"},status=404)
+    
+    if request.method == 'PUT':
+        if not request.content_type.startswith('multipart/form-data'):
+            return JsonResponse({"error":"Debe ser multipart/form-data"},status=400)
+        
+        titulo = request.POST.get('titulo', publicacion.titulo)
+        tipo = request.POST.get('tipo',publicacion.tipo)
+        contenido = request.POST.get('contenido',publicacion.contenido)
+        url_video = request.POST.get('url_video',publicacion.url_video)
+        etiqueta = request.POST.get('etiqueta',publicacion.etiqueta)
+
+        if 'imagen_destacada' in request.FILES:
+            publicacion.imagen_destacada = request.FILES['imagen_destacada']
+        if 'archivo_video' in request.FILES:
+            publicacion.archivo_video = request.FILES['archivo_video']
+
+        publicacion.titulo = titulo
+        publicacion.tipo = tipo
+        publicacion.contenido = contenido
+        publicacion.url_video = url_video
+        publicacion.etiqueta = etiqueta
+
+        try:
+            publicacion.full_clean()
+            publicacion.save()
+        except ValidationError as e:
+            return JsonResponse({'errors': e.message_dict}, status=400)
+        
+    elif request.method == 'DELETE':
+        publicacion.delete()
+        return JsonResponse({'message':'Publicación eliminada'})
+    
+    else:
+        return HttpResponseNotAllowed(['PUT','DELETE'])
