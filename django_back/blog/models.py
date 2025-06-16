@@ -21,7 +21,6 @@ class Publicacion(models.Model):
     etiqueta = models.CharField(max_length=20)
     creado_en = models.DateTimeField(auto_now_add=True)
     actualizado_en = models.DateTimeField(auto_now=True)
-    archivo_video = CloudinaryField('video',blank=True,null=True)
 
     class Meta:
         ordering = ['creado_en']
@@ -45,7 +44,13 @@ class Publicacion(models.Model):
 
     def clean(self):
         if self.tipo == 'video':
-            if not self.url_video and not self.archivo_video:
-                raise ValidationError("Para contenido de tipo 'video', debes subir un archivo o indicar una URL")
-            if self.url_video and self.archivo_video:
-                raise ValidationError("No puedes subir un archivo video y una URL de video al mismo tiempo.")
+            if not self.url_video:
+                raise ValidationError({
+                    'url_video': "Debes proporcionar la URL del video subido a Cloudinary o una URL de YouTube."
+                })
+        if self.tipo == 'articulo':
+            if not self.contenido and not self.imagen_destacada:
+                raise ValidationError({
+                    'contenido': "El artículo debe tener contenido o al menos una imagen destacada.",
+                    'imagen_destacada': "El artículo debe tener contenido o al menos una imagen destacada."
+                })

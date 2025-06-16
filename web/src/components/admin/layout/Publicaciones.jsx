@@ -17,7 +17,7 @@ const tipos = [
 
 export default function Publicaciones() {
     const { token } = useContext(AdminContext)
-    const [eventos, setEventos] = useState([])
+    const [publicaciones, setPublicaciones] = useState([])
 
     const [titulo, setTitulo] = useState("")
     const [tipo, setTipo] = useState("")
@@ -30,23 +30,57 @@ export default function Publicaciones() {
     useEffect(() => {
         fetch(`${baseURL}/blog/publicaciones/`)
             .then((res) => res.json())
-            .then((data) => setEventos(data))
+            .then((data) => setPublicaciones(data))
     }, [])
 
-    useEffect(()=> {
+    useEffect(() => {
         setImagen("")
         setUrlVideo("")
         setArchivoVideo("")
-    },[tipo])
+    }, [tipo])
+
+
 
     function postNewPublicacion() {
+        let finalUrlVideo = urlVideo
 
-        if (tipo === 'video' && urlVideo && archivoVideo){
+        if (tipo === 'video' && archivoVideo && !urlVideo) {
+            const cloudinaryUrl = `https://api.cloudinary.com/v1_1/donuuvr9q/video/upload`
+            const formDataUpload = new FormData()
+            formDataUpload.append('file', archivoVideo)
+            formDataUpload.append('upload_preset', 'videos_unsigned')
+
+            return fetch(cloudinaryUrl, {
+                method: 'POST',
+                body: formDataUpload
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error('Error al subir el video a Cloudinary')
+                    return res.json()
+                })
+                .then(data => {
+                    if (!data.secure_url) throw new Error('Error al subir video a cloudinary.')
+                    finalUrlVideo = data.secure_url
+                    console.log(finalUrlVideo);
+
+                    enviarPublicacion(finalUrlVideo)
+                })
+                .catch(err => {
+                    alert('Error al subir video: ' + err.message)
+                })
+        } else {
+            enviarPublicacion(finalUrlVideo)
+        }
+    }
+
+    function enviarPublicacion(finalUrlVideo) {
+
+        if (tipo === 'video' && urlVideo && archivoVideo) {
             alert('No puedes subir un archivo y poner una URL al mismo tiempo.')
             return
         }
 
-        if (tipo === 'video' && !urlVideo && !archivoVideo){
+        if (tipo === 'video' && !urlVideo && !archivoVideo) {
             alert('Debes subir un archivo video o ingresar una URL.')
             return
         }
@@ -55,23 +89,12 @@ export default function Publicaciones() {
         formData.append('titulo', titulo)
         formData.append('tipo', tipo)
         formData.append('contenido', contenido)
-        formData.append('url_video', urlVideo)
-        formData.append('imagen_destacada', imagen)
+        formData.append('url_video', finalUrlVideo)
         formData.append('etiqueta', etiqueta)
-        formData.append('archivo_video', archivoVideo)
 
-        if (tipo === 'articulo'){
-            if (imagen){
-                formData.append('imagen_destacada',imagen)
-            }
-        }
-
-        if (tipo === 'video'){
-            if (archivoVideo) {
-                formData.append('archivo_video', archivoVideo)
-            }
-            if (urlVideo){
-                formData.append('url_video', urlVideo)
+        if (tipo === 'articulo') {
+            if (imagen) {
+                formData.append('imagen_destacada', imagen)
             }
         }
 
@@ -83,17 +106,18 @@ export default function Publicaciones() {
             body: formData
         })
             .then(res => {
-                if (!res.ok) throw new Error('Error al crear el evento.')
+                if (!res.ok) throw new Error('Error al crear la publicación.')
                 return res.json()
             })
             .then(data => {
-                alert('Evento creada correctamente')
-                setEventos([...eventos, data])
+                alert('Publicación creada correctamente')
+                setPublicaciones([...publicaciones, data])
             })
             .catch(err => {
                 alert(err.message)
             })
     }
+
 
     return (
         <Box>
@@ -176,7 +200,7 @@ export default function Publicaciones() {
                             <hr />
                             <Typography variant="h6">Multimedia</Typography>
 
-                            {tipo === 'articulo'? (<Typography variant="p">Agrega una imagen, si quieres:</Typography>) : (<Typography variant="p">Agrega un archivo de video o una URL de YouTube:</Typography>)}
+                            {tipo === 'articulo' ? (<Typography variant="p">Agrega una imagen, si quieres:</Typography>) : (<Typography variant="p">Agrega un archivo de video o una URL de YouTube:</Typography>)}
 
                             {tipo === 'articulo' ? (<Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
                                 <Typography sx={{ marginRight: 2 }}>Imagen:</Typography>
@@ -191,29 +215,29 @@ export default function Publicaciones() {
 
                             {tipo === 'video' ? (
                                 <>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
-                                    <Typography sx={{ marginRight: 4 }}>Video:</Typography>
-                                    <input
-                                        accept="media_type"
-                                        type="file"
-                                        onChange={(e) => setArchivoVideo(e.target.files[0])}
-                                        color='tertiary'
-                                    />
-                                </Box>
-                                <Box sx={{ marginBottom: 2 }}>
-                                    <Typography>Url Video:</Typography>
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="URL Video"
-                                        value={urlVideo}
-                                        onChange={(e) => setUrlVideo(e.target.value)}
-                                        color='tertiary'
-                                    />
-                                    <hr />
-                                </Box>
-                            </>
-                        ) : null}
+                                    <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
+                                        <Typography sx={{ marginRight: 4 }}>Video:</Typography>
+                                        <input
+                                            accept="media_type"
+                                            type="file"
+                                            onChange={(e) => setArchivoVideo(e.target.files[0])}
+                                            color='tertiary'
+                                        />
+                                    </Box>
+                                    <Box sx={{ marginBottom: 2 }}>
+                                        <Typography>Url Video:</Typography>
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="URL Video"
+                                            value={urlVideo}
+                                            onChange={(e) => setUrlVideo(e.target.value)}
+                                            color='tertiary'
+                                        />
+                                        <hr />
+                                    </Box>
+                                </>
+                            ) : null}
                         </Box>
                     </Box>
                     <Box sx={{ marginTop: 2 }}>
@@ -223,10 +247,10 @@ export default function Publicaciones() {
                 <Grid size={6}>
                     <Typography variant="h5">Publicaciones existentes:</Typography>
                     <ul>
-                        {eventos.map((eventos) => {
+                        {publicaciones.map((publicacion) => {
                             return (
                                 <li>
-                                    <Typography>{eventos.nombre}</Typography>
+                                    <Typography>{publicacion.nombre}</Typography>
                                 </li>
                             )
                         })}

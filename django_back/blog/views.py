@@ -20,7 +20,6 @@ def publicacion_list(request):
             'slug': pub.slug,
             'contenido': pub.contenido,
             'imagen_destacada': pub.imagen_destacada.url if pub.imagen_destacada else None,
-            'archivo_video': pub.archivo_video.url if pub.archivo_video else None,
             'url_video': pub.url_video,
             'etiqueta': pub.etiqueta,
             'creado_en': pub.creado_en,
@@ -42,8 +41,7 @@ def detalle_pub(request, slug):
             'imagen_destacada' : pub.imagen_destacada.url if pub.imagen_destacada else None,
             'url_video': pub.url_video if pub.url_video else None,
             'etiqueta' : pub.etiqueta,
-            'creado_en' : pub.creado_en,
-            'archivo_video': pub.archivo_video.url if pub.archivo_video else None
+            'creado_en' : pub.creado_en
         }
         return JsonResponse(data)
     except pub.DoesNotExist:
@@ -62,7 +60,6 @@ def create_publicacion(request):
     url_video = request.POST.get('url_video')
     imagen_destacada = request.FILES.get('imagen_destacada')
     etiqueta = request.POST.get('etiqueta')
-    archivo_video = request.FILES.get('archivo_video')
 
     nueva_pub = Publicacion(
         titulo=titulo,
@@ -70,8 +67,7 @@ def create_publicacion(request):
         contenido=contenido,
         url_video=url_video,
         imagen_destacada=imagen_destacada,
-        etiqueta=etiqueta,
-        archivo_video=archivo_video
+        etiqueta=etiqueta
     )
 
     try:
