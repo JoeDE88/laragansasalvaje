@@ -14,6 +14,11 @@ import CategoriaPage from "../pages/Galeria/CategoriaPage";
 import PublicacionPage from "../pages/Blog/PublicacionPage";
 import ShopCartPage from "../pages/Shop/ShopCartPage";
 import DashBoard from "../pages/DashBoard";
+import Publicaciones from "../components/admin/layout/Publicaciones";
+import Eventos from "../components/admin/layout/Eventos";
+import Obras from "../components/admin/layout/Obras";
+import Productos from "../components/admin/layout/Productos";
+import ListaPublicaciones from "../components/admin/layout/ListaPublicaciones";
 
 export const publicRoutes = [
     {
@@ -29,7 +34,7 @@ export const publicRoutes = [
     {
         name: "Categorias",
         path: "/obras/:slug",
-        component: <CategoriaPage/>
+        component: <CategoriaPage />
     },
     /* {
         name: "Tienda",
@@ -59,7 +64,7 @@ export const publicRoutes = [
     {
         name: "Publicaciones",
         path: "/blog/publicaciones/:slug",
-        component: <PublicacionPage/>
+        component: <PublicacionPage />
     },
     {
         name: "Eventos",
@@ -69,43 +74,58 @@ export const publicRoutes = [
     {
         name: 'Login',
         path: '/login',
-        component : <LoginPage></LoginPage>
+        component: <LoginPage></LoginPage>
     }
     ,
     {
         name: 'Politica de Privacidad',
         path: '/politica-de-privacidad',
-        component : <PrivacidadPage></PrivacidadPage>
+        component: <PrivacidadPage></PrivacidadPage>
     }
     ,
     {
         name: 'Politica de Cookies',
         path: '/politica-de-cookies',
-        component : <CookiesPage></CookiesPage>
+        component: <CookiesPage></CookiesPage>
     }
     ,
     {
         name: 'Terminos y condiciones',
         path: '/terminos-y-condiciones',
-        component : <TerminosCondicionesPage></TerminosCondicionesPage>
+        component: <TerminosCondicionesPage></TerminosCondicionesPage>
     }
     ,
     {
         name: "NotFound",
         path: "*",
-        component: <NotFound/>
+        component: <NotFound />
     }
 ]
 
 export const privateRoutes = [
-     {
+    {
         name: 'Dashboard',
         path: '/dashboard',
-        component : <DashBoard></DashBoard>
+        component: <DashBoard></DashBoard>
+    },
+    /* {
+        'name': 'Publicaciones',
+        'path': '/blog',
+        'component': <ListaPublicaciones/>
     },
     {
-        name: 'Obras',
-        path: '/obras',
-        component : <DashBoard></DashBoard>
-    }
+        'name': 'Eventos',
+        'path': '/eventos',
+        'component': <Eventos></Eventos>
+    },
+    {
+        'name': 'Obras',
+        'path': '/galeria',
+        'component': <Obras></Obras>
+    },
+    {
+        'name': 'Productos',
+        'path': '/shop',
+        'component': <Productos></Productos>
+    }, */
 ]

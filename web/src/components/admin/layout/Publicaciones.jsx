@@ -17,7 +17,6 @@ const tipos = [
 
 export default function Publicaciones() {
     const { token } = useContext(AdminContext)
-    const [publicaciones, setPublicaciones] = useState([])
 
     const [titulo, setTitulo] = useState("")
     const [tipo, setTipo] = useState("")
@@ -27,11 +26,7 @@ export default function Publicaciones() {
     const [urlVideo, setUrlVideo] = useState("")
     const [archivoVideo, setArchivoVideo] = useState("")
 
-    useEffect(() => {
-        fetch(`${baseURL}/blog/publicaciones/`)
-            .then((res) => res.json())
-            .then((data) => setPublicaciones(data))
-    }, [])
+    
 
     useEffect(() => {
         setImagen("")

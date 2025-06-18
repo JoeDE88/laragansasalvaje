@@ -1,80 +1,47 @@
-import { Box, Container, Typography } from "@mui/material";
-import PropTypes from 'prop-types';
-import NavBar from "../components/admin/layout/NavBar"
+import { Box, Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import Titulo from "../components/layout/Titulo";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { useState } from "react";
-import Obras from "../components/admin/layout/Obras";
-import Eventos from "../components/admin/layout/Eventos";
-import Publicaciones from "../components/admin/layout/Publicaciones";
-import Productos from "../components/admin/layout/Productos";
+import { NavLink } from "react-router";
+import GreenButton from "../components/layout/GreenButton";
+import { dashboardRoutes } from "../routes/routeDashboard";
+import { useContext } from "react";
+import { AdminContext } from "../context/AdminContext";
+import Layout from "../components/layout/Layout";
 
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-        </div>
-    );
-}
-
-CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
 
 export default function DashBoard() {
-    const [value, setValue] = useState(0);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    const { logout } = useContext(AdminContext)
 
     return (
         <>
-            <NavBar></NavBar>
-            <Titulo titulo={'Bienvenida Gansa'} />
-            <Container>
-                <Typography variant="h5">¿Qué quieres hacer hoy?</Typography>
-                <Box sx={{ width: '100%', bgcolor: 'blancoPerla' }}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                            <Tab label="Añadir obra" {...a11yProps(0)} />
-                            <Tab label="Añadir publicación" {...a11yProps(1)} />
-                            <Tab label="Añadir evento" {...a11yProps(2)} />
-                            <Tab label="Añadir producto a la tienda" {...a11yProps(3)} />
-                        </Tabs>
+            <Layout>
+                <Titulo titulo={'Bienvenida Gansa'} />
+                <Container>
+                    <Typography variant="h5">¿Qué quieres hacer hoy?</Typography>
+                    {dashboardRoutes.map((app) =>
+                        <>
+                            <Card key={app.name} sx={{ margin: 1 }} elevation={0}>
+                                <CardContent sx={{ backgroundColor: 'blancoPerla.main' }}>
+                                    <Grid container spacing={2}>
+                                        <Grid size={10}>
+                                            <Typography component={NavLink} to={app.path} sx={{ color: 'secondary.main', fontSize: 20 }}>
+                                                {app.name}
+                                            </Typography>
+                                        </Grid>
+                                        <Grid size={2}>
+                                            <GreenButton texto={'➕'} />
+                                        </Grid>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
+                            <hr />
+                        </>
+                    )}
+                    <Box sx={{}}>
+                        <GreenButton texto={'Logout'} onClick={logout} />
                     </Box>
-                    <CustomTabPanel value={value} index={0}>
-                        <Obras></Obras>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={1}>
-                       <Publicaciones></Publicaciones>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={2}>
-                        <Eventos></Eventos>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={value} index={3}>
-                        <Productos></Productos>
-                    </CustomTabPanel>
-                </Box>
-            </Container>
+                </Container>
+            </Layout>
         </>
     )
 }

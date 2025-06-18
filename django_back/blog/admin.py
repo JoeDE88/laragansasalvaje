@@ -14,7 +14,7 @@ class PublicacionAdmin(admin.ModelAdmin):
             'fields':('titulo','slug','tipo','etiqueta','contenido')
         }),
         ('Multimedia', {
-            'fields': ('imagen_destacada', 'archivo_video', 'url_video'),
+            'fields': ('imagen_destacada', 'url_video'),
             'description': 'Agrega una imagen, un archivo de video o una URL de YouTube/Instagram.'
         }),
         ('Tiempos', {
