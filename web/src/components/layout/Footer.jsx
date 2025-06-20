@@ -5,8 +5,8 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function () {
     return (
-        <Box sx={{backgroundColor: 'blancoPerla.main', filter: 'brightness(90%)'}}>
-            <Box justifyContent='center' sx={{ textAlign: 'center', marginTop: 3,paddingTop:1 }}> 
+        <Box sx={{ backgroundColor: 'blancoPerla.main', filter: 'brightness(90%)' }}>
+            <Box justifyContent='center' sx={{ textAlign: 'center', marginTop: 3, paddingTop: 1 }}>
                 <Typography variant="h5">Contáctame:</Typography>
             </Box>
             <Grid container spacing={0.5} sx={{ mt: 2.5, textAlign: 'center', m: 4 }}>
@@ -29,22 +29,23 @@ export default function () {
             <Box justifyContent='center' sx={{ textAlign: 'center' }}>
                 <Typography variant="body2" sx={{ fontSize: '0.75rem' }}>
                     © 2025 Lara Gansa Salvaje
-                    <Grid size={{ xs: 12, md: 4, lg: 4 }}>
-                        <Link href="/politica-de-privacidad" underline="hover">
-                            Política de Privacidad
-                        </Link>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 4, lg: 4 }}>
-                        <Link href="/terminos-y-condiciones" underline="hover">
-                            Términos y Condiciones
-                        </Link>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 4, lg: 4 }}>
-                        <Link href="/politica-de-cookies" underline="hover">
-                            Política de Cookies
-                        </Link>
-                    </Grid>
                 </Typography>
+                <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                    <Link href="/politica-de-privacidad" underline="hover">
+                        Política de Privacidad
+                    </Link>
+                </Grid>
+                <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                    <Link href="/terminos-y-condiciones" underline="hover">
+                        Términos y Condiciones
+                    </Link>
+                </Grid>
+                <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                    <Link href="/politica-de-cookies" underline="hover">
+                        Política de Cookies
+                    </Link>
+                </Grid>
+
             </Box>
         </Box>
     )

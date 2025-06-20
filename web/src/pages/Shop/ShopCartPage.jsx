@@ -2,7 +2,6 @@ import { Box, Button, Card, CardContent, Stack, Typography } from "@mui/material
 import Titulo from "../../components/layout/Titulo"
 import { useShoppingCartContext } from "../../context/ShoppingCartContext"
 import ResponsiveAppBar from "../../components/layout/Appbar";
-import { baseURL } from "../../services/api/api";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';

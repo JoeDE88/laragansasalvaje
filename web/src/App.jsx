@@ -6,6 +6,7 @@ import './assets/css/cookieconsent-style.css'
 import { AdminProvider } from "./context/AdminContext";
 import PrivateRoute from "./components/admin/PrivateRoute";
 import { dashboardRoutes } from "./routes/routeDashboard";
+import AddPublicacion from "./components/admin/layout/AddPublicacion"
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
                 <Route key={route.name} path={route.path} element={route.component}/>
               )
             })}
+            <Route path="/add-publicacion" element={<AddPublicacion></AddPublicacion>} />
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

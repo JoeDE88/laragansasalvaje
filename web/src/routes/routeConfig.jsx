@@ -3,22 +3,14 @@ import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/EventosPage";
 import HomePage from "../pages/HomePage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
-import ShopPage from "../pages/Shop/ShopPage";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import PrivacidadPage from "../pages/PrivacidadPage";
 import CookiesPage from "../pages/CookiesPage";
 import TerminosCondicionesPage from "../pages/TerminosCondicionesPage";
-import ProductPage from "../pages/Shop/ProductPage";
 import CategoriaPage from "../pages/Galeria/CategoriaPage";
 import PublicacionPage from "../pages/Blog/PublicacionPage";
-import ShopCartPage from "../pages/Shop/ShopCartPage";
 import DashBoard from "../pages/DashBoard";
-import Publicaciones from "../components/admin/layout/Publicaciones";
-import Eventos from "../components/admin/layout/Eventos";
-import Obras from "../components/admin/layout/Obras";
-import Productos from "../components/admin/layout/Productos";
-import ListaPublicaciones from "../components/admin/layout/ListaPublicaciones";
 
 export const publicRoutes = [
     {

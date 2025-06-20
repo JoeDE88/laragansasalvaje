@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../context/AdminContext";
 import { baseURL } from "../../../services/api/api";
-import { Box, Grid, MenuItem, TextField, Typography } from "@mui/material";
+import { Box, Container, MenuItem, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";
+import Layout from "../../layout/Layout";
+import { useNavigate } from "react-router";
 
 const tipos = [
     {
@@ -15,8 +17,10 @@ const tipos = [
     }
 ]
 
-export default function Publicaciones() {
+export default function AddPublicacion() {
     const { token } = useContext(AdminContext)
+
+    const navigate = useNavigate()
 
     const [titulo, setTitulo] = useState("")
     const [tipo, setTipo] = useState("")
@@ -26,15 +30,11 @@ export default function Publicaciones() {
     const [urlVideo, setUrlVideo] = useState("")
     const [archivoVideo, setArchivoVideo] = useState("")
 
-    
-
     useEffect(() => {
         setImagen("")
         setUrlVideo("")
         setArchivoVideo("")
     }, [tipo])
-
-
 
     function postNewPublicacion() {
         let finalUrlVideo = urlVideo
@@ -106,7 +106,7 @@ export default function Publicaciones() {
             })
             .then(data => {
                 alert('Publicación creada correctamente')
-                setPublicaciones([...publicaciones, data])
+                navigate('/lista-blog')
             })
             .catch(err => {
                 alert(err.message)
@@ -115,16 +115,16 @@ export default function Publicaciones() {
 
 
     return (
-        <Box>
-            <Grid container spacing={2}>
-                <Grid size={6}>
-                    <Typography variant="h5">Añade nueva publicación:</Typography>
+        <Layout>
+            <Container>
+                <Typography variant="h5">Añade nueva publicación:</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                     <Box
                         component="form"
                         sx={{
                             '& .MuiTextField-root': {
                                 m: 1,
-                                width: '30ch'
+                                width: '50ch'
                             },
                             "& .MuiOutlinedInput-root": {
                                 color: 'secondary.main',
@@ -143,54 +143,46 @@ export default function Publicaciones() {
                         noValidate
                         autoComplete="off"
                     >
-                        <div>
-                            <TextField
-                                required
-                                id="outlined-required"
-                                label="Titulo"
-                                value={titulo}
-                                onChange={(e) => setTitulo(e.target.value)}
-                                color='tertiary'
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                required
-                                id="outlined-select-currency"
-                                select
-                                label="Tipo"
-                                value={tipo}
-                                onChange={(e) => setTipo(e.target.value)}
-                                color='tertiary'
-                            >
-                                {tipos.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </div>
-                        <div>
-                            <TextField
-                                required
-                                id="outlined-required"
-                                label="Etiqueta"
-                                value={etiqueta}
-                                onChange={(e) => setEtiqueta(e.target.value)}
-                                color='tertiary'
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Contenido"
-                                multiline
-                                rows={4}
-                                value={contenido}
-                                onChange={(e) => setContenido(e.target.value)}
-                                color='tertiary'
-                            />
-                        </div>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Titulo"
+                            value={titulo}
+                            onChange={(e) => setTitulo(e.target.value)}
+                            color='tertiary'
+                        />
+                        <TextField
+                            required
+                            id="outlined-select-currency"
+                            select
+                            label="Tipo"
+                            value={tipo}
+                            onChange={(e) => setTipo(e.target.value)}
+                            color='tertiary'
+                        >
+                            {tipos.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Etiqueta"
+                            value={etiqueta}
+                            onChange={(e) => setEtiqueta(e.target.value)}
+                            color='tertiary'
+                        />
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Contenido"
+                            multiline
+                            rows={4}
+                            value={contenido}
+                            onChange={(e) => setContenido(e.target.value)}
+                            color='tertiary'
+                        />
                         <Box sx={{ padding: 1 }}>
                             <hr />
                             <Typography variant="h6">Multimedia</Typography>
@@ -235,23 +227,11 @@ export default function Publicaciones() {
                             ) : null}
                         </Box>
                     </Box>
-                    <Box sx={{ marginTop: 2 }}>
-                        <GreenButton texto={'Guardar'} onClick={postNewPublicacion}></GreenButton>
-                    </Box>
-                </Grid>
-                <Grid size={6}>
-                    <Typography variant="h5">Publicaciones existentes:</Typography>
-                    <ul>
-                        {publicaciones.map((publicacion) => {
-                            return (
-                                <li>
-                                    <Typography>{publicacion.nombre}</Typography>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </Grid>
-            </Grid>
-        </Box>
+                </Box>
+                <Box sx={{ marginTop: 2 }}>
+                    <GreenButton texto={'Guardar'} onClick={postNewPublicacion}></GreenButton>
+                </Box>
+            </Container>
+        </Layout>
     )
 }

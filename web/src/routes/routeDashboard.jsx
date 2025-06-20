@@ -7,17 +7,17 @@ import ListaPublicaciones from "../components/admin/layout/ListaPublicaciones"
 export const dashboardRoutes = [
     {
         'name': 'Publicaciones',
-        'path': '/blog',
+        'path': '/lista-blog',
         'component': <ListaPublicaciones></ListaPublicaciones>
     },
     {
         'name': 'Eventos',
-        'path': '/eventos',
+        'path': '/lista-eventos',
         'component': <Eventos></Eventos>
     },
     {
         'name': 'Obras',
-        'path': '/galeria',
+        'path': '/obras',
         'component': <Obras></Obras>
     },
     {

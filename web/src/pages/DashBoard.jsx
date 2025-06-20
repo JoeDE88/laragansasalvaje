@@ -17,7 +17,6 @@ export default function DashBoard() {
             <Layout>
                 <Titulo titulo={'Bienvenida Gansa'} />
                 <Container>
-                    <Typography variant="h5">¿Qué quieres hacer hoy?</Typography>
                     {dashboardRoutes.map((app) =>
                         <>
                             <Card key={app.name} sx={{ margin: 1 }} elevation={0}>
@@ -37,7 +36,7 @@ export default function DashBoard() {
                             <hr />
                         </>
                     )}
-                    <Box sx={{}}>
+                    <Box sx={{display:'flex',justifyContent:'center'}}>
                         <GreenButton texto={'Logout'} onClick={logout} />
                     </Box>
                 </Container>
