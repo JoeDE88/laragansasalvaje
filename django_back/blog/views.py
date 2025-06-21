@@ -86,7 +86,7 @@ def create_publicacion(request):
 @jwt_required
 def manage_publicacion(request,pub_id):
     try:
-        publicacion = Publicacion.objects.get(pub_id)
+        publicacion = Publicacion.objects.get(id=pub_id)
     except Publicacion.DoesNotExist:
         return JsonResponse({"error":"Publicación no encontrada"},status=404)
     

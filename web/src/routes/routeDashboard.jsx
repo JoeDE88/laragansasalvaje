@@ -1,28 +1,28 @@
 
-import Eventos from "../components/admin/layout/Eventos"
-import Obras from "../components/admin/layout/Obras"
-import Productos from "../components/admin/layout/Productos"
-import ListaPublicaciones from "../components/admin/layout/ListaPublicaciones"
+import Eventos from "../components/admin/Eventos/Eventos"
+import Obras from "../components/admin/Obras/Obras"
+import Productos from "../components/admin/Tienda/Productos"
+import DashboardPubs from "../components/admin/Publicaciones/DashboardPubs"
 
 export const dashboardRoutes = [
     {
         'name': 'Publicaciones',
-        'path': '/lista-blog',
-        'component': <ListaPublicaciones></ListaPublicaciones>
+        'path': '/dashboard/lista-blog',
+        'component': <DashboardPubs/>
     },
     {
         'name': 'Eventos',
-        'path': '/lista-eventos',
-        'component': <Eventos></Eventos>
+        'path': '/dashboard/lista-eventos',
+        'component': <Eventos/>
     },
     {
         'name': 'Obras',
-        'path': '/obras',
-        'component': <Obras></Obras>
+        'path': '/dashboard/obras',
+        'component': <Obras/>
     },
     {
         'name': 'Productos',
-        'path': '/shop',
-        'component': <Productos></Productos>
+        'path': '/dashboard/shop',
+        'component': <Productos/>
     },
 ]

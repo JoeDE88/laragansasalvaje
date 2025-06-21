@@ -1,5 +1,5 @@
 import { Box, Typography, Link } from "@mui/material";
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 
 export default function TerminosCondicionesPage() {
   return (

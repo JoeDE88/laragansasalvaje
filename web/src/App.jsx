@@ -4,9 +4,9 @@ import { publicRoutes, privateRoutes } from "./routes/routeConfig";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import './assets/css/cookieconsent-style.css'
 import { AdminProvider } from "./context/AdminContext";
-import PrivateRoute from "./components/admin/PrivateRoute";
+import PrivateRoute from "./components/admin/utils/PrivateRoute";
 import { dashboardRoutes } from "./routes/routeDashboard";
-import AddPublicacion from "./components/admin/layout/AddPublicacion"
+import AddPub from "./components/admin/Publicaciones/AddPub"
 
 function App() {
 
@@ -30,7 +30,7 @@ function App() {
                 <Route key={route.name} path={route.path} element={route.component}/>
               )
             })}
-            <Route path="/add-publicacion" element={<AddPublicacion></AddPublicacion>} />
+            <Route path="/dashboard/add-publicacion" element={<AddPub/>} />
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

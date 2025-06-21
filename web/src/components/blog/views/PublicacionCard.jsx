@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { baseURL } from "../../../services/api/api";
 import { Box, Container, Typography } from "@mui/material";
 import Titulo from "../../layout/Titulo";
-import rendervideo from "../../../utils/youtube/functions";
 import RenderVideo from "../../../utils/youtube/functions";
 
 export default function PublicacionCard() {
@@ -65,7 +64,7 @@ export default function PublicacionCard() {
               </video>
             </>
           ) : articulo.url_video ? (
-            <Box sx={{ mt: 1}}>
+            <Box sx={{ mt: 1 }}>
               <RenderVideo url={articulo.url_video} titulo={articulo.titulo} />
             </Box>
           ) : (

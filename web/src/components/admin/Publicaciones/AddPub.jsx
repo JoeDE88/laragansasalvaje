@@ -17,7 +17,7 @@ const tipos = [
     }
 ]
 
-export default function AddPublicacion() {
+export default function AddPub() {
     const { token } = useContext(AdminContext)
 
     const navigate = useNavigate()
@@ -106,7 +106,7 @@ export default function AddPublicacion() {
             })
             .then(data => {
                 alert('Publicación creada correctamente')
-                navigate('/lista-blog')
+                navigate('/dashboard/lista-blog')
             })
             .catch(err => {
                 alert(err.message)
@@ -118,7 +118,7 @@ export default function AddPublicacion() {
         <Layout>
             <Container>
                 <Typography variant="h5">Añade nueva publicación:</Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box
                         component="form"
                         sx={{

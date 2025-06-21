@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-export default function GreenButton({ texto, onClick }) {
+export default function GreenButton({ texto, onClick,component,to }) {
     return (
         <Button
             onClick={onClick}
@@ -16,6 +16,7 @@ export default function GreenButton({ texto, onClick }) {
                 }
             })}
             disableElevation
+            component={component} to={to}
         >
             {texto}
         </Button>

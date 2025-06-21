@@ -108,7 +108,7 @@ export default function Productos() {
                                     htmlInput: {
                                         step: "0.01",
                                         min: 0.00
-                                    }      
+                                    }
                                 }}
                                 placeholder="€"
                                 value={precio}

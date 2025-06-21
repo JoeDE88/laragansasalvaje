@@ -1,12 +1,11 @@
 import { Box, Card, CardContent, Container, Grid, Typography } from "@mui/material";
-import Titulo from "../components/layout/Titulo";
+import Titulo from "../../components/layout/Titulo";
 import { NavLink } from "react-router";
-import GreenButton from "../components/layout/GreenButton";
-import { dashboardRoutes } from "../routes/routeDashboard";
+import GreenButton from "../../components/layout/GreenButton";
+import { dashboardRoutes } from "../../routes/routeDashboard";
 import { useContext } from "react";
-import { AdminContext } from "../context/AdminContext";
-import Layout from "../components/layout/Layout";
-
+import { AdminContext } from "../../context/AdminContext";
+import Layout from "../../components/layout/Layout";
 
 export default function DashBoard() {
 
@@ -28,7 +27,9 @@ export default function DashBoard() {
                                             </Typography>
                                         </Grid>
                                         <Grid size={2}>
-                                            <GreenButton texto={'➕'} />
+                                            <Box component={NavLink} to={'/dashboard/add-publicacion'} sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none' }}>
+                                                <GreenButton texto={`Agregar`}></GreenButton>
+                                            </Box>
                                         </Grid>
                                     </Grid>
                                 </CardContent>
@@ -36,7 +37,7 @@ export default function DashBoard() {
                             <hr />
                         </>
                     )}
-                    <Box sx={{display:'flex',justifyContent:'center'}}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <GreenButton texto={'Logout'} onClick={logout} />
                     </Box>
                 </Container>

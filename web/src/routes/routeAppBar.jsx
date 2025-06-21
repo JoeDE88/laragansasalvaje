@@ -1,6 +1,6 @@
-import AboutPage from "../pages/AboutPage";
+import AboutPage from "../pages/About/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
-import EventosPage from "../pages/EventosPage";
+import EventosPage from "../pages/Eventos/EventosPage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
 import ShopPage from "../pages/Shop/ShopPage";
 

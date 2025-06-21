@@ -1,8 +1,8 @@
 import { Box, Container, Typography } from "@mui/material";
-import Titulo from "../components/layout/Titulo";
-import Footer from "../components/layout/Footer";
-import ResponsiveAppBar from "../components/layout/Appbar";
-import Layout from "../components/layout/Layout";
+import Titulo from "../../components/layout/Titulo";
+import Footer from "../../components/layout/Footer";
+import ResponsiveAppBar from "../../components/layout/Appbar";
+import Layout from "../../components/layout/Layout";
 
 export default function PrivacidadPage() {
     return (

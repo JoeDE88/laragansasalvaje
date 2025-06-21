@@ -1,9 +1,9 @@
 import { Box, Card, Container, Typography } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
-import propic from "../assets/about/profilepic.jpg"
-import Titulo from "../components/layout/Titulo";
-import ShoppingCart from "../components/store/ShoppingCart";
-import Layout from "../components/layout/Layout";
+import propic from "../../assets/about/profilepic.jpg"
+import Titulo from "../../components/layout/Titulo";
+import ShoppingCart from "../../components/store/ShoppingCart";
+import Layout from "../../components/layout/Layout";
 
 export default function AboutPage() {
     return (

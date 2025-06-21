@@ -1,10 +1,10 @@
 import { Box, TextField } from "@mui/material";
-import GreenButton from "../components/layout/GreenButton"
-import Titulo from "../components/layout/Titulo"
+import GreenButton from "../../components/layout/GreenButton"
+import Titulo from "../../components/layout/Titulo"
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router"
-import { AdminContext } from "../context/AdminContext"
-import Layout from "../components/layout/Layout";
+import { AdminContext } from "../../context/AdminContext"
+import Layout from "../../components/layout/Layout";
 
 export default function LoginPage() {
 

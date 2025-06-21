@@ -1,16 +1,16 @@
-import AboutPage from "../pages/AboutPage";
+import AboutPage from "../pages/About/AboutPage";
 import BlogPage from "../pages/Blog/BlogPage";
-import EventosPage from "../pages/EventosPage";
-import HomePage from "../pages/HomePage";
+import HomePage from "../pages/Utiles/HomePage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
-import NotFound from "../pages/NotFound";
-import LoginPage from "../pages/LoginPage";
-import PrivacidadPage from "../pages/PrivacidadPage";
-import CookiesPage from "../pages/CookiesPage";
-import TerminosCondicionesPage from "../pages/TerminosCondicionesPage";
+import NotFound from "../pages/Utiles/NotFound";
+import PrivacidadPage from "../pages/Legal/PrivacidadPage";
+import CookiesPage from "../pages/Legal/CookiesPage";
+import TerminosCondicionesPage from "../pages/Legal/TerminosCondicionesPage";
 import CategoriaPage from "../pages/Galeria/CategoriaPage";
 import PublicacionPage from "../pages/Blog/PublicacionPage";
-import DashBoard from "../pages/DashBoard";
+import DashBoard from "../pages/Admin/DashBoard";
+import LoginPage from "../pages/Admin/LoginPage";
+import EventosPage from "../pages/Eventos/EventosPage";
 
 export const publicRoutes = [
     {
@@ -66,7 +66,7 @@ export const publicRoutes = [
     {
         name: 'Login',
         path: '/login',
-        component: <LoginPage></LoginPage>
+        component: <LoginPage/>
     }
     ,
     {
@@ -98,7 +98,7 @@ export const privateRoutes = [
     {
         name: 'Dashboard',
         path: '/dashboard',
-        component: <DashBoard></DashBoard>
+        component: <DashBoard/>
     },
     /* {
         'name': 'Publicaciones',
