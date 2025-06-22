@@ -1,8 +1,7 @@
-
-import Eventos from "../components/admin/Eventos/Eventos"
 import Obras from "../components/admin/Obras/Obras"
 import Productos from "../components/admin/Tienda/Productos"
 import DashboardPubs from "../components/admin/Publicaciones/DashboardPubs"
+import DashboardEventos from "../components/admin/Eventos/DashboardEventos"
 
 export const dashboardRoutes = [
     {
@@ -13,7 +12,7 @@ export const dashboardRoutes = [
     {
         'name': 'Eventos',
         'path': '/dashboard/lista-eventos',
-        'component': <Eventos/>
+        'component': <DashboardEventos/>
     },
     {
         'name': 'Obras',

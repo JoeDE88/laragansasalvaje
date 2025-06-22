@@ -7,6 +7,8 @@ import { AdminProvider } from "./context/AdminContext";
 import PrivateRoute from "./components/admin/utils/PrivateRoute";
 import { dashboardRoutes } from "./routes/routeDashboard";
 import AddPub from "./components/admin/Publicaciones/AddPub"
+import AddEvento from "./components/admin/Eventos/AddEvento";
+import { addElementRoute } from "./routes/addElementRoutes";
 
 function App() {
 
@@ -30,7 +32,11 @@ function App() {
                 <Route key={route.name} path={route.path} element={route.component}/>
               )
             })}
-            <Route path="/dashboard/add-publicacion" element={<AddPub/>} />
+            {addElementRoute.map((route)=>{
+              return (
+                <Route key={route.name} path={route.path} element={route.component}/>
+              )
+            })}
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

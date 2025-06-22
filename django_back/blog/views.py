@@ -119,7 +119,7 @@ def manage_publicacion(request,pub_id):
         
     elif request.method == 'DELETE':
         publicacion.delete()
-        return JsonResponse({'message':'Publicación eliminada'})
+        return JsonResponse({'message':'Publicación eliminada'},status=200)
     
     else:
         return HttpResponseNotAllowed(['PUT','DELETE'])
