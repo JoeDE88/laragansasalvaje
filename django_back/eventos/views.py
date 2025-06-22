@@ -47,9 +47,9 @@ def create_event(request):
 @csrf_exempt
 @require_http_methods(['PUT','DELETE'])
 @jwt_required
-def manage_event(request,pub_id):
+def manage_event(request,evento_id):
     try:
-        evento = Evento.objects.get(id=pub_id)
+        evento = Evento.objects.get(id=evento_id)
     except Evento.DoesNotExist:
         return JsonResponse({"error":"Evento no encontrado"},status=404)
     
@@ -59,11 +59,12 @@ def manage_event(request,pub_id):
         
         nombre = request.POST.get('nombre',evento.nombre)
         descripcion = request.POST.get('descripcion',evento.descripcion)
-        imagen = request.FILES.get('imagen',evento.imagen)
+
+        if 'imagen' in request.FILES:
+            evento.imagen = request.FILES['imagen']
 
         evento.nombre = nombre
         evento.descripcion = descripcion
-        evento.imagen = imagen
 
         try:
             evento.save()

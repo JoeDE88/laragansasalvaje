@@ -22,8 +22,8 @@ export default function DashboardEventos() {
             })
     }, [])
 
-    const deleteElement = (pubId) => {
-        fetch(`${baseURL}/eventos/evento/${pubId}`,{
+    const deleteElement = (eventoId) => {
+        fetch(`${baseURL}/eventos/evento/${eventoId}`,{
             method:'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -34,7 +34,7 @@ export default function DashboardEventos() {
         .then((data) => {
             alert('Evento eliminado')
             setEventos((prevEventos) =>
-            prevEventos.filter((pub) => pub.id !== pubId)
+            prevEventos.filter((evento) => evento.id !== eventoId)
         );
         })
         .catch(err => {

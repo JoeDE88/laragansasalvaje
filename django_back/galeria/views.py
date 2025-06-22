@@ -1,9 +1,10 @@
 from django.shortcuts import render
 import json
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404,HttpResponseBadRequest,HttpResponseNotAllowed
+from django.core.exceptions import ValidationError
 from .models import Obra, Categoria
 from django_back.utils import jwt_required
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
 # @csrf_exempt
@@ -92,3 +93,41 @@ def create_obra(request):
         'message':'Obra creada',
         'obra_id':nueva_obra.id
     }, status=201)
+
+@csrf_exempt
+@require_http_methods(['PUT','DELETE'])
+@jwt_required
+def manage_obra(request,obra_id):
+    try:
+        obra = Obra.objects.get(id=obra_id)
+    except Obra.DoesNotExist:
+        return JsonResponse({"error":"Obra no encontrada"},status=404)
+    
+    if request.method == 'PUT':
+        if not request.content_type.startswith('multipart/form-data'):
+            return JsonResponse({"error":"Debe ser multipart/form-data"},status=400)
+        
+        nombre = request.POST.get("nombre",obra.nombre)
+        descripcion = request.POST.get("descripcion",obra.descripcion)
+        tecnica = request.POST.get("tecnica",obra.tecnica)
+        dimensiones = request.POST.get("dimensiones",obra.dimensiones)
+
+        if 'imagen' in request.FILES:
+            obra.imagen = request.FILES['imagen']
+
+        obra.nombre = nombre
+        obra.descripcion = descripcion
+        obra.tecnica = tecnica
+        obra.dimensiones = dimensiones
+
+        try:
+            obra.save()
+        except ValidationError as e:
+            return JsonResponse({'errors': e.message_dict}, status=400)
+        
+    elif request.method == 'DELETE':
+        obra.delete()
+        return JsonResponse({'message':'Obra eliminada'},status=200)
+    
+    else:
+        return HttpResponseNotAllowed(['PUT','DELETE'])
