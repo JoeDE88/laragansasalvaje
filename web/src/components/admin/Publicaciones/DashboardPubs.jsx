@@ -1,13 +1,8 @@
-import { Box, Card, CardContent, Container, Grid, Stack, Typography } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import { baseURL } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
-import GreenButton from "../../layout/GreenButton"
-import { NavLink } from "react-router"
-import Placeholder from "../../../assets/utils/placeholder_150x103.5.png"
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { AdminContext } from "../../../context/AdminContext"
+import Dashboard from "../Dashboard"
 
 export default function DashboardPubs() {
     const { token } = useContext(AdminContext)
@@ -47,42 +42,16 @@ export default function DashboardPubs() {
     return (
         <>
             <Layout>
-                <Container>
-                    <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 2 }}>Publicaciones existentes:</Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2 }}>
-                        <GreenButton component={NavLink} to={'/dashboard/add-publicacion'} texto={'Nueva publicación'}></GreenButton>
-                    </Box>
-                    {publicaciones.map((publicacion) => {
-                        return (
-                            <Card key={publicacion.titulo} sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
-                                <CardContent>
-                                    <Grid container spacing={1} sx={{ display: 'flex' }}>
-                                        <Grid size={3}>
-                                            {publicacion.imagen_destacada ? <Box component='img' src={`${publicacion.imagen_destacada}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
-                                        </Grid>
-                                        <Grid size={7}>
-                                            <Typography sx={{ marginBottom: 1 }}>Titulo: {publicacion.titulo}</Typography>
-                                            <Typography variant="p">Texto: {publicacion.contenido}</Typography>
-                                        </Grid>
-                                        <Grid size={2}>
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                                <EditIcon></EditIcon>
-                                                <Box
-                                                    onClick={() => deleteElement(publicacion.id)}
-                                                    sx={{
-                                                        cursor: 'pointer',
-                                                        "&:hover": { color: 'red' }
-                                                    }}>
-                                                    <DeleteIcon></DeleteIcon>
-                                                </Box>
-                                            </Box>
-                                        </Grid>
-                                    </Grid>
-                                </CardContent>
-                            </Card>
-                        )
-                    })}
-                </Container>
+                <Dashboard
+                titulo={'Publicaciones existentes:'}
+                path={'/dashboard/add-publicacion'}
+                textoBoton={'Nueva publicación'}
+                elementos={publicaciones}
+                onClick={deleteElement}
+                imageKey={'imagen_destacada'}
+                titleKey={'titulo'}
+                contentKey={'contenido'}
+                />
             </Layout>
         </>
     )

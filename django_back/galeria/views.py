@@ -15,6 +15,7 @@ def obras_list(request):
 
     for obra in obras:
         data.append({
+            'id':obra.id,
             'nombre':obra.nombre,
             'descripcion':obra.descripcion,
             'tecnica':obra.tecnica,
