@@ -1,34 +1,29 @@
-import { useContext, useEffect, useState } from "react";
-import { AdminContext } from "../../../context/AdminContext";
-import { baseURL } from "../../../services/api/api";
-import { Box, Container, Grid, TextField, Typography } from "@mui/material";
-import GreenButton from "../../layout/GreenButton";
-import { useNavigate } from "react-router";
-import Layout from "../../layout/Layout";
+import { useContext, useEffect, useState } from "react"
+import { AdminContext } from "../../../context/AdminContext"
+import { baseURL } from "../../../services/api/api"
+import { Box, Container, Grid, TextField, Typography } from "@mui/material"
+import GreenButton from "../../layout/GreenButton"
+import Layout from "../../layout/Layout"
 
-export default function AddEvento() {
+export default function AddProd() {
     const { token } = useContext(AdminContext)
-
-    const navigate = useNavigate()
-    const [eventos, setEventos] = useState([])
+    const [productos, setProductos] = useState([])
 
     const [nombre, setNombre] = useState("")
     const [descripcion, setDescripcion] = useState("")
+    const [precio, setPrecio] = useState("")
+    const [stock, setStock] = useState("")
     const [imagen, setImagen] = useState("")
 
-
-    function postNewEvento() {
-        if (!imagen) {
-            alert("Debes seleccionar una imagen.")
-            return
-        }
-
+    function postNewProducto() {
         const formData = new FormData()
         formData.append('nombre', nombre)
         formData.append('descripcion', descripcion)
+        formData.append('precio', precio)
+        formData.append('stock', stock)
         formData.append('imagen', imagen)
 
-        fetch(`${baseURL}/eventos/nuevo-evento/`, {
+        fetch(`${baseURL}/shop/nuevo/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -36,23 +31,24 @@ export default function AddEvento() {
             body: formData
         })
             .then(res => {
-                if (!res.ok) throw new Error('Error al crear el evento.')
+                if (!res.ok) throw new Error('Error al crear nuevo producto.')
                 return res.json()
             })
             .then(data => {
-                alert('Evento creada correctamente')
-                navigate('/dashboard/lista-eventos')
+                alert('Producto creado correctamente.')
+                setProductos([...productos, data])
             })
             .catch(err => {
                 alert(err.message)
             })
     }
 
+
     return (
         <Layout>
             <Container>
-                <Typography variant="h5">Añade nuevo evento:</Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                <Typography variant="h5">Añade nuevo producto:</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box
                         component="form"
                         sx={{
@@ -77,6 +73,7 @@ export default function AddEvento() {
                         noValidate
                         autoComplete="off"
                     >
+
                         <TextField
                             required
                             id="outlined-required"
@@ -85,6 +82,8 @@ export default function AddEvento() {
                             onChange={(e) => setNombre(e.target.value)}
                             color='tertiary'
                         />
+
+
                         <TextField
                             id="outlined-multiline-static"
                             label="Descripción"
@@ -94,10 +93,44 @@ export default function AddEvento() {
                             onChange={(e) => setDescripcion(e.target.value)}
                             color='tertiary'
                         />
+
+
+                        <TextField
+                            id="outlined-number"
+                            label="Precio:"
+                            type="number"
+                            slotProps={{
+                                htmlInput: {
+                                    step: "0.01",
+                                    min: 0.00
+                                }
+                            }}
+                            placeholder="€"
+                            value={precio}
+                            onChange={(e) => setPrecio(parseFloat(e.target.value).toFixed(2))}
+                            color='tertiary'
+                        />
+
+
+                        <TextField
+                            id="outlined-number"
+                            label="Stock:"
+                            type="number"
+                            slotProps={{
+                                htmlInput: {
+                                    min: 0
+                                }
+                            }}
+                            placeholder="Stock"
+                            value={stock}
+                            onChange={(e) => setStock(parseInt(e.target.value))}
+                            color='tertiary'
+                        />
                         <Box sx={{ padding: 1 }}>
                             <hr />
                             <Typography variant="h6">Multimedia</Typography>
                             <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
+
                                 <Typography sx={{ marginRight: 2 }}>Selecciona la imagen:</Typography>
                                 <input
                                     accept="image/*"
@@ -110,7 +143,7 @@ export default function AddEvento() {
                     </Box>
                 </Box>
                 <Box sx={{ marginTop: 2 }}>
-                    <GreenButton texto={'Guardar'} onClick={postNewEvento}></GreenButton>
+                    <GreenButton texto={'Guardar'} onClick={postNewProducto}></GreenButton>
                 </Box>
             </Container>
         </Layout>

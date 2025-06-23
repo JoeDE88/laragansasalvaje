@@ -1,7 +1,8 @@
-import Obras from "../components/admin/Obras/Obras"
-import Productos from "../components/admin/Tienda/Productos"
 import DashboardPubs from "../components/admin/Publicaciones/DashboardPubs"
 import DashboardEventos from "../components/admin/Eventos/DashboardEventos"
+import DashboardObras from "../components/admin/Obras/DashboardObras"
+import DashboardProductos from "../components/admin/Tienda/DashboardProductos"
+
 
 export const dashboardRoutes = [
     {
@@ -17,11 +18,11 @@ export const dashboardRoutes = [
     {
         'name': 'Obras',
         'path': '/dashboard/obras',
-        'component': <Obras/>
+        'component': <DashboardObras/>
     },
     {
         'name': 'Productos',
         'path': '/dashboard/shop',
-        'component': <Productos/>
+        'component': <DashboardProductos/>
     },
 ]

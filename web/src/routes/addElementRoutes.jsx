@@ -1,5 +1,7 @@
 import AddEvento from "../components/admin/Eventos/AddEvento";
 import AddPub from "../components/admin/Publicaciones/AddPub";
+import AddObra from "../components/admin/Obras/AddObra"
+import AddProd from "../components/admin/Tienda/AddProd";
 
 export const addElementRoute = [
     {
@@ -15,11 +17,11 @@ export const addElementRoute = [
     {
         'name':'obra',
         'path':'/dashboard/add-obra',
-        'component':''
+        'component':<AddObra/>
     },
     {
         'name':'producto',
         'path':'/dashboard/add-producto',
-        'component':''
+        'component':<AddProd></AddProd>
     },
 ]
