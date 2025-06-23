@@ -10,11 +10,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { AdminContext } from "../../../context/AdminContext"
 
 export default function DashboardPubs() {
-    const {token} = useContext(AdminContext)
+    const { token } = useContext(AdminContext)
     const [publicaciones, setPublicaciones] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/blog/publicaciones/`)
+        fetch(`${baseURL}/blog/lista-publicaciones/`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -23,23 +23,25 @@ export default function DashboardPubs() {
     }, [])
 
     const deleteElement = (pubId) => {
-        fetch(`${baseURL}/blog/publicacion/${pubId}`,{
-            method:'DELETE',
+        fetch(`${baseURL}/blog/publicacion/${pubId}`, {
+            method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(res => {if (!res.ok) throw new Error('Error al eliminar la publicación.')
-                return res.json()})
-        .then((data) => {
-            alert('Publicacion eliminada')
-            setPublicaciones((prevPublicaciones) =>
-            prevPublicaciones.filter((pub) => pub.id !== pubId)
-        );
-        })
-        .catch(err => {
-            alert(err.message)
-        })
+            .then(res => {
+                if (!res.ok) throw new Error('Error al eliminar la publicación.')
+                return res.json()
+            })
+            .then((data) => {
+                alert('Publicacion eliminada')
+                setPublicaciones((prevPublicaciones) =>
+                    prevPublicaciones.filter((pub) => pub.id !== pubId)
+                );
+            })
+            .catch(err => {
+                alert(err.message)
+            })
     }
 
     return (
@@ -47,7 +49,7 @@ export default function DashboardPubs() {
             <Layout>
                 <Container>
                     <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 2 }}>Publicaciones existentes:</Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2  }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2 }}>
                         <GreenButton component={NavLink} to={'/dashboard/add-publicacion'} texto={'Nueva publicación'}></GreenButton>
                     </Box>
                     {publicaciones.map((publicacion) => {
@@ -59,14 +61,19 @@ export default function DashboardPubs() {
                                             {publicacion.imagen_destacada ? <Box component='img' src={`${publicacion.imagen_destacada}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                                         </Grid>
                                         <Grid size={7}>
-                                                <Typography sx={{marginBottom:1}}>Titulo: {publicacion.titulo}</Typography>
-                                                <Typography variant="p">Texto: {publicacion.contenido}</Typography>
+                                            <Typography sx={{ marginBottom: 1 }}>Titulo: {publicacion.titulo}</Typography>
+                                            <Typography variant="p">Texto: {publicacion.contenido}</Typography>
                                         </Grid>
                                         <Grid size={2}>
-                                            <Box sx={{display:'flex', justifyContent:'space-evenly'}}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                                 <EditIcon></EditIcon>
-                                                <Box onClick={()=>deleteElement(publicacion.id)}>
-                                                <DeleteIcon></DeleteIcon>
+                                                <Box
+                                                    onClick={() => deleteElement(publicacion.id)}
+                                                    sx={{
+                                                        cursor: 'pointer',
+                                                        "&:hover": { color: 'red' }
+                                                    }}>
+                                                    <DeleteIcon></DeleteIcon>
                                                 </Box>
                                             </Box>
                                         </Grid>

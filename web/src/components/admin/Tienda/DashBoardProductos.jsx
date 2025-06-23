@@ -10,11 +10,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { AdminContext } from "../../../context/AdminContext"
 
 export default function DashboardProductos() {
-    const {token} = useContext(AdminContext)
+    const { token } = useContext(AdminContext)
     const [productos, setProductos] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/productos/`)
+        fetch(`${baseURL}/shop/lista-productos/`)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -23,23 +23,25 @@ export default function DashboardProductos() {
     }, [])
 
     const deleteElement = (productoId) => {
-        fetch(`${baseURL}/shop/producto/${productoId}`,{
-            method:'DELETE',
+        fetch(`${baseURL}/shop/producto/${productoId}`, {
+            method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(res => {if (!res.ok) throw new Error('Error al eliminar el producto.')
-                return res.json()})
-        .then((data) => {
-            alert('Producto eliminado')
-            setProductos((prevProductos) =>
-            prevProductos.filter((producto) => producto.id !== productoId)
-        );
-        })
-        .catch(err => {
-            alert(err.message)
-        })
+            .then(res => {
+                if (!res.ok) throw new Error('Error al eliminar el producto.')
+                return res.json()
+            })
+            .then((data) => {
+                alert('Producto eliminado')
+                setProductos((prevProductos) =>
+                    prevProductos.filter((producto) => producto.id !== productoId)
+                );
+            })
+            .catch(err => {
+                alert(err.message)
+            })
     }
 
     return (
@@ -47,7 +49,7 @@ export default function DashboardProductos() {
             <Layout>
                 <Container>
                     <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 2 }}>Productos existentes:</Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2  }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2 }}>
                         <GreenButton component={NavLink} to={'/dashboard/add-producto'} texto={'Nuevo producto'}></GreenButton>
                     </Box>
                     {productos.map((producto) => {
@@ -59,14 +61,19 @@ export default function DashboardProductos() {
                                             {producto.imagen ? <Box component='img' src={`${producto.imagen}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                                         </Grid>
                                         <Grid size={7}>
-                                                <Typography sx={{marginBottom:1}}>Nombre: {producto.nombre}</Typography>
-                                                <Typography variant="p">Descripcion: {producto.descripcion}</Typography>
+                                            <Typography sx={{ marginBottom: 1 }}>Nombre: {producto.nombre}</Typography>
+                                            <Typography variant="p">Descripcion: {producto.descripcion}</Typography>
                                         </Grid>
                                         <Grid size={2}>
-                                            <Box sx={{display:'flex', justifyContent:'space-evenly'}}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                                 <EditIcon></EditIcon>
-                                                <Box onClick={()=>deleteElement(producto.id)}>
-                                                <DeleteIcon></DeleteIcon>
+                                                <Box
+                                                    onClick={() => deleteElement(producto.id)}
+                                                    sx={{
+                                                        cursor: 'pointer',
+                                                        "&:hover": { color: 'red' }
+                                                    }}>
+                                                    <DeleteIcon></DeleteIcon>
                                                 </Box>
                                             </Box>
                                         </Grid>

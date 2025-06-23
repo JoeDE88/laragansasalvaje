@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { AdminContext } from "../../../context/AdminContext"
 
 export default function DashboardEventos() {
-    const {token} = useContext(AdminContext)
+    const { token } = useContext(AdminContext)
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
@@ -23,23 +23,25 @@ export default function DashboardEventos() {
     }, [])
 
     const deleteElement = (eventoId) => {
-        fetch(`${baseURL}/eventos/evento/${eventoId}`,{
-            method:'DELETE',
+        fetch(`${baseURL}/eventos/evento/${eventoId}`, {
+            method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(res => {if (!res.ok) throw new Error('Error al eliminar el evento.')
-                return res.json()})
-        .then((data) => {
-            alert('Evento eliminado')
-            setEventos((prevEventos) =>
-            prevEventos.filter((evento) => evento.id !== eventoId)
-        );
-        })
-        .catch(err => {
-            alert(err.message)
-        })
+            .then(res => {
+                if (!res.ok) throw new Error('Error al eliminar el evento.')
+                return res.json()
+            })
+            .then((data) => {
+                alert('Evento eliminado')
+                setEventos((prevEventos) =>
+                    prevEventos.filter((evento) => evento.id !== eventoId)
+                );
+            })
+            .catch(err => {
+                alert(err.message)
+            })
     }
 
     return (
@@ -47,7 +49,7 @@ export default function DashboardEventos() {
             <Layout>
                 <Container>
                     <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 2 }}>Eventos existentes:</Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2  }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: 2 }}>
                         <GreenButton component={NavLink} to={'/dashboard/add-evento'} texto={'Nuevo evento'}></GreenButton>
                     </Box>
                     {eventos.map((evento) => {
@@ -59,14 +61,19 @@ export default function DashboardEventos() {
                                             {evento.imagen ? <Box component='img' src={`${evento.imagen}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                                         </Grid>
                                         <Grid size={7}>
-                                                <Typography sx={{marginBottom:1}}>Titulo: {evento.nombre}</Typography>
-                                                <Typography variant="p">Texto: {evento.descripcion}</Typography>
+                                            <Typography sx={{ marginBottom: 1 }}>Titulo: {evento.nombre}</Typography>
+                                            <Typography variant="p">Texto: {evento.descripcion}</Typography>
                                         </Grid>
                                         <Grid size={2}>
-                                            <Box sx={{display:'flex', justifyContent:'space-evenly'}}>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                                 <EditIcon></EditIcon>
-                                                <Box onClick={()=>deleteElement(evento.id)}>
-                                                <DeleteIcon></DeleteIcon>
+                                                <Box
+                                                    onClick={() => deleteElement(evento.id)}
+                                                    sx={{
+                                                        cursor: 'pointer',
+                                                        "&:hover": { color: 'red' }
+                                                    }}>
+                                                    <DeleteIcon></DeleteIcon>
                                                 </Box>
                                             </Box>
                                         </Grid>
