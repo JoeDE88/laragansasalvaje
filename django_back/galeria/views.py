@@ -16,7 +16,10 @@ def obras_list(request):
     for obra in obras:
         data.append({
             'nombre':obra.nombre,
-            'imagen':obra.imagen.url
+            'descripcion':obra.descripcion,
+            'tecnica':obra.tecnica,
+            'dimensiones':obra.dimensiones,
+            'imagen':obra.imagen.url,
         })
 
     return JsonResponse(data,safe=False)

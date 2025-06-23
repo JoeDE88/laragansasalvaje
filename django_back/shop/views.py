@@ -16,7 +16,9 @@ def productos_list(request):
         data.append({
             'id': producto.id,
             'nombre': producto.nombre,
+            'descripcion':producto.descripcion,
             'precio': producto.precio,
+            'stock':producto.stock,
             'imagen': producto.imagen.url if producto.imagen else None,
             'slug': producto.slug
         })
