@@ -4,13 +4,15 @@ import { baseURL } from "../../../services/api/api";
 import GreenButton from "../../layout/GreenButton";
 import { AdminContext } from "../../../context/AdminContext";
 import Layout from "../../layout/Layout";
+import { useNavigate } from "react-router";
 
 const fecha = new Date()
 const año = fecha.getFullYear()
 
 export default function AddObra() {
     const { token } = useContext(AdminContext);
-    const [obras, setObras] = useState([])
+
+    const navigate = useNavigate()
 
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
@@ -49,7 +51,7 @@ export default function AddObra() {
             })
             .then(data => {
                 alert("Obra creada correctamente");
-                setObras([...obras, data]);
+                navigate('/dashboard/lista-obras')
             })
             .catch(err => {
                 alert(err.message);

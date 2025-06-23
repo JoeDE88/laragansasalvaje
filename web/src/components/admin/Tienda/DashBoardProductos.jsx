@@ -52,15 +52,15 @@ export default function DashboardProductos() {
                     </Box>
                     {productos.map((producto) => {
                         return (
-                            <Card key={producto.titulo} sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
+                            <Card key={producto.nombre} sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
                                 <CardContent>
                                     <Grid container spacing={1} sx={{ display: 'flex' }}>
                                         <Grid size={3}>
-                                            {producto.imagen_destacada ? <Box component='img' src={`${producto.imagen_destacada}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
+                                            {producto.imagen ? <Box component='img' src={`${producto.imagen}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                                         </Grid>
                                         <Grid size={7}>
-                                                <Typography sx={{marginBottom:1}}>Titulo: {producto.titulo}</Typography>
-                                                <Typography variant="p">Texto: {producto.contenido}</Typography>
+                                                <Typography sx={{marginBottom:1}}>Nombre: {producto.nombre}</Typography>
+                                                <Typography variant="p">Descripcion: {producto.descripcion}</Typography>
                                         </Grid>
                                         <Grid size={2}>
                                             <Box sx={{display:'flex', justifyContent:'space-evenly'}}>

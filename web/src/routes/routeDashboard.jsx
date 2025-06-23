@@ -17,12 +17,12 @@ export const dashboardRoutes = [
     },
     {
         'name': 'Obras',
-        'path': '/dashboard/obras',
+        'path': '/dashboard/lista-obras',
         'component': <DashboardObras/>
     },
     {
         'name': 'Productos',
-        'path': '/dashboard/shop',
+        'path': '/dashboard/lista-productos',
         'component': <DashboardProductos/>
     },
 ]

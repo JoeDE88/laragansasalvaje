@@ -1,13 +1,15 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { AdminContext } from "../../../context/AdminContext"
 import { baseURL } from "../../../services/api/api"
-import { Box, Container, Grid, TextField, Typography } from "@mui/material"
+import { Box, Container, TextField, Typography } from "@mui/material"
 import GreenButton from "../../layout/GreenButton"
 import Layout from "../../layout/Layout"
+import { useNavigate } from "react-router"
 
 export default function AddProd() {
     const { token } = useContext(AdminContext)
-    const [productos, setProductos] = useState([])
+
+    const navigate = useNavigate()
 
     const [nombre, setNombre] = useState("")
     const [descripcion, setDescripcion] = useState("")
@@ -36,7 +38,7 @@ export default function AddProd() {
             })
             .then(data => {
                 alert('Producto creado correctamente.')
-                setProductos([...productos, data])
+                navigate('/dashboard/lista-productos')
             })
             .catch(err => {
                 alert(err.message)

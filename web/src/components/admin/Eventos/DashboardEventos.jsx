@@ -56,11 +56,11 @@ export default function DashboardEventos() {
                                 <CardContent>
                                     <Grid container spacing={1} sx={{ display: 'flex' }}>
                                         <Grid size={3}>
-                                            {evento.imagen_destacada ? <Box component='img' src={`${evento.imagen_destacada}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
+                                            {evento.imagen ? <Box component='img' src={`${evento.imagen}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                                         </Grid>
                                         <Grid size={7}>
-                                                <Typography sx={{marginBottom:1}}>Titulo: {evento.titulo}</Typography>
-                                                <Typography variant="p">Texto: {evento.contenido}</Typography>
+                                                <Typography sx={{marginBottom:1}}>Titulo: {evento.nombre}</Typography>
+                                                <Typography variant="p">Texto: {evento.descripcion}</Typography>
                                         </Grid>
                                         <Grid size={2}>
                                             <Box sx={{display:'flex', justifyContent:'space-evenly'}}>

@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AdminContext } from "../../../context/AdminContext";
 import { baseURL } from "../../../services/api/api";
-import { Box, Container, Grid, TextField, Typography } from "@mui/material";
+import { Box, Container, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";
 import { useNavigate } from "react-router";
 import Layout from "../../layout/Layout";
@@ -10,7 +10,6 @@ export default function AddEvento() {
     const { token } = useContext(AdminContext)
 
     const navigate = useNavigate()
-    const [eventos, setEventos] = useState([])
 
     const [nombre, setNombre] = useState("")
     const [descripcion, setDescripcion] = useState("")

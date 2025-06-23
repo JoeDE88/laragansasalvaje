@@ -52,7 +52,7 @@ export default function DashboardObras() {
                     </Box>
                     {obras.map((obra) => {
                         return (
-                            <Card key={obra.titulo} sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
+                            <Card key={obra.nombre} sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
                                 <CardContent>
                                     <Grid container spacing={1} sx={{ display: 'flex' }}>
                                         <Grid size={3}>
