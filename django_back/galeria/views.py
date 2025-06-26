@@ -6,6 +6,7 @@ from .models import Obra, Categoria
 from django_back.utils import jwt_required
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 
 # @csrf_exempt
 @require_GET
@@ -22,6 +23,23 @@ def obras_list(request):
             'dimensiones':obra.dimensiones,
             'imagen':obra.imagen.url,
         })
+
+    return JsonResponse(data,safe=False)
+
+@require_GET
+def detalles_obra(request,obra_id):
+    obra = get_object_or_404(Obra, id=obra_id)
+    
+    data = {
+        'id': obra.id,
+        'nombre': obra.nombre,
+        'descripcion': obra.descripcion,
+        'tecnica': obra.tecnica,
+        'dimensiones': obra.dimensiones,
+        'imagen': obra.imagen.url,
+        'categoria': obra.categoria.nombre if obra.categoria else "",
+        'creadoEn': obra.creado_en if obra.creado_en else None,
+    }
 
     return JsonResponse(data,safe=False)
 
@@ -99,7 +117,7 @@ def create_obra(request):
     }, status=201)
 
 @csrf_exempt
-@require_http_methods(['PUT','DELETE'])
+@require_http_methods(['POST','DELETE'])
 @jwt_required
 def manage_obra(request,obra_id):
     try:
@@ -107,10 +125,10 @@ def manage_obra(request,obra_id):
     except Obra.DoesNotExist:
         return JsonResponse({"error":"Obra no encontrada"},status=404)
     
-    if request.method == 'PUT':
+    if request.method == 'POST':
         if not request.content_type.startswith('multipart/form-data'):
             return JsonResponse({"error":"Debe ser multipart/form-data"},status=400)
-        
+            
         nombre = request.POST.get("nombre",obra.nombre)
         descripcion = request.POST.get("descripcion",obra.descripcion)
         tecnica = request.POST.get("tecnica",obra.tecnica)
@@ -126,6 +144,7 @@ def manage_obra(request,obra_id):
 
         try:
             obra.save()
+            return JsonResponse({'message': 'Obra actualizada correctamente'},status=200)
         except ValidationError as e:
             return JsonResponse({'errors': e.message_dict}, status=400)
         

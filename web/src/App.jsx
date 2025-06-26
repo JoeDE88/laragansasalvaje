@@ -9,6 +9,7 @@ import { dashboardRoutes } from "./routes/routeDashboard";
 import AddPub from "./components/admin/Publicaciones/AddPub"
 import AddEvento from "./components/admin/Eventos/AddEvento";
 import { addElementRoute } from "./routes/addElementRoutes";
+import EditObra from "./components/admin/Obras/EditObra";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
                 <Route key={route.name} path={route.path} element={route.component}/>
               )
             })}
+            <Route path='/obra/:id' element={<EditObra></EditObra>}/>
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

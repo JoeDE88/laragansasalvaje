@@ -4,41 +4,65 @@ import { baseURL } from "../../../services/api/api";
 import GreenButton from "../../layout/GreenButton";
 import { AdminContext } from "../../../context/AdminContext";
 import Layout from "../../layout/Layout";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const fecha = new Date()
 const año = fecha.getFullYear()
 
-export default function AddObra() {
+export default function EditObra() {
+
+    const { id } = useParams()
+
     const { token } = useContext(AdminContext);
-
-    const navigate = useNavigate()
-
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [tecnica, setTecnica] = useState("");
     const [dimensiones, setDimensiones] = useState("");
     const [categoria, setCategoria] = useState("");
-    const [imagen, setImagen] = useState(null);
     const [creadoEn, setCreadoEn] = useState(año);
+    const [originalObra, setOriginalObra] = useState(null)
 
-    function postNewObra() {
+    const navigate = useNavigate()
 
-        if (!imagen) {
-            alert("Debes seleccionar una imagen.");
-            return;
-        }
+    useEffect(() => {
+        fetch(`${baseURL}/galeria/obras/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setOriginalObra(data)
+                setNombre(data.nombre || "")
+                setDescripcion(data.descripcion || "")
+                setTecnica(data.tecnica || "")
+                setDimensiones(data.dimensiones || "")
+                setCategoria(data.categoria || "")
+                setCreadoEn(data.creadoEn || "")
+            })
+    }, [id])
+
+    function editObra() {
 
         const formData = new FormData();
-        formData.append('nombre', nombre);
-        formData.append('descripcion', descripcion);
-        formData.append('tecnica', tecnica);
-        formData.append('dimensiones', dimensiones);
-        formData.append('imagen', imagen);
-        formData.append('categoria', categoria);
-        formData.append('creado_en', creadoEn);
 
-        fetch(`${baseURL}/galeria/nueva/`, {
+        if (nombre !== originalObra.nombre) {
+            formData.append('nombre', nombre);
+        }
+        if (descripcion !== originalObra.descripcion) {
+            formData.append('descripcion', descripcion);
+        }
+        if (tecnica !== originalObra.tecnica) {
+            formData.append('tecnica', tecnica);
+        }
+        if (dimensiones !== originalObra.dimensiones) {
+            formData.append('dimensiones', dimensiones);
+        }
+        
+        if (categoria !== originalObra.categoria) {
+            formData.append('categoria', categoria);
+        }
+        if (creadoEn !== originalObra.creadoEn) {
+            formData.append('creado_en', creadoEn);
+        }
+
+        fetch(`${baseURL}/galeria/obra/${id}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -46,11 +70,11 @@ export default function AddObra() {
             body: formData
         })
             .then(res => {
-                if (!res.ok) throw new Error('Error al crear la obra');
+                if (!res.ok) throw new Error('Error al modificar la obra');
                 return res.json();
             })
             .then(data => {
-                alert("Obra creada correctamente");
+                alert("Obra modificada correctamente");
                 navigate('/dashboard/lista-obras')
             })
             .catch(err => {
@@ -61,7 +85,7 @@ export default function AddObra() {
     return (
         <Layout>
             <Container>
-                <Typography variant="h5">Añade una nueva obra:</Typography>
+                <Typography variant="h5">Modifica obra:</Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box
                         component="form"
@@ -142,24 +166,10 @@ export default function AddObra() {
                             onChange={(e) => setCategoria(e.target.value)}
                             color='tertiary'
                         />
-
-                        <Box sx={{ padding: 1 }}>
-                            <hr />
-                            <Typography variant="h6">Multimedia</Typography>
-                            <Box sx={{ display: 'flex', flexDirection: 'row', marginTop: 2, marginBottom: 2 }}>
-                                <Typography sx={{ marginRight: 2 }}>Selecciona la imagen:</Typography>
-                                <input
-                                    accept="image/*"
-                                    type="file"
-                                    onChange={(e) => setImagen(e.target.files[0])}
-                                    color='tertiary'
-                                />
-                            </Box>
-                        </Box>
                     </Box>
                 </Box>
                 <Box sx={{ marginTop: 2 }}>
-                    <GreenButton texto={'Guardar'} onClick={postNewObra}></GreenButton>
+                    <GreenButton texto={'Modificar'} onClick={editObra}></GreenButton>
                 </Box>
             </Container>
         </Layout>

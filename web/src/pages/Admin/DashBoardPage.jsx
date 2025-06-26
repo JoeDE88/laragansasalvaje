@@ -8,7 +8,7 @@ import { AdminContext } from "../../context/AdminContext";
 import Layout from "../../components/layout/Layout";
 import { addElementRoute } from "../../routes/addElementRoutes";
 
-export default function DashBoard() {
+export default function DashBoardPage() {
 
     const { logout } = useContext(AdminContext)
 
@@ -17,12 +17,11 @@ export default function DashBoard() {
             <Layout>
                 <Titulo titulo={'Bienvenida Gansa'} />
                 <Container>
-                    <>
                         <Grid container spacing={0}>
                             <Grid size={9}>
                                 {dashboardRoutes.map((app) =>
                                     <>
-                                        <Card elevation={0}>
+                                        <Card key={app.name} elevation={0}>
                                             <CardContent sx={{ backgroundColor: 'blancoPerla.main' }}>
                                                 <Typography key={app.name} component={NavLink} to={app.path} sx={{ color: 'secondary.main', fontSize: 20 }}>
                                                     {app.name}
@@ -36,7 +35,7 @@ export default function DashBoard() {
                             <Grid size={3}>
                                 {addElementRoute.map((element) =>
                                     <>
-                                        <Card elevation={0}>
+                                        <Card key={element.name} elevation={0}>
                                             <CardContent sx={{display: 'flex', alignItems: 'center', backgroundColor: 'blancoPerla.main',paddingTop:3 }}>
                                                 <GreenButton component={NavLink} to={element.path} sx={{  textDecoration: 'none' }} texto={`Agregar`}></GreenButton>
                                             </CardContent>
@@ -45,7 +44,7 @@ export default function DashBoard() {
                                 )}
                             </Grid>
                         </Grid>
-                    </>
+                    
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <GreenButton texto={'Logout'} onClick={logout} />
                     </Box>

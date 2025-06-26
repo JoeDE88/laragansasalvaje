@@ -4,6 +4,7 @@ import Placeholder from "../../assets/utils/placeholder_150x103.5.png"
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { NavLink } from "react-router";
 
 export default function DashboardCard({ elemento, imageCard, tituloCard, contenidoCard,handleClick }) {
 
@@ -21,7 +22,15 @@ export default function DashboardCard({ elemento, imageCard, tituloCard, conteni
                         </Grid>
                         <Grid size={2}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                                <Box
+                                component={NavLink}
+                                to={`/obra/${elemento.id}`}
+                                sx={{
+                                    cursor: 'pointer',
+                                    "&:hover": {color:'#4392F1'}
+                                }}>
                                 <EditIcon></EditIcon>
+                                </Box>
                                 <Box
                                     onClick={() => handleClick(elemento.id)}
                                     sx={{

@@ -116,6 +116,7 @@ export default function AddPub() {
     return (
         <Layout>
             <Container>
+
                 <Typography variant="h5">Añade nueva publicación:</Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box

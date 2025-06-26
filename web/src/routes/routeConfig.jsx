@@ -8,9 +8,9 @@ import CookiesPage from "../pages/Legal/CookiesPage";
 import TerminosCondicionesPage from "../pages/Legal/TerminosCondicionesPage";
 import CategoriaPage from "../pages/Galeria/CategoriaPage";
 import PublicacionPage from "../pages/Blog/PublicacionPage";
-import DashBoard from "../pages/Admin/DashBoard";
 import LoginPage from "../pages/Admin/LoginPage";
 import EventosPage from "../pages/Eventos/EventosPage";
+import DashBoardPage from "../pages/Admin/DashBoardPage";
 
 export const publicRoutes = [
     {
@@ -98,7 +98,7 @@ export const privateRoutes = [
     {
         name: 'Dashboard',
         path: '/dashboard',
-        component: <DashBoard/>
+        component: <DashBoardPage/>
     },
     /* {
         'name': 'Publicaciones',

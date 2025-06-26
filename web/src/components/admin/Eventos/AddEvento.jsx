@@ -39,7 +39,7 @@ export default function AddEvento() {
                 return res.json()
             })
             .then(data => {
-                alert('Evento creada correctamente')
+                alert('Evento creado correctamente')
                 navigate('/dashboard/lista-eventos')
             })
             .catch(err => {
