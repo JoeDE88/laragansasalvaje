@@ -11,7 +11,7 @@ export default function GaleriaPage() {
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/galeria/primeras-obras-por-categoria/`)
+        fetch(`${baseURL}/galeria/primeras-por-categoria/`)
             .then((response) => response.json())
             .then((data) => {
                 setObras(data)

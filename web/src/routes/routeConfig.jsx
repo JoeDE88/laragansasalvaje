@@ -11,6 +11,9 @@ import PublicacionPage from "../pages/Blog/PublicacionPage";
 import LoginPage from "../pages/Admin/LoginPage";
 import EventosPage from "../pages/Eventos/EventosPage";
 import DashBoardPage from "../pages/Admin/DashBoardPage";
+// import ShopPage from "../pages/Shop/ShopPage";
+// import ProductPage from "../pages/Shop/ProductPage"
+// import ShopCartPage from "../pages/Shop/ShopCartPage"
 
 export const publicRoutes = [
     {
@@ -42,7 +45,7 @@ export const publicRoutes = [
         name: "carrito",
         path: "/carrito",
         component: <ShopCartPage/>
-    } */,
+    }, */
     {
         name: "Acerca de",
         path: "/acerca-de",

@@ -25,7 +25,7 @@ export default function AddProd() {
         formData.append('stock', stock)
         formData.append('imagen', imagen)
 
-        fetch(`${baseURL}/shop/nuevo/`, {
+        fetch(`${baseURL}/shop/nuevo-producto/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`

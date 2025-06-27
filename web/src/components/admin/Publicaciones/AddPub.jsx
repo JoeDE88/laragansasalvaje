@@ -93,7 +93,7 @@ export default function AddPub() {
             }
         }
 
-        fetch(`${baseURL}/blog/nueva/`, {
+        fetch(`${baseURL}/blog/nueva-publicacion/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
