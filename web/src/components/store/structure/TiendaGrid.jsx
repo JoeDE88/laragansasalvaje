@@ -8,7 +8,7 @@ export default function TiendaGrid() {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/productos/`)
+        fetch(`${baseURL}/shop/lista-productos/`)
             .then((response) => response.json())
             .then((data) => {
                 setProductos(data);

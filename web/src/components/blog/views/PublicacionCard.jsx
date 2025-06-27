@@ -10,11 +10,9 @@ export default function PublicacionCard() {
   let { slug } = useParams()
 
   useEffect(() => {
-    fetch(`${baseURL}/blog/publicaciones/${slug}`)
+    fetch(`${baseURL}/blog/detalles-publicaciones-slug/${slug}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
         setArticulo(data)
       })
   }, [])

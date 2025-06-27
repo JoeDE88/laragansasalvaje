@@ -8,7 +8,7 @@ export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
 
     useEffect(() => {
-        fetch(`${baseURL}/blog/publicaciones/`)
+        fetch(`${baseURL}/blog/lista-publicaciones/`)
             .then((response) => response.json())
             .then((data) => {
                 setPublicaciones(data);
