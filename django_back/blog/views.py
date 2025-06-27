@@ -1,4 +1,4 @@
-#from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import json
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseNotAllowed
 from django.core.exceptions import ValidationError
@@ -29,7 +29,22 @@ def publicacion_list(request):
     return JsonResponse(data, safe=False)
 
 @require_GET
-def detalle_pub(request, slug):
+def detalles_pub_id(request,pub_id):
+    pub = get_object_or_404(Publicacion,id=pub_id)
+
+    data = {
+            'id': pub.id,
+            'titulo': pub.titulo,
+            'contenido': pub.contenido,
+            'imagen_destacada': pub.imagen_destacada.url if pub.imagen_destacada else None,
+            'url_video': pub.url_video,
+            'etiqueta': pub.etiqueta,
+            'creado_en': pub.creado_en,
+            'tipo':pub.tipo
+    }
+
+@require_GET
+def detalles_pub_slug(request, slug):
     try:
         pub = Publicacion.objects.get(slug=slug)
         data = {
@@ -82,7 +97,7 @@ def create_publicacion(request):
     }, status=201)
 
 @csrf_exempt
-@require_http_methods(['PUT','DELETE'])
+@require_http_methods(['POST','DELETE'])
 @jwt_required
 def manage_publicacion(request,pub_id):
     try:
@@ -90,7 +105,7 @@ def manage_publicacion(request,pub_id):
     except Publicacion.DoesNotExist:
         return JsonResponse({"error":"Publicación no encontrada"},status=404)
     
-    if request.method == 'PUT':
+    if request.method == 'POST':
         if not request.content_type.startswith('multipart/form-data'):
             return JsonResponse({"error":"Debe ser multipart/form-data"},status=400)
         
@@ -114,6 +129,7 @@ def manage_publicacion(request,pub_id):
         try:
             publicacion.full_clean()
             publicacion.save()
+            return JsonResponse({'message':'Publicacion actualizada correctamente'},status=200)
         except ValidationError as e:
             return JsonResponse({'errors': e.message_dict}, status=400)
         

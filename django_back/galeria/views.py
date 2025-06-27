@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import json
 from django.http import JsonResponse, Http404,HttpResponseBadRequest,HttpResponseNotAllowed
 from django.core.exceptions import ValidationError
@@ -6,7 +6,6 @@ from .models import Obra, Categoria
 from django_back.utils import jwt_required
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import get_object_or_404
 
 # @csrf_exempt
 @require_GET
@@ -27,7 +26,7 @@ def obras_list(request):
     return JsonResponse(data,safe=False)
 
 @require_GET
-def detalles_obra(request,obra_id):
+def detalles_obra_id(request,obra_id):
     obra = get_object_or_404(Obra, id=obra_id)
     
     data = {

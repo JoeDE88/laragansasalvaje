@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import json
 from django.views.decorators.http import require_GET,require_POST,require_http_methods
 from django.core.exceptions import ValidationError
@@ -24,7 +24,20 @@ def eventos_list(request):
         })
         
     return JsonResponse(data, safe=False)
-    
+
+@require_GET
+def detalles_evento_id(request,evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
+
+    data = {
+        'id': evento.id,
+        'nombre': evento.nombre,
+        'descripcion': evento.descripcion,
+        'imagen': evento.imagen.url,
+    }
+
+    return JsonResponse(data,safe=False)
+
 @csrf_exempt
 @require_POST
 @jwt_required
@@ -45,7 +58,7 @@ def create_event(request):
     }, status=201)
 
 @csrf_exempt
-@require_http_methods(['PUT','DELETE'])
+@require_http_methods(['POST','DELETE'])
 @jwt_required
 def manage_event(request,evento_id):
     try:
@@ -53,7 +66,7 @@ def manage_event(request,evento_id):
     except Evento.DoesNotExist:
         return JsonResponse({"error":"Evento no encontrado"},status=404)
     
-    if request.method == 'PUT':
+    if request.method == 'POST':
         if not request.content_type.startswith('multipar/form-data'):
             return JsonResponse({"error":"Debe ser una petición con multipart/form-data"},status=400)
         
@@ -68,6 +81,7 @@ def manage_event(request,evento_id):
 
         try:
             evento.save()
+            return JsonResponse({'message': 'Evento actualizado correctamente'},status=200)
         except ValidationError as e:
             return JsonResponse({'errors':e.message_dict},status=400)
     

@@ -6,6 +6,7 @@ from .models import Producto
 from django.views.decorators.csrf import csrf_exempt
 from django_back.utils import jwt_required
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
+from django.shortcuts import get_object_or_404
 
 @require_GET
 def productos_list(request):
@@ -24,6 +25,38 @@ def productos_list(request):
         })
 
     return JsonResponse(data, safe=False)
+
+@require_GET
+def detalles_producto_slug(request, slug):
+    try:
+        producto = Producto.objects.get(slug=slug)
+        data = {
+            'id': producto.id,
+            'nombre': producto.nombre,
+            'descripcion': producto.descripcion,
+            'precio': str(producto.precio),
+            'stock': producto.stock,
+            'imagen': producto.imagen.url if producto.imagen else None,
+        }
+        return JsonResponse(data)
+    except Producto.DoesNotExist:
+        return JsonResponse({'error':'Producto no encontrado'}, status=404)
+
+@require_GET
+def detalles_producto_id(request,prod_id):
+    producto = get_object_or_404(Producto,id=prod_id)
+
+    data = {
+        'id': producto.id,
+        'nombre': producto.nombre,
+        'descripcion': producto.descripcion,
+        'precio': producto.precio,
+        'stock': producto.stock,
+        'imagen': producto.imagen,
+        'activo': producto.activo
+    }
+
+    return JsonResponse(data,safe=False)
 
 @csrf_exempt
 @require_POST
@@ -48,25 +81,8 @@ def create_product(request):
         'producto_id':nuevo_producto.id
     }, status=201)
 
-@require_GET
-def detalle_producto(request, slug):
-    try:
-        producto = Producto.objects.get(slug=slug)
-        data = {
-            'id': producto.id,
-            'nombre': producto.nombre,
-            'descripcion': producto.descripcion,
-            'precio': str(producto.precio),
-            'stock': producto.stock,
-            'imagen': producto.imagen.url if producto.imagen else None,
-        }
-        return JsonResponse(data)
-    except Producto.DoesNotExist:
-        return JsonResponse({'error':'Producto no encontrando'}, status=404)
-    
-
 @csrf_exempt
-@require_http_methods(['PUT','DELETE'])
+@require_http_methods(['POST','DELETE'])
 @jwt_required
 def manage_producto(request,prod_id):
     try:
@@ -74,7 +90,7 @@ def manage_producto(request,prod_id):
     except Producto.DoesNotExist:
         return JsonResponse({"error":"Producto no encontrado"},status=404)
     
-    if request.method == 'PUT':
+    if request.method == 'POST':
         if not request.content_type.startswith('multipart/form-data'):
             return JsonResponse({"error":"Debe ser multipart/form-data"},status=400)
         
@@ -93,6 +109,8 @@ def manage_producto(request,prod_id):
 
         try:
             producto.save()
+            return JsonResponse({'message': 'Producto actualizado correctamente'},status=200)
+
         except ValidationError as e:
             return JsonResponse({'errors': e.message_dict}, status=400)
     
