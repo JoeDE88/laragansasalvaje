@@ -4,7 +4,7 @@ import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
 
-export default function DashboardProductos() {
+export default function DashBoardProductos() {
     const { token } = useContext(AdminContext)
     const [productos, setProductos] = useState([])
 
