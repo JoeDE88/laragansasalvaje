@@ -6,10 +6,8 @@ import './assets/css/cookieconsent-style.css'
 import { AdminProvider } from "./context/AdminContext";
 import PrivateRoute from "./components/admin/utils/PrivateRoute";
 import { dashboardRoutes } from "./routes/routeDashboard";
-import AddPub from "./components/admin/Publicaciones/AddPub"
-import AddEvento from "./components/admin/Eventos/AddEvento";
 import { addElementRoute } from "./routes/addElementRoutes";
-import EditObra from "./components/admin/Obras/EditObra";
+import { routeEdit } from "./routes/routeEdit";
 
 function App() {
 
@@ -38,7 +36,12 @@ function App() {
                 <Route key={route.name} path={route.path} element={route.component}/>
               )
             })}
-            <Route path='/obra/:id' element={<EditObra></EditObra>}/>
+            {routeEdit.map((route)=> {
+              return(
+                <Route key={route.name} path={route.path} element={route.component}/>
+              )
+            })
+            }
           </Routes>
         </ShoppingCartProvider>
       </AdminProvider>

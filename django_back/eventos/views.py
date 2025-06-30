@@ -67,7 +67,7 @@ def manage_event(request,evento_id):
         return JsonResponse({"error":"Evento no encontrado"},status=404)
     
     if request.method == 'POST':
-        if not request.content_type.startswith('multipar/form-data'):
+        if not request.content_type.startswith('multipart/form-data'):
             return JsonResponse({"error":"Debe ser una petición con multipart/form-data"},status=400)
         
         nombre = request.POST.get('nombre',evento.nombre)

@@ -12,8 +12,9 @@ const año = fecha.getFullYear()
 export default function EditObra() {
 
     const { id } = useParams()
-
     const { token } = useContext(AdminContext);
+    const navigate = useNavigate()
+
     const [nombre, setNombre] = useState("");
     const [descripcion, setDescripcion] = useState("");
     const [tecnica, setTecnica] = useState("");
@@ -22,10 +23,8 @@ export default function EditObra() {
     const [creadoEn, setCreadoEn] = useState(año);
     const [originalObra, setOriginalObra] = useState(null)
 
-    const navigate = useNavigate()
-
     useEffect(() => {
-        fetch(`${baseURL}/galeria/obras/${id}`)
+        fetch(`${baseURL}/galeria/detalles-obra-id/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setOriginalObra(data)

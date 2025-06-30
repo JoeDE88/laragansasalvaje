@@ -43,6 +43,8 @@ def detalles_pub_id(request,pub_id):
             'tipo':pub.tipo
     }
 
+    return JsonResponse(data,safe=False)
+
 @require_GET
 def detalles_pub_slug(request, slug):
     try:

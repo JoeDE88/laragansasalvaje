@@ -4,6 +4,7 @@ import { baseURL } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
+import DashboardCard from "../DashboardCard"
 
 export default function DashboardObras() {
     const { token } = useContext(AdminContext)
@@ -52,6 +53,19 @@ export default function DashboardObras() {
                     titleKey={'nombre'}
                     contentKey={'descripcion'}
                     />
+                    {obras.map((obra)=>{
+                        return(
+                            <DashboardCard
+                            key={obra.id}
+                            elemento={obra}
+                            imagen={obra.imagen}
+                            nombre={obra.nombre}
+                            contenido={obra.descripcion}
+                            handleClick={deleteElement}
+                            editPath={`/obra/${obra.id}`}/>
+                        )
+                    })
+                    }
             </Layout>
         </>
     )

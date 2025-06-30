@@ -6,25 +6,25 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NavLink } from "react-router";
 
-export default function DashboardCard({ elemento, imageCard, tituloCard, contenidoCard,handleClick }) {
-
+export default function DashboardCard({elemento, imagen, nombre,contenido,handleClick,editPath }) {
+    
     return (
         <>
             <Card sx={{ margin: 'auto', width: { md: 750, xs: 500 }, mb: 1 }}>
                 <CardContent>
                     <Grid container spacing={1} sx={{ display: 'flex' }}>
                         <Grid size={3}>
-                            {elemento[imageCard] ? <Box component='img' src={`${elemento[imageCard]}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
+                            {imagen ? <Box component='img' src={`${imagen}`} sx={{ width: '150px', objectFit: 'cover' }} /> : <img src={Placeholder} alt="" />}
                         </Grid>
                         <Grid size={7}>
-                            <Typography sx={{ marginBottom: 1 }}>{elemento[tituloCard]}</Typography>
-                            <Typography variant="p">{elemento[contenidoCard]}</Typography>
+                            <Typography sx={{ marginBottom: 1 }}>{nombre}</Typography>
+                            <Typography variant="p">{contenido}</Typography>
                         </Grid>
                         <Grid size={2}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                                 <Box
                                 component={NavLink}
-                                to={`/obra/${elemento.id}`}
+                                to={editPath}
                                 sx={{
                                     cursor: 'pointer',
                                     "&:hover": {color:'#4392F1'}

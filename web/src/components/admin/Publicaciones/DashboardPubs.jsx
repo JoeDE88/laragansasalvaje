@@ -3,6 +3,7 @@ import { baseURL } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
+import DashboardCard from "../DashboardCard"
 
 export default function DashboardPubs() {
     const { token } = useContext(AdminContext)
@@ -52,6 +53,18 @@ export default function DashboardPubs() {
                 titleKey={'titulo'}
                 contentKey={'contenido'}
                 />
+                {publicaciones.map((pub)=>{
+                    return(
+                        <DashboardCard
+                        key={pub.id}
+                        elemento={pub}
+                        imagen={pub.imagen_destacada}
+                        nombre={pub.titulo}
+                        contenido={pub.contenido}
+                        handleClick={deleteElement}
+                        editPath={`/publicacion/${pub.id}`}/>
+                    )
+                })}
             </Layout>
         </>
     )
