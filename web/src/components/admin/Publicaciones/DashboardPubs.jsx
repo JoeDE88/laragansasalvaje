@@ -45,7 +45,7 @@ export default function DashboardPubs() {
             <Layout>
                 <Dashboard
                 titulo={'Publicaciones existentes:'}
-                path={'/dashboard/add-publicacion'}
+                dashboardPath={'/dashboard/add-publicacion'}
                 textoBoton={'Nueva publicación'}
                 elementos={publicaciones}
                 onClick={deleteElement}

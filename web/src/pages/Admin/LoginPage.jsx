@@ -30,8 +30,7 @@ export default function LoginPage() {
     return (
         <>
             <Layout>
-
-                <Titulo titulo={'Admin'} />
+                <Titulo titulo={'Área privada'} />
                 <Box sx={{ height: "100vh", display: 'flex', justifyContent: 'center' }}>
                     <Box
                         component="form"

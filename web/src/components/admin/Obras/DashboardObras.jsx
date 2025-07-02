@@ -45,7 +45,7 @@ export default function DashboardObras() {
             <Layout>
                     <Dashboard
                     titulo={'Obras existentes'}
-                    path={'/dashboard/add-obra'}
+                    dashboardPath={'/dashboard/add-obra'}
                     textoBoton={'Nueva obra'}
                     elementos={obras}
                     onClick={deleteElement}

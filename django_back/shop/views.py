@@ -52,7 +52,7 @@ def detalles_producto_id(request,prod_id):
         'descripcion': producto.descripcion,
         'precio': producto.precio,
         'stock': producto.stock,
-        'imagen': producto.imagen,
+        'imagen': producto.imagen.url if producto.imagen else None,
         'activo': producto.activo
     }
 

@@ -28,7 +28,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" color='blancoPerla' elevation={0} sx={{ mb: 4 }}>
       <Container maxWidth="xl">
         <Toolbar sx={{ position: 'relative' }}>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { sm: 'flex', lg: 'none' } }}>
             <Button
               size="large"
               aria-label="account of current user"
@@ -83,7 +83,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: {xs:'none', lg: 'flex' } }}>
             {routeAppBar.map((page) => (
               <Button
                 key={page.name}

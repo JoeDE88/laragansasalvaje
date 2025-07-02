@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { NavLink } from "react-router";
 
-export default function DashboardCard({elemento, imagen, nombre,contenido,handleClick,editPath }) {
+export default function DashboardCard({elemento, imagen, nombre,contenido,handleClick,editPath,precio,euro }) {
     
     return (
         <>
@@ -19,6 +19,7 @@ export default function DashboardCard({elemento, imagen, nombre,contenido,handle
                         <Grid size={7}>
                             <Typography sx={{ marginBottom: 1 }}>{nombre}</Typography>
                             <Typography variant="p">{contenido}</Typography>
+                            <Typography>{precio} {euro}</Typography>
                         </Grid>
                         <Grid size={2}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>

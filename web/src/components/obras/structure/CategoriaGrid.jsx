@@ -42,7 +42,7 @@ export default function CategoriaGrid({ obras }) {
                             <>
                                 <Box>
                                     <Typography sx={{ marginBottom: 2 }} variant="h3">{obraSeleccionada.nombre}</Typography>
-                                    <Typography variant="h6" fontStyle={'oblique'}>{obraSeleccionada.descripción}</Typography>
+                                    <Typography variant="h6" fontStyle={'oblique'}>{obraSeleccionada.descripcion}</Typography>
                                 </Box>
                                 <Box sx={{ position: 'absolute', bottom: 35 }}>
                                     <Typography variant="h6">{obraSeleccionada.tecnica}</Typography>

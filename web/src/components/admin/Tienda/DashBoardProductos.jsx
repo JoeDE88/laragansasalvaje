@@ -3,6 +3,7 @@ import { baseURL } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
+import DashboardCard from "../DashboardCard"
 
 export default function DashBoardProductos() {
     const { token } = useContext(AdminContext)
@@ -44,13 +45,27 @@ export default function DashBoardProductos() {
             <Layout>
                 <Dashboard
                 titulo={'Productos existentes'}
-                path={'/dashboard/add-producto'}
+                dashboardPath={'/dashboard/add-producto'}
                 textoBoton={'Nuevo producto'}
                 elementos={productos}
                 onClick={deleteElement}
                 imageKey={'imagen'}
                 titleKey={'nombre'}
                 contentKey={'descripcion'}/>
+                {productos.map((producto)=>{
+                    return (
+                        <DashboardCard
+                        key={producto.id}
+                        elemento={producto}
+                        imagen={producto.imagen}
+                        nombre={producto.nombre}
+                        contenido={producto.descripcion}
+                        precio={producto.precio}
+                        euro={'€'}
+                        handleClick={deleteElement}
+                        editPath={`/producto/${producto.id}`}/>
+                    )
+                })}
             </Layout>
         </>
     )

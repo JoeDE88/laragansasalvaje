@@ -1,4 +1,5 @@
 import AboutPage from "../pages/About/AboutPage";
+import LoginPage from "../pages/Admin/LoginPage";
 import BlogPage from "../pages/Blog/BlogPage";
 import EventosPage from "../pages/Eventos/EventosPage";
 import GaleriaPage from "../pages/Galeria/GaleriaPage";
@@ -30,4 +31,9 @@ export const routeAppBar = [
         path: "/acerca-de",
         component: <AboutPage />
     },
+    {
+        name: "Área privada",
+        path: "/login",
+        component:<LoginPage/>
+    }
 ]
