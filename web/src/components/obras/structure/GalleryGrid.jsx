@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material"
 import { NavLink } from "react-router"
-import { baseURL } from "../../../services/api/api"
 import GalleryCard from "../view/GalleryCard"
 
 export default function GalleryGrid({ obras }) {

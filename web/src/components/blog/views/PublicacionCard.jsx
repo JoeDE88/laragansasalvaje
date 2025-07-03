@@ -2,21 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { baseURL } from "../../../services/api/api";
 import { Box, Container, Typography } from "@mui/material";
-import Titulo from "../../layout/Titulo";
 import RenderVideo from "../../../utils/youtube/functions";
+import getElements from "../../../services/api/getElements";
 
 export default function PublicacionCard() {
   const [articulo, setArticulo] = useState([])
   let { slug } = useParams()
 
   useEffect(() => {
-    fetch(`${baseURL}/blog/detalles-publicacion-slug/${slug}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-
-        setArticulo(data)
-      })
+    getElements(`/blog/detalles-publicacion-slug/${slug}`).then((articulo) => setArticulo(articulo))
+    .catch((error) => {
+                console.error("Error al obtener la publicación:", error);
+            });
   }, [])
 
   return (

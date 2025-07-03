@@ -8,6 +8,7 @@ import Titulo from "../../components/layout/Titulo";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import Layout from "../../components/layout/Layout";
 import GreenButton from "../../components/layout/GreenButton";
+import getElements from "../../services/api/getElements";
 
 export default function ProductPage() {
     const [producto, setProducto] = useState([])
@@ -16,12 +17,9 @@ export default function ProductPage() {
     let { slug } = useParams()
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/detalles-producto-slug/${slug}`)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                
-                setProducto(data)
+        getElements(`/shop/detalles-producto-slug/${slug}`).then((data) =>setProducto(data))
+        .catch((error) => {
+                console.error("Error al obtener el producto:", error);
             })
     }, [])
 

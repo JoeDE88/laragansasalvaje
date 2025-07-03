@@ -1,17 +1,16 @@
 import { Box, Typography } from '@mui/material';
 import { Carousel } from 'antd';
 import { useEffect, useState } from 'react';
-import { baseURL } from '../../services/api/api';
+import getElements from '../../services/api/getElements';
 
 export default function Carrusel() {
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/galeria/lista-obras/`)
-            .then((response) => response.json())
-            .then((data) => {
-                setObras(data)
-            })
+        getElements(`/galeria/lista-obras/`).then((obras) => setObras(obras))
+        .catch((error) => {
+                console.error("Error al obtener los artículos:", error)
+        })
     }, [])
 
     return (
@@ -34,7 +33,7 @@ export default function Carrusel() {
                 < Carousel autoplay autoplaySpeed={5000} adaptiveHeight={true} dots={false} fade={true}>
                     {obras.map((obra, index) => {
                         return (
-                            <Box key={index} sx={{ height: { xs: 200, sm: 300, md: 400 }, width: '100%' }}>
+                            <Box key={index} sx={{ height: { xs: 200, sm: 300, md: 500 }, width: '100%' }}>
                                 <img
                                     style={{
                                         width: '100%',

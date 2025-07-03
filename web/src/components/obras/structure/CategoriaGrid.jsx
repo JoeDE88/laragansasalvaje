@@ -1,5 +1,4 @@
 import { Box, Grid, Modal, Typography } from "@mui/material"
-import { baseURL } from "../../../services/api/api"
 import { useState } from "react"
 import CategoriaCard from "../view/CategoriaCard";
 

@@ -1,20 +1,17 @@
 import { Grid } from "@mui/material";
 import { NavLink } from "react-router";
-import { baseURL } from "../../../services/api/api";
 import { useEffect, useState } from "react";
 import TiendaCard from "../view/TiendaCard";
+import getElements from "../../../services/api/getElements";
 
 export default function TiendaGrid() {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/lista-productos/`)
-            .then((response) => response.json())
-            .then((data) => {
-                setProductos(data);
-                console.log(data);
-                
-            });
+        getElements(`/shop/lista-productos/`).then((productos) =>setProductos(productos))
+        .catch((error) => {
+                console.error("Error al obtener los productos:", error);
+            })
     }, []);
 
     return (

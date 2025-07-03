@@ -3,9 +3,8 @@ import { useParams } from "react-router";
 import Titulo from "../../components/layout/Titulo";
 import CategoriaGrid from "../../components/obras/structure/CategoriaGrid"
 import ShoppingCart from "../../components/store/ShoppingCart";
-
-import { baseURL } from "../../services/api/api";
 import Layout from "../../components/layout/Layout";
+import getElements from "../../services/api/getElements";
 
 export default function CategoriaPage() {
     let { slug } = useParams()
@@ -14,8 +13,7 @@ export default function CategoriaPage() {
     const [categoria, setCategoria] = useState('')
 
     useEffect(() => {
-        fetch(`${baseURL}/galeria/${slug}`)
-            .then((response) => response.json())
+        getElements(`/galeria/${slug}`)
             .then((data) => {
                 setObras(data)
                 setCategoria(data[0].categoria)

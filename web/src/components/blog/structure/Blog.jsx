@@ -1,20 +1,16 @@
 import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { baseURL } from "../../../services/api/api";
 import { NavLink } from "react-router";
 import BlogCard from "../views/BlogCard";
+import getElements from "../../../services/api/getElements";
 
 export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
 
     useEffect(() => {
-        fetch(`${baseURL}/blog/lista-publicaciones/`)
-            .then((response) => response.json())
-            .then((data) => {
-                setPublicaciones(data);
-            })
+        getElements(`/blog/lista-publicaciones/`).then((pubs) =>setPublicaciones(pubs))
             .catch((error) => {
-                console.error("Error al obtener los artículos:", error);
+                console.error("Error al obtener las publicaciones:", error);
             });
     }, []);
 

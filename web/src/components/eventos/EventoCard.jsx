@@ -1,16 +1,15 @@
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { baseURL } from "../../services/api/api";
+import getElements from "../../services/api/getElements";
 
 export default function EventoCard() {
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/eventos/lista-eventos/`)
-            .then((resp) => resp.json())
-            .then((data) => {
-                setEventos(data)
-            })
+        getElements(`/eventos/lista-eventos/`).then((eventos) => setEventos(eventos))
+        .catch((error) => {
+                console.error("Error al obtener los eventos:", error);
+            });
     }, [])
 
     return (
