@@ -58,7 +58,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: 'block', md: 'none' } }}
+              sx={{ display: { xs: 'block', lg: 'none' } }}
             >
               {routeAppBar.map((page) => (
                 <MenuItem
