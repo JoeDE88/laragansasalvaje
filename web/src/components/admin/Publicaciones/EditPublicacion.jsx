@@ -35,16 +35,16 @@ export default function EditPublicacion() {
 
         const formData = new FormData()
 
-        if (titulo !== originalObra.titulo) {
+        if (titulo !== originalPub.titulo) {
             formData.append('titulo', titulo);
         }
-        if (contenido !== originalObra.contenido) {
+        if (contenido !== originalPub.contenido) {
             formData.append('contenido', contenido);
         }
-        if (etiqueta !== originalObra.etiqueta) {
+        if (etiqueta !== originalPub.etiqueta) {
             formData.append('etiqueta', etiqueta);
         }
-        if (urlVideo !== originalObra.urlVideo) {
+        if (urlVideo !== originalPub.urlVideo) {
             formData.append('url_video', urlVideo);
         }
 
@@ -60,7 +60,7 @@ export default function EditPublicacion() {
                 return res.json()
             })
             .then(data => {
-                alert("Publicación creada correctamente");
+                alert("Publicación modificada correctamente");
                 navigate('/dashboard/lista-blog')
             })
             .catch(err => {
@@ -109,7 +109,7 @@ export default function EditPublicacion() {
                             id="outlined-multiline-static"
                             label="Contenido"
                             multiline
-                            rows={4}
+                            rows={10}
                             value={contenido}
                             onChange={(e) => setContenido(e.target.value)}
                             color='tertiary'

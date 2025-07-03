@@ -14,6 +14,11 @@ export default function BlogCard({ publicacion }) {
     creado_en
   } = publicacion;
 
+  const fecha = new Date(creado_en)
+
+  const fechaCompleta = fecha.getUTCDate() + "/" + (fecha.getUTCMonth() + 1) + "/" + fecha.getFullYear()
+  
+ 
   return (
     <Card elevation={0} sx={{ mb: 3 }}>
       <CardActionArea>
@@ -27,7 +32,7 @@ export default function BlogCard({ publicacion }) {
               variant="middle"
               flexItem
             />
-            <Typography fontSize={'0.8rem'} color="blancoPerla.text">{creado_en}</Typography>
+            <Typography fontSize={'0.8rem'} color="blancoPerla.text">{fechaCompleta}</Typography>
           </Box>
 
           {tipo === 'articulo' || tipo === 'imagen' && (

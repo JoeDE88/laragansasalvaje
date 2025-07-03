@@ -178,7 +178,7 @@ export default function AddPub() {
                             id="outlined-multiline-static"
                             label="Contenido"
                             multiline
-                            rows={4}
+                            rows={10}
                             value={contenido}
                             onChange={(e) => setContenido(e.target.value)}
                             color='tertiary'
