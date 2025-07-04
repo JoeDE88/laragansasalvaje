@@ -5,6 +5,7 @@ import { getPublicacionFromId } from "../../../services/api/publicaciones";
 import Layout from "../../layout/Layout";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";
+import { baseURL } from "../../../services/api/api";
 
 export default function EditPublicacion() {
 

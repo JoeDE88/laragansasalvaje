@@ -28,17 +28,17 @@ function App() {
             })}
             {dashboardRoutes.map((route)=>{
               return (
-                <Route key={route.name} path={route.path} element={route.component}/>
+                <Route key={route.name} path={route.path} element={<PrivateRoute>{route.component}</PrivateRoute>}/>
               )
             })}
             {addElementRoute.map((route)=>{
               return (
-                <Route key={route.name} path={route.path} element={route.component}/>
+                <Route key={route.name} path={route.path} element={<PrivateRoute>{route.component}</PrivateRoute>}/>
               )
             })}
             {routeEdit.map((route)=> {
               return(
-                <Route key={route.name} path={route.path} element={route.component}/>
+                <Route key={route.name} path={route.path} element={<PrivateRoute>{route.component}</PrivateRoute>}/>
               )
             })
             }

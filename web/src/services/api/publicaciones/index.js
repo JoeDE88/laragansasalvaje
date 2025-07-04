@@ -1,16 +1,18 @@
 import {genericFetch} from "../api"
 
+const blogURL = '/blog'
+
 export function getPublicaciones(){
-    return genericFetch(`/blog/lista-publicaciones/`)
+    return genericFetch(`${blogURL}/lista-publicaciones/`)
     .then((pubs)=>pubs)
 }
 
 export function getPublicacionFromSlug(slug){
-    return genericFetch(`/blog/detalles-publicacion-slug/${slug}`)
+    return genericFetch(`${blogURL}/detalles-publicacion-slug/${slug}`)
     .then((pub)=>pub)
 }
 
 export function getPublicacionFromId(id){
-    return genericFetch(`/blog/detalles-publicacion-id/${id}`)
+    return genericFetch(`${blogURL}/detalles-publicacion-id/${id}`)
     .then((pub)=>pub)
 }

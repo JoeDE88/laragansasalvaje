@@ -4,6 +4,7 @@ import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
 import DashboardCard from "../DashboardCard"
+import { baseURL } from "../../../services/api/api"
 
 export default function DashboardPubs() {
     const { token } = useContext(AdminContext)
@@ -42,11 +43,6 @@ export default function DashboardPubs() {
                 titulo={'Publicaciones existentes:'}
                 dashboardPath={'/dashboard/add-publicacion'}
                 textoBoton={'Nueva publicación'}
-                elementos={publicaciones}
-                onClick={deleteElement}
-                imageKey={'imagen_destacada'}
-                titleKey={'titulo'}
-                contentKey={'contenido'}
                 />
                 {publicaciones.map((pub)=>{
                     return(

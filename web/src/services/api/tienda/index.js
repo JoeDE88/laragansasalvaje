@@ -1,16 +1,18 @@
 import { genericFetch } from "../api"
 
+const shopURL = '/shop'
+
 export function getProductos(){
-    return genericFetch(`/shop/lista-productos/`)
+    return genericFetch(`${shopURL}/lista-productos/`)
     .then((prods)=>prods)
 }
 
 export function getProductoFromId(id){
-    return genericFetch(`/shop/detalles-producto-id/${id}`)
+    return genericFetch(`${shopURL}/detalles-producto-id/${id}`)
     .then((prod)=>prod)
 }
 
 export function getProductoFromSlug(slug){
-    return genericFetch(`/shop/detalles-producto-slug/${slug}`)
+    return genericFetch(`${shopURL}/detalles-producto-slug/${slug}`)
     .then((prod)=>prod)
 }

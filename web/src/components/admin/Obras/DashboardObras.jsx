@@ -43,11 +43,6 @@ export default function DashboardObras() {
                     titulo={'Obras existentes'}
                     dashboardPath={'/dashboard/add-obra'}
                     textoBoton={'Nueva obra'}
-                    elementos={obras}
-                    onClick={deleteElement}
-                    imageKey={'imagen'}
-                    titleKey={'nombre'}
-                    contentKey={'descripcion'}
                 />
                 {obras.map((obra) => {
                     return (

@@ -5,6 +5,7 @@ import { AdminContext } from "../../../context/AdminContext";
 import { getEventoFromId } from "../../../services/api/eventos";
 import Layout from "../../layout/Layout";
 import GreenButton from "../../layout/GreenButton";
+import { baseURL } from "../../../services/api/api";
 
 export default function EditEvento(){
 
