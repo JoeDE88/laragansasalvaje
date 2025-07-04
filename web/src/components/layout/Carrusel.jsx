@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { Carousel } from 'antd';
 import { useEffect, useState } from 'react';
-import {getObras} from '../../services/api/api';
+import {getObras} from '../../services/api/obras';
 
 export default function Carrusel() {
     const [obras, setObras] = useState([])

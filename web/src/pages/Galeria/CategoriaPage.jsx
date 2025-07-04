@@ -4,7 +4,7 @@ import Titulo from "../../components/layout/Titulo";
 import CategoriaGrid from "../../components/obras/structure/CategoriaGrid"
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Layout from "../../components/layout/Layout";
-import {getObrasFromSlug} from "../../services/api/api";
+import {getObrasFromSlug} from "../../services/api/obras";
 
 export default function CategoriaPage() {
     let { slug } = useParams()

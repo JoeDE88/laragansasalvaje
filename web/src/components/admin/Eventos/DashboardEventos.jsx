@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { baseURL, getEventos } from "../../../services/api/api"
+import { getEventos } from "../../../services/api/eventos"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../context/AdminContext";
 import { useNavigate, useParams } from "react-router";
-import { baseURL, getPublicacionFromId } from "../../../services/api/api";
+import { getPublicacionFromId } from "../../../services/api/publicaciones";
 import Layout from "../../layout/Layout";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";

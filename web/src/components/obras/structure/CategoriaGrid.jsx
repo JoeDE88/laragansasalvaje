@@ -61,11 +61,9 @@ export default function CategoriaGrid({ obras }) {
             }}>
                 {obras.map((obra, index) => {
                     return (
-                        <>
                             <Grid key={index} onClick={() => handleOpen(obra)} sx={{ width: '100%', maxWidth: '90vw' }}>
                                 <CategoriaCard image={`${obra.imagen}`} ></CategoriaCard>
                             </Grid>
-                        </>
                     )
                 })}
             </Box>

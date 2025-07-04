@@ -4,7 +4,7 @@ import GalleryGrid from "../../components/obras/structure/GalleryGrid";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Layout from "../../components/layout/Layout";
 import { Box, Typography } from "@mui/material";
-import {getPrimerasObras} from "../../services/api/api";
+import {getPrimerasObras} from "../../services/api/obras";
 
 export default function GaleriaPage() {
 

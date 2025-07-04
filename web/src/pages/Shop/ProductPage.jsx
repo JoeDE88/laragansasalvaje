@@ -1,14 +1,12 @@
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-
+import { Box, Stack, TextField, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import { useEffect, useState } from "react";
-import { baseURL } from "../../services/api/api";
 import Titulo from "../../components/layout/Titulo";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 import Layout from "../../components/layout/Layout";
 import GreenButton from "../../components/layout/GreenButton";
-import getElements from "../../services/api/getElements";
+import { getProductoFromSlug } from "../../services/api/tienda";
 
 export default function ProductPage() {
     const [producto, setProducto] = useState([])
@@ -17,7 +15,7 @@ export default function ProductPage() {
     let { slug } = useParams()
 
     useEffect(() => {
-        getElements(`/shop/detalles-producto-slug/${slug}`).then((data) =>setProducto(data))
+        getProductoFromSlug(`${slug}`).then((data) =>setProducto(data))
         .catch((error) => {
                 console.error("Error al obtener el producto:", error);
             })

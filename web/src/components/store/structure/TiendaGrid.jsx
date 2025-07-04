@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import TiendaCard from "../view/TiendaCard";
-import {getProductos} from "../../../services/api/api";
+import {getProductos} from "../../../services/api/tienda";
 
 export default function TiendaGrid() {
     const [productos, setProductos] = useState([]);

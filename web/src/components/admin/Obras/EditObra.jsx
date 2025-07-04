@@ -1,6 +1,6 @@
 import { Box, Container, TextField, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { baseURL, getObraFromId } from "../../../services/api/api";
+import { getObraFromId } from "../../../services/api/obras";
 import GreenButton from "../../layout/GreenButton";
 import { AdminContext } from "../../../context/AdminContext";
 import Layout from "../../layout/Layout";

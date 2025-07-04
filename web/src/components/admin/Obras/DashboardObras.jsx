@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useState } from "react"
-import { baseURL, getObras } from "../../../services/api/api"
+import { getObras } from "../../../services/api/obras"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"

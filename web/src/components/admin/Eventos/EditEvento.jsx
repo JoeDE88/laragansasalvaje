@@ -2,7 +2,7 @@ import { Box, Container, TextField, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AdminContext } from "../../../context/AdminContext";
-import { baseURL, getEventoFromId } from "../../../services/api/api";
+import { getEventoFromId } from "../../../services/api/eventos";
 import Layout from "../../layout/Layout";
 import GreenButton from "../../layout/GreenButton";
 

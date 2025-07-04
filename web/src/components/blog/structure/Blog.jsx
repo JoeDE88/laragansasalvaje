@@ -2,7 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import BlogCard from "../views/BlogCard";
-import {getPublicaciones} from "../../../services/api/api"
+import {getPublicaciones} from "../../../services/api/publicaciones"
 
 export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);

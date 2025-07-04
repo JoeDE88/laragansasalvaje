@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { baseURL } from "../../../services/api/api";
-import {getPublicacionFromSlug} from "../../../services/api/api"
+import {getPublicacionFromSlug} from "../../../services/api/publicaciones"
 import { Box, Container, Typography } from "@mui/material";
 import RenderVideo from "../../../utils/youtube/functions";
 
