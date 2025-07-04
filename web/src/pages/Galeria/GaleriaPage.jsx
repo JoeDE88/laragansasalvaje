@@ -4,14 +4,14 @@ import GalleryGrid from "../../components/obras/structure/GalleryGrid";
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Layout from "../../components/layout/Layout";
 import { Box, Typography } from "@mui/material";
-import getElements from "../../services/api/getElements";
+import {getPrimerasObras} from "../../services/api/api";
 
 export default function GaleriaPage() {
 
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        getElements(`/galeria/primeras-por-categoria/`).then((data) =>setObras(data))
+        getPrimerasObras().then((data) =>setObras(data))
         .catch((error) => {
                 console.error("Error al obtener las obras:", error);
             })

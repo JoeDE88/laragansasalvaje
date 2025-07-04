@@ -1,12 +1,12 @@
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import getElements from "../../services/api/getElements";
+import {getEventos} from "../../services/api/api"
 
 export default function EventoCard() {
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
-        getElements(`/eventos/lista-eventos/`).then((eventos) => setEventos(eventos))
+        getEventos().then((eventos) => setEventos(eventos))
         .catch((error) => {
                 console.error("Error al obtener los eventos:", error);
             });

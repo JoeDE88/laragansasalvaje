@@ -4,7 +4,7 @@ import Titulo from "../../components/layout/Titulo";
 import CategoriaGrid from "../../components/obras/structure/CategoriaGrid"
 import ShoppingCart from "../../components/store/ShoppingCart";
 import Layout from "../../components/layout/Layout";
-import getElements from "../../services/api/getElements";
+import {getObrasFromSlug} from "../../services/api/api";
 
 export default function CategoriaPage() {
     let { slug } = useParams()
@@ -13,7 +13,7 @@ export default function CategoriaPage() {
     const [categoria, setCategoria] = useState('')
 
     useEffect(() => {
-        getElements(`/galeria/${slug}`)
+        getObrasFromSlug(`${slug}`)
             .then((data) => {
                 setObras(data)
                 setCategoria(data[0].categoria)

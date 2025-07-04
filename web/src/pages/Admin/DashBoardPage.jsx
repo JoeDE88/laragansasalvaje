@@ -17,34 +17,31 @@ export default function DashBoardPage() {
             <Layout>
                 <Titulo titulo={'Bienvenida Gansa'} />
                 <Container>
-                        <Grid container spacing={0}>
-                            <Grid size={9}>
-                                {dashboardRoutes.map((app) =>
-                                    <>
-                                        <Card key={app.name} elevation={0}>
-                                            <CardContent sx={{ backgroundColor: 'blancoPerla.main' }}>
-                                                <Typography key={app.name} component={NavLink} to={app.path} sx={{ color: 'secondary.main', fontSize: 20 }}>
-                                                    {app.name}
-                                                </Typography>
-                                            </CardContent>
-                                        </Card>
-                                        <hr />
-                                    </>
-                                )}
-                            </Grid>
-                            <Grid size={3}>
-                                {addElementRoute.map((element) =>
-                                    <>
-                                        <Card key={element.name} elevation={0}>
-                                            <CardContent sx={{display: 'flex', alignItems: 'center', backgroundColor: 'blancoPerla.main',paddingTop:3 }}>
-                                                <GreenButton component={NavLink} to={element.path} sx={{  textDecoration: 'none' }} texto={`Agregar`}></GreenButton>
-                                            </CardContent>
-                                        </Card>
-                                    </>
-                                )}
-                            </Grid>
+                    <Grid container spacing={0}>
+                        <Grid size={9}>
+                            {dashboardRoutes.map((app) =>
+                                <Box key={app.name}>
+                                    <Card elevation={0}>
+                                        <CardContent sx={{ backgroundColor: 'blancoPerla.main' }}>
+                                            <Typography key={app.name} component={NavLink} to={app.path} sx={{ color: 'secondary.main', fontSize: 20 }}>
+                                                {app.name}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <hr />
+                                </Box>
+                            )}
                         </Grid>
-                    
+                        <Grid size={3}>
+                            {addElementRoute.map((element) =>
+                                <Card key={element.name} elevation={0}>
+                                    <CardContent sx={{ display: 'flex', alignItems: 'center', backgroundColor: 'blancoPerla.main', paddingTop: 3 }}>
+                                        <GreenButton component={NavLink} to={element.path} sx={{ textDecoration: 'none' }} texto={`Agregar`}></GreenButton>
+                                    </CardContent>
+                                </Card>
+                            )}
+                        </Grid>
+                    </Grid>
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <GreenButton texto={'Logout'} onClick={logout} />
                     </Box>

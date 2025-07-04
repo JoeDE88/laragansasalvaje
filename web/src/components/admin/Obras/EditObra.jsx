@@ -1,6 +1,6 @@
 import { Box, Container, TextField, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { baseURL } from "../../../services/api/api";
+import { baseURL, getObraFromId } from "../../../services/api/api";
 import GreenButton from "../../layout/GreenButton";
 import { AdminContext } from "../../../context/AdminContext";
 import Layout from "../../layout/Layout";
@@ -24,9 +24,7 @@ export default function EditObra() {
     const [originalObra, setOriginalObra] = useState(null)
 
     useEffect(() => {
-        fetch(`${baseURL}/galeria/detalles-obra-id/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
+        getObraFromId(`${id}`).then((data) => {
                 setOriginalObra(data)
                 setNombre(data.nombre || "")
                 setDescripcion(data.descripcion || "")

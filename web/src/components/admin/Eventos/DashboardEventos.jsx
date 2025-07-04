@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { baseURL } from "../../../services/api/api"
+import { baseURL, getEventos } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
@@ -12,13 +12,7 @@ export default function DashboardEventos() {
     const {id} = useParams()
 
     useEffect(() => {
-        fetch(`${baseURL}/eventos/lista-eventos/`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                
-                setEventos(data)
-            })
+        getEventos().then((data) => {setEventos(data)})
     }, [])
 
     const deleteElement = (eventoId) => {

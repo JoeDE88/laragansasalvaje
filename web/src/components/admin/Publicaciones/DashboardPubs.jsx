@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { baseURL } from "../../../services/api/api"
+import { baseURL, getPublicaciones } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
@@ -10,12 +10,7 @@ export default function DashboardPubs() {
     const [publicaciones, setPublicaciones] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/blog/lista-publicaciones/`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setPublicaciones(data)
-            })
+        getPublicaciones().then((data) => setPublicaciones(data))
     }, [])
 
     const deleteElement = (pubId) => {

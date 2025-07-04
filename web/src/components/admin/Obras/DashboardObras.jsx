@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useState } from "react"
-import { baseURL } from "../../../services/api/api"
+import { baseURL, getObras } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
@@ -11,11 +11,7 @@ export default function DashboardObras() {
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/galeria/lista-obras/`)
-            .then((res) => res.json())
-            .then((data) => {
-                setObras(data)
-            })
+        getObras().then((data) => setObras(data))
     }, [])
 
     const deleteElement = (obraId) => {
@@ -43,7 +39,7 @@ export default function DashboardObras() {
     return (
         <>
             <Layout>
-                    <Dashboard
+                <Dashboard
                     titulo={'Obras existentes'}
                     dashboardPath={'/dashboard/add-obra'}
                     textoBoton={'Nueva obra'}
@@ -52,20 +48,20 @@ export default function DashboardObras() {
                     imageKey={'imagen'}
                     titleKey={'nombre'}
                     contentKey={'descripcion'}
-                    />
-                    {obras.map((obra)=>{
-                        return(
-                            <DashboardCard
+                />
+                {obras.map((obra) => {
+                    return (
+                        <DashboardCard
                             key={obra.id}
                             elemento={obra}
                             imagen={obra.imagen}
                             nombre={obra.nombre}
                             contenido={obra.descripcion}
                             handleClick={deleteElement}
-                            editPath={`/obra/${obra.id}`}/>
-                        )
-                    })
-                    }
+                            editPath={`/obra/${obra.id}`} />
+                    )
+                })
+                }
             </Layout>
         </>
     )

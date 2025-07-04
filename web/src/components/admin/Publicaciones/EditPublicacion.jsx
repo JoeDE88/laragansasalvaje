@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../context/AdminContext";
 import { useNavigate, useParams } from "react-router";
-import { baseURL } from "../../../services/api/api";
+import { baseURL, getPublicacionFromId } from "../../../services/api/api";
 import Layout from "../../layout/Layout";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";
@@ -20,9 +20,7 @@ export default function EditPublicacion() {
     const [originalPub, setOriginalPub] = useState(null)
 
     useEffect(() => {
-        fetch(`${baseURL}/blog/detalles-publicacion-id/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
+        getPublicacionFromId(`${id}`).then((data) => {
                 setOriginalPub(data)
                 setTitulo(data.titulo || "")
                 setContenido(data.contenido || "")

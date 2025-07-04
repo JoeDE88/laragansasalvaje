@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../../context/AdminContext";
 import { useNavigate, useParams } from "react-router";
-import { baseURL } from "../../../services/api/api";
+import { baseURL, getProductoFromId } from "../../../services/api/api";
 import Layout from "../../layout/Layout";
 import { Box, Container, TextField, Typography } from "@mui/material";
 import GreenButton from "../../layout/GreenButton";
@@ -21,8 +21,7 @@ export default function EditProducto() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/detalles-producto-id/${id}`)
-            .then((res) => res.json())
+        getProductoFromId(`${id}`)
             .then((data) => {
                 setOriginalProducto(data)
                 setNombre(data.nombre || "")

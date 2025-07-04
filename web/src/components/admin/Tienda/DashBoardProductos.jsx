@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { baseURL } from "../../../services/api/api"
+import { baseURL, getProductos } from "../../../services/api/api"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
@@ -10,12 +10,8 @@ export default function DashBoardProductos() {
     const [productos, setProductos] = useState([])
 
     useEffect(() => {
-        fetch(`${baseURL}/shop/lista-productos/`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setProductos(data)
-            })
+        getProductos()
+            .then((data) => setProductos(data))
     }, [])
 
     const deleteElement = (productoId) => {

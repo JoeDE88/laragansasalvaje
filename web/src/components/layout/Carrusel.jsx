@@ -1,13 +1,13 @@
 import { Box, Typography } from '@mui/material';
 import { Carousel } from 'antd';
 import { useEffect, useState } from 'react';
-import getElements from '../../services/api/getElements';
+import {getObras} from '../../services/api/api';
 
 export default function Carrusel() {
     const [obras, setObras] = useState([])
 
     useEffect(() => {
-        getElements(`/galeria/lista-obras/`).then((obras) => setObras(obras))
+        getObras().then((obras) => {setObras(obras)})
         .catch((error) => {
                 console.error("Error al obtener los artículos:", error)
         })

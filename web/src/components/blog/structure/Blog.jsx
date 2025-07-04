@@ -2,13 +2,13 @@ import { Box, Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import BlogCard from "../views/BlogCard";
-import getElements from "../../../services/api/getElements";
+import {getPublicaciones} from "../../../services/api/api"
 
 export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
 
     useEffect(() => {
-        getElements(`/blog/lista-publicaciones/`).then((pubs) =>setPublicaciones(pubs))
+        getPublicaciones().then((pubs) =>setPublicaciones(pubs))
             .catch((error) => {
                 console.error("Error al obtener las publicaciones:", error);
             });
@@ -34,11 +34,9 @@ export default function Blog() {
                 ) : (
                     <Container sx={{ mt: 4 }}>
                         {publicaciones.map((pub) => (
-                            <>
-                                <Box key={pub.slug} component={NavLink} to={`/blog/publicaciones/${pub.slug}`} sx={{ textDecoration: "none" }}>
+                                <Box key={pub.id} component={NavLink} to={`/blog/publicaciones/${pub.slug}`} sx={{ textDecoration: "none" }}>
                                     <BlogCard publicacion={pub}></BlogCard>
                                 </Box>
-                            </>
                         ))}
                     </Container>
                 )

@@ -2,7 +2,7 @@ import { Box, Container, TextField, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AdminContext } from "../../../context/AdminContext";
-import { baseURL } from "../../../services/api/api";
+import { baseURL, getEventoFromId } from "../../../services/api/api";
 import Layout from "../../layout/Layout";
 import GreenButton from "../../layout/GreenButton";
 
@@ -18,9 +18,7 @@ export default function EditEvento(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch(`${baseURL}/eventos/detalles-evento-id/${id}`)
-        .then((res)=> res.json())
-        .then((data)=>{
+        getEventoFromId(`${id}`).then((data)=>{
             setOriginalEvento(data)
             setNombre(data.nombre || "")
             setDescripcion(data.descripcion || "") 
