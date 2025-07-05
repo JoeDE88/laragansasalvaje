@@ -1,4 +1,4 @@
-import { genericFetch } from "../api"
+import { genericFetch, genericFetchWithAutoRefresh } from "../api"
 
 const eventosURL = "/eventos"
 
@@ -12,14 +12,15 @@ export function getEventoFromId(id) {
         .then((eventos) => eventos)
 }
 
-export function deleteElement(id, token) {
-    return genericFetch(`${eventosURL}/evento/${id}`, {
+export function deleteElement(id) {
+    const token = localStorage.getItem('access_token')
+    return genericFetchWithAutoRefresh(`${eventosURL}/evento/${id}`, {
         method: `DELETE`,
         headers: {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then((eventos) => {eventos
+        .then(() => {
             alert('Evento eliminado')
         })
         .catch(error => {
