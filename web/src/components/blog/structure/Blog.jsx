@@ -8,7 +8,10 @@ export default function Blog() {
     const [publicaciones, setPublicaciones] = useState([]);
 
     useEffect(() => {
-        getPublicaciones().then((pubs) =>setPublicaciones(pubs))
+        getPublicaciones().then((pubs) =>{
+            console.log(pubs);
+            
+            setPublicaciones(pubs)})
             .catch((error) => {
                 console.error("Error al obtener las publicaciones:", error);
             });

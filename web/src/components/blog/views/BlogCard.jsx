@@ -35,15 +35,15 @@ export default function BlogCard({ publicacion }) {
             <Typography fontSize={'0.8rem'} color="blancoPerla.text">{fechaCompleta}</Typography>
           </Box>
 
-          {tipo === 'articulo' || tipo === 'imagen' && (
+          {tipo === 'articulo' && (
             <>
               {imagen_destacada && (
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <CardMedia
                     component="img"
-                    image={`${baseURL}${imagen_destacada}`}
+                    image={`${imagen_destacada}`}
                     alt={titulo}
-                    sx={{ mt: 2, borderRadius: 2, width: 600, height: 500 }}
+                    sx={{ mt: 2, borderRadius: 2, width: 700, height: 500 }}
                   />
                 </Box>
               )}
@@ -71,8 +71,8 @@ export default function BlogCard({ publicacion }) {
                 </>
               ) : url_video ? (
                 <>
-                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <img src={getYoutubeThumbnail(url_video)}></img>
+                  <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                    <img src={getYoutubeThumbnail(url_video)} style={{borderRadius:8}}></img>
                   </Box>
                   <Box sx={{ mt: 1 }}>
                     <Typography variant="body1" sx={{ p: 0.5 }}>
