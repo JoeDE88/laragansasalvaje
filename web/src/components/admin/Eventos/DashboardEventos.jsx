@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
-import { deleteElement, getEventos } from "../../../services/api/eventos"
+import { deleteEvento, getEventos } from "../../../services/api/eventos"
 import Layout from "../../layout/Layout"
 import Dashboard from "../Dashboard"
 import DashboardCard from "../DashboardCard"
 import { AdminContext } from "../../../context/AdminContext"
 
 export default function DashboardEventos() {
-    const {token,refreshAccessToken} = useContext(AdminContext)
+    const { token, refreshAccessToken } = useContext(AdminContext)
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function DashboardEventos() {
     }, [])
 
     const handleDelete = (eventoId) => {
-        deleteElement(eventoId, token, refreshAccessToken).then(() => {
+        deleteEvento(eventoId, token, refreshAccessToken).then(() => {
             setEventos((prevEventos) => prevEventos.filter((evento) => evento.id !== eventoId));
         })
             .catch(() =>

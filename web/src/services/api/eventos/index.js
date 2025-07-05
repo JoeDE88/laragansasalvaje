@@ -12,7 +12,7 @@ export function getEventoFromId(id) {
         .then((eventos) => eventos)
 }
 
-export function deleteElement(id) {
+export function deleteEvento(id) {
     const token = localStorage.getItem('access_token')
     return genericFetchWithAutoRefresh(`${eventosURL}/evento/${id}`, {
         method: `DELETE`,
@@ -20,11 +20,9 @@ export function deleteElement(id) {
             'Authorization': `Bearer ${token}`
         }
     })
-        .then(() => {
-            alert('Evento eliminado')
-        })
+        .then(() => alert('Evento eliminado'))
         .catch(error => {
-            console.error("error al eleminar el evento", error)
+            console.error("error al eliminar el evento", error)
             throw error
         })
 }

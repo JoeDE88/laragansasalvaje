@@ -1,4 +1,4 @@
-import { genericFetch } from "../api"
+import { genericFetch, genericFetchWithAutoRefresh } from "../api"
 
 const galeriaURL = '/galeria'
 
@@ -20,4 +20,21 @@ export function getObraFromId(id){
 export function getPrimerasObras(){
     return genericFetch(`${galeriaURL}/primeras-por-categoria/`)
     .then((firstObras)=>firstObras)
+}
+
+export function deleteObra(id){
+    const token = localStorage.getItem('access_token')
+    return genericFetchWithAutoRefresh(`${galeriaURL}/obra/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(()=> {
+        alert('Obra eliminada')
+    })
+    .catch(error =>{
+        console.error("error al eliminar la obra.")
+        throw error
+    })
 }

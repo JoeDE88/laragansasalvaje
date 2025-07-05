@@ -3,35 +3,24 @@ import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
 import DashboardCard from "../DashboardCard"
-import { getProductos } from "../../../services/api/tienda"
+import { deleteProducto, getProductos } from "../../../services/api/tienda"
 
 export default function DashBoardProductos() {
-    const { token } = useContext(AdminContext)
+    const { token, refreshAccessToken } = useContext(AdminContext)
     const [productos, setProductos] = useState([])
 
     useEffect(() => {
         getProductos().then((data) => setProductos(data))
     }, [])
 
-    const deleteElement = (productoId) => {
-        fetch(`${baseURL}/shop/producto/${productoId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    const handleDelete = (productoId) => {
+        deleteProducto(productoId, token, refreshAccessToken).then(() => {
+            setProductos((prevProductos) =>
+                prevProductos.filter((producto) => producto.id !== productoId)
+            )
         })
-            .then(res => {
-                if (!res.ok) throw new Error('Error al eliminar el producto.')
-                return res.json()
-            })
-            .then((data) => {
-                alert('Producto eliminado')
-                setProductos((prevProductos) =>
-                    prevProductos.filter((producto) => producto.id !== productoId)
-                );
-            })
             .catch(err => {
-                alert(err.message)
+                alert('Error al eliminar el producto.')
             })
     }
 
@@ -53,7 +42,7 @@ export default function DashBoardProductos() {
                             contenido={producto.descripcion}
                             precio={producto.precio}
                             euro={'€'}
-                            handleClick={deleteElement}
+                            handleClick={handleDelete}
                             editPath={`/producto/${producto.id}`} />
                     )
                 })}

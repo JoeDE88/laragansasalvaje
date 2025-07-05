@@ -1,4 +1,4 @@
-import { genericFetch } from "../api"
+import { genericFetch, genericFetchWithAutoRefresh } from "../api"
 
 const shopURL = '/shop'
 
@@ -15,4 +15,19 @@ export function getProductoFromId(id){
 export function getProductoFromSlug(slug){
     return genericFetch(`${shopURL}/detalles-producto-slug/${slug}`)
     .then((prod)=>prod)
+}
+
+export function deleteProducto(id){
+    const token = localStorage.getItem('access_token')
+    return genericFetchWithAutoRefresh(`${shopURL}/producto/${id}`,{
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(()=>alert("Producto eliminado."))
+    .catch(error => {
+        console.error("Error al eliminar el producto: ", error)
+        throw error
+    })
 }

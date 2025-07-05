@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { getPublicaciones } from "../../../services/api/publicaciones"
+import { deletePublicacion, getPublicaciones } from "../../../services/api/publicaciones"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
@@ -7,32 +7,21 @@ import DashboardCard from "../DashboardCard"
 import { baseURL } from "../../../services/api/api"
 
 export default function DashboardPubs() {
-    const { token } = useContext(AdminContext)
+    const { token, refreshAccessToken } = useContext(AdminContext)
     const [publicaciones, setPublicaciones] = useState([])
 
     useEffect(() => {
         getPublicaciones().then((data) => setPublicaciones(data))
     }, [])
 
-    const deleteElement = (pubId) => {
-        fetch(`${baseURL}/blog/publicacion/${pubId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    const handleDelete = (pubId) => {
+        deletePublicacion(pubId, token, refreshAccessToken).then(() => {
+            setPublicaciones((prevPublicaciones) =>
+                prevPublicaciones.filter((pub) => pub.id !== pubId)
+            );
         })
-            .then(res => {
-                if (!res.ok) throw new Error('Error al eliminar la publicación.')
-                return res.json()
-            })
-            .then((data) => {
-                alert('Publicacion eliminada')
-                setPublicaciones((prevPublicaciones) =>
-                    prevPublicaciones.filter((pub) => pub.id !== pubId)
-                );
-            })
             .catch(err => {
-                alert(err.message)
+                alert('Error al eliminar la obra')
             })
     }
 
@@ -40,20 +29,20 @@ export default function DashboardPubs() {
         <>
             <Layout>
                 <Dashboard
-                titulo={'Publicaciones existentes:'}
-                dashboardPath={'/dashboard/add-publicacion'}
-                textoBoton={'Nueva publicación'}
+                    titulo={'Publicaciones existentes:'}
+                    dashboardPath={'/dashboard/add-publicacion'}
+                    textoBoton={'Nueva publicación'}
                 />
-                {publicaciones.map((pub)=>{
-                    return(
+                {publicaciones.map((pub) => {
+                    return (
                         <DashboardCard
-                        key={pub.id}
-                        elemento={pub}
-                        imagen={pub.imagen_destacada}
-                        nombre={pub.titulo}
-                        contenido={pub.contenido}
-                        handleClick={deleteElement}
-                        editPath={`/publicacion/${pub.id}`}/>
+                            key={pub.id}
+                            elemento={pub}
+                            imagen={pub.imagen_destacada}
+                            nombre={pub.titulo}
+                            contenido={pub.contenido}
+                            handleClick={handleDelete}
+                            editPath={`/publicacion/${pub.id}`} />
                     )
                 })}
             </Layout>

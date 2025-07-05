@@ -1,38 +1,25 @@
 
 import { useContext, useEffect, useState } from "react"
-import { getObras } from "../../../services/api/obras"
+import { deleteObra, getObras } from "../../../services/api/obras"
 import Layout from "../../layout/Layout"
 import { AdminContext } from "../../../context/AdminContext"
 import Dashboard from "../Dashboard"
 import DashboardCard from "../DashboardCard"
 
 export default function DashboardObras() {
-    const { token } = useContext(AdminContext)
+    const { token, refreshAccessToken } = useContext(AdminContext)
     const [obras, setObras] = useState([])
 
     useEffect(() => {
         getObras().then((data) => setObras(data))
     }, [])
 
-    const deleteElement = (obraId) => {
-        fetch(`${baseURL}/galeria/obra/${obraId}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+    const handleDelete = (obraId) => {
+        deleteObra(obraId, token, refreshAccessToken).then(() => {
+            setObras((prevObras) => prevObras.filter((obra) => obra.id !== obraId));
         })
-            .then(res => {
-                if (!res.ok) throw new Error('Error al eliminar la obra.')
-                return res.json()
-            })
-            .then((data) => {
-                alert('Obra eliminada')
-                setObras((prevObras) =>
-                    prevObras.filter((obra) => obra.id !== obraId)
-                );
-            })
             .catch(err => {
-                alert(err.message)
+                alert('Error al eliminar la obra')
             })
     }
 
@@ -52,7 +39,7 @@ export default function DashboardObras() {
                             imagen={obra.imagen}
                             nombre={obra.nombre}
                             contenido={obra.descripcion}
-                            handleClick={deleteElement}
+                            handleClick={() => handleDelete(obra.id)}
                             editPath={`/obra/${obra.id}`} />
                     )
                 })
