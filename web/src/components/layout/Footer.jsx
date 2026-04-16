@@ -34,18 +34,19 @@ export default function () {
                     <Link href="/politica-de-privacidad" underline="hover">
                         Política de Privacidad
                     </Link>
-                </Grid>
-                <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                    <span>  |  </span>
                     <Link href="/terminos-y-condiciones" underline="hover">
                         Términos y Condiciones
                     </Link>
-                </Grid>
-                <Grid size={{ xs: 12, md: 4, lg: 4 }}>
+                    <span>  |  </span>
                     <Link href="/politica-de-cookies" underline="hover">
                         Política de Cookies
                     </Link>
                 </Grid>
-
+                <Grid>
+                    <span>Creador de la página web: </span>
+                    <Link href="https://github.com/JoeDE88">Joe Diaz</Link>
+                </Grid>
             </Box>
         </Box>
     )
